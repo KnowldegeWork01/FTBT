@@ -116,12 +116,10 @@ function FT() {
   };
 
   const handleSave = (index) => {
-    // Update savedData with the edited value
     const newSavedData = [...savedData];
     newSavedData[index] = editableData[index];
     setSavedData(newSavedData);
 
-    // Clear the content of the Edit column by setting it to an empty string
     const newEditableData = [...editableData];
     newEditableData[index] = "";
     setEditableData(newEditableData);
@@ -246,6 +244,7 @@ function FT() {
                 <TableCell
                   style={{
                     fontSize: "1rem",
+                    width:"30%"
                     // display: "flex",
                     // border: "1px solid",
                   }}
@@ -257,19 +256,19 @@ function FT() {
                 </TableCell>
                 <TableCell
                   style={{
-                    fontSize: "1rem",width:"30%" 
+                    fontSize: "1rem",width:"30%"
                   }}
                 >
                  {tcxData[index]}
                 </TableCell>
                 <TableCell
                   style={{
-                    width: "25%",
+                    width: "20%"   
                   }}
                 >
                   <TextField
                     variant="outlined"
-                    style={{ width: "80%" }}
+                    style={{ width: "70%" }}
                     multiline
                     maxRows={3}
                     placeholder={
