@@ -14,8 +14,10 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import SaveIcon from "@material-ui/icons/Save";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 
-import Papa from "papaparse";
 
 function FT() {
   const [csvData, setCSVData] = useState([]);
@@ -25,6 +27,7 @@ function FT() {
   const [savedData, setSavedData] = useState([]);
   const [downloadReady, setDownloadReady] = useState(false);
   const [dataTrue, setDataTrue] = useState(false);
+  const [hideTmxColumn, sethideTmxColumn] = useState(false);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -70,10 +73,10 @@ function FT() {
   // const compareAndSetFT = (sourceSentence, tmxSentence) => {
   //   const sourceString = String(sourceSentence)
   //     .trim()
-  //     .replace(/[^\w\s]/g, "");
-  //   const tmxString = String(tmxSentence)
+  //     .replace(/[^\w\s]/g, ""); // Remove special characters except alphanumeric characters
+  //   const tmxString = String(tmxSent
   //     .trim()
-  //     .replace(/[^\w\s]/g, "");
+  //     .replace(/[^\w\s]/g, ""); // Remove special characters except alphanumeric characters
 
   //   const sourceWords = sourceString.split(/\s+/).sort().join(" ");
   //   const tmxWords = tmxString.split(/\s+/).sort().join(" ");
@@ -94,21 +97,27 @@ function FT() {
   const compareAndSetFT = (sourceSentence, tmxSentence) => {
     const sourceString = String(sourceSentence)
       .trim()
-      .replace(/[^\w\s]/g, ""); // Remove special characters except alphanumeric characters
+      .replace(/[^\w\s]/g, "");
     const tmxString = String(tmxSentence)
       .trim()
-      .replace(/[^\w\s]/g, ""); // Remove special characters except alphanumeric characters
+      .replace(/[^\w\s]/g, "");
 
-    const sourceWords = sourceString.split(/\s+/).sort().join(" ");
-    const tmxWords = tmxString.split(/\s+/).sort().join(" ");
+    const sourceWords = sourceString
+      .split(/\s+/)
+      .filter((word) => word.trim() !== "")
+      .sort();
+    const tmxWords = tmxString
+      .split(/\s+/)
+      .filter((word) => word.trim() !== "")
+      .sort();
 
     if (sourceWords.length !== tmxWords.length) {
-      return "Wrong";
+      return "";
     }
 
     for (let i = 0; i < sourceWords.length; i++) {
       if (sourceWords[i] !== tmxWords[i]) {
-        return "Wrong";
+        return "";
       }
     }
 
@@ -164,6 +173,10 @@ function FT() {
     console.log("saved data", savedData);
   }, [savedData]);
 
+  const handlehide = () => {
+    console.log("handlehide");
+    sethideTmxColumn((prevState) => !prevState);
+  };
   return (
     <div>
       <div
@@ -174,7 +187,7 @@ function FT() {
           alignItems: "center",
           padding: "1rem",
           position: "sticky",
-          top: "1rem",
+          top: "4rem",
           zIndex: "1",
         }}
       >
@@ -191,7 +204,7 @@ function FT() {
             component="span"
             startIcon={<CloudUploadIcon />}
           >
-            Upload CSV File (Source)
+            (Source)
           </Button>
         </label>
         <input
@@ -207,7 +220,7 @@ function FT() {
             component="span"
             startIcon={<CloudUploadIcon />}
           >
-            Upload TMX File (TMX)
+           (TMX)
           </Button>
         </label>
         <Button
@@ -216,8 +229,9 @@ function FT() {
           onClick={handleDownloadCSV}
           disabled={!downloadReady}
           style={{ marginLeft: "1rem" }}
+          startIcon={<CloudDownloadIcon/>}
         >
-          Download FT Column Data
+        (FT)
         </Button>
       </div>
       <TableContainer component={Paper}>
@@ -227,8 +241,15 @@ function FT() {
               <TableCell>
                 <b>Source</b>
               </TableCell>
-              <TableCell>
+              <TableCell >
                 <b>TMX</b>
+                <Button
+                  onClick={() => {
+                    handlehide();
+                  }}
+                >
+                  {hideTmxColumn ? <RemoveRedEyeIcon /> : <VisibilityOffIcon />}
+                </Button>
               </TableCell>
               <TableCell>
                 <b>Edit</b>
@@ -244,26 +265,28 @@ function FT() {
                 <TableCell
                   style={{
                     fontSize: "1rem",
-                    width:"30%"
+                    width: "30%",
                     // display: "flex",
                     // border: "1px solid",
                   }}
                 >
-                  <div style={{display:"flex"}}>
-                    <div>({index + 1})</div>
+                  <div style={{ display: "flex" }}>
+                    <div><b>({index + 1})</b></div>
                     <div style={{ marginLeft: "0.5rem" }}>{csvRow}</div>
                   </div>
                 </TableCell>
                 <TableCell
                   style={{
-                    fontSize: "1rem",width:"30%"
+                    fontSize: "1rem",
+                    width: "30%",
+                    visibility: hideTmxColumn ? "hidden" : "visible",
                   }}
                 >
-                 {tcxData[index]}
+                  {tcxData[index]}
                 </TableCell>
                 <TableCell
                   style={{
-                    width: "20%"   
+                    width: "20%",
                   }}
                 >
                   <TextField
@@ -276,11 +299,11 @@ function FT() {
                         ? compareAndSetFT(csvData[index], tcxData[index])
                         : ""
                     }
-                    value={editableData[index]} // Controlled by editableData state
+                    value={editableData[index]}
                     onChange={(e) => {
                       const newEditableData = [...editableData];
                       newEditableData[index] = e.target.value;
-                      setEditableData(newEditableData); // Update editableData
+                      setEditableData(newEditableData);
                     }}
                     disabled={
                       compareAndSetFT(csvData[index], tcxData[index]) ===
@@ -303,12 +326,7 @@ function FT() {
                   </Button>
                 </TableCell>
                 <TableCell>
-                  <div
-                    style={{
-                      // border: "2px solid",
-                      width: "100%",
-                    }}
-                  >
+                  <div>
                     <CKEditor
                       editor={ClassicEditor}
                       data={

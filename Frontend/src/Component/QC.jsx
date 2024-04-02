@@ -14,11 +14,30 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import SaveIcon from "@material-ui/icons/Save";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import Papa from "papaparse";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import * as XLSX from "xlsx";
 
 const QC = () => {
-  const [englishQC, setEnglishQC] = useState([]);
-  const [englishQC1, setEnglishQC1] = useState([]);
+  const [englishSouce, setEnglishSource] = useState([]);
+  const [englishBT, setEnglishBT] = useState([]);
+  const [comments, setComments] = useState([]);
+
+  // const handleFileUpload = (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+  //   const reader = new FileReader();
+  //   reader.onload = (e) => {
+  //     const content = e.target.result;
+  //     const rows = content.split("\n").map((row) => row.trim());
+  //     const data = rows
+  //       .map((row, index) => {
+  //         return row.replace(/["']/g, "").split(",");
+  //       })
+  //       .filter((row) => row !== null);
+  //     setEnglishSource(data);
+  //   };
+  //   reader.readAsText(file, "ISO-8859-1");
+  // };
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -33,10 +52,11 @@ const QC = () => {
           return row.split(",");
         })
         .filter((row) => row !== null);
-      setEnglishQC(data);
+      setEnglishSource(data);
     };
     reader.readAsText(file, "ISO-8859-1");
   };
+
   const handleFileUpload2 = (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -46,13 +66,34 @@ const QC = () => {
       const rows = content.split("\n").map((row) => row.trim());
       const data = rows
         .map((row, index) => {
-          if (index === 0) return null;
-          return row.split(",");
+          return row.replace(/["']/g, "").split(",");
         })
         .filter((row) => row !== null);
-      setEnglishQC1(data);
+      setEnglishBT(data);
     };
     reader.readAsText(file, "ISO-8859-1");
+  };
+  const handleCommentChange = (index, event) => {
+    const newComments = [...comments];
+    newComments[index] = event.target.value;
+    setComments(newComments);
+  };
+  const handleSaveComment = (index) => {
+    console.log("Comment saved:", comments[index]);
+  };
+  const handleDownload = () => {
+    const dataRows = englishSouce.map((source, index) => [
+      source,
+      englishBT[index] || "",
+      comments[index] || "",
+    ]);
+    const ws = XLSX.utils.aoa_to_sheet([
+      ["Source", "BT", "Comment"],
+      ...dataRows,
+    ]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, "qc.csv");
   };
   return (
     <div>
@@ -81,7 +122,7 @@ const QC = () => {
             component="span"
             startIcon={<CloudUploadIcon />}
           >
-            Upload FT
+            (Source)
           </Button>
         </label>
         <input
@@ -97,12 +138,21 @@ const QC = () => {
             component="span"
             startIcon={<CloudUploadIcon />}
           >
-            Upload BT
+            (BT)
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleDownload}
+            style={{ marginLeft: "1rem" }}
+            startIcon={<CloudDownloadIcon />}
+          >
+            (QC)
           </Button>
         </label>
       </div>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>
@@ -111,36 +161,57 @@ const QC = () => {
               <TableCell>
                 <b>BT</b>
               </TableCell>
-              {/* <TableCell>
-                <b>Edit</b>
-              </TableCell>
               <TableCell>
-                <b>FT</b>
-              </TableCell> */}
+                <b>Comment</b>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {englishQC.map((csvRow, index) => (
+            {englishSouce.map((csvRow, index) => (
               <TableRow key={index}>
                 <TableCell
                   style={{
                     fontSize: "1rem",
-                    width: "30%",
-                    padding: "2rem",
+                    width: "35%",
+                    padding: "1.5rem",
                   }}
                 >
                   <div style={{ display: "flex" }}>
-                    <div>({index + 1})</div>
+                    <div>
+                      <b>({index + 1})</b>
+                    </div>
                     <div style={{ marginLeft: "0.5rem" }}>{csvRow}</div>
                   </div>
                 </TableCell>
                 <TableCell
                   style={{
                     fontSize: "1rem",
-                    width: "30%",
+                    width: "35%",
                   }}
                 >
-                  {englishQC1[index]}
+                  {englishBT[index]}
+                </TableCell>
+                <TableCell>
+                  <TextField
+                    variant="outlined"
+                    style={{ width: "90%" }}
+                    multiline
+                    maxRows={3}
+                    value={comments[index] || ""}
+                    onChange={(event) => handleCommentChange(index, event)}
+                  />
+                </TableCell>
+                <TableCell>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    startIcon={<SaveIcon />}
+                    style={{ padding: "1rem" }}
+                    onClick={() => handleSaveComment(index)}
+                  >
+                    Save
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
