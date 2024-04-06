@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -9,14 +9,19 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Logo from "../images/signInLogo.jpeg";
 import BG from "../images/bgImage.jpg";
 import axios from "axios";
-import FT from "./FT";
-import BT from "./BT";
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 const Login = () => {
-  const [inputValue, setInputValue] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState({
+    email: "",
+    password: "",
+    department: "",
+  });
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedInData, setLoggedInData] = useState(null);
 
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
@@ -27,10 +32,10 @@ const Login = () => {
   };
   const FTComp = async () => {
     const payload = {
+      department: inputValue?.department,
       userName: inputValue?.email,
       password: inputValue?.password,
     };
-
     try {
       const response = await axios.post(
         "http://localhost:8000/api/authenticate",
@@ -38,8 +43,11 @@ const Login = () => {
       );
 
       if (response.status === 200) {
+        setLoggedInData(response);
         setLoggedIn(true);
+        setLoggedInData(response);
       }
+      // console.log(response);
     } catch (error) {
       console.log("Error fetching data:", error);
       if (error.response && error.response.status === 500) {
@@ -48,25 +56,28 @@ const Login = () => {
       return [];
     }
   };
-
+  useEffect(() => {
+    console.log("loggedInData", loggedInData);
+  }, [loggedInData]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     FTComp();
   };
   if (loggedIn) {
-    return inputValue.email === "FT"
-      ? (window.location.href = "http://localhost:3000/FT")
-      : inputValue.email === "BT"
-      ? (window.location.href = "http://localhost:3000/BT")
-      : inputValue.email === "QC"
-      ? (window.location.href = "http://localhost:3000/QC")
+    return loggedInData?.data?.department === "FT"
+      ? navigate("/login/FT")
+      : loggedInData?.data?.department === "BT"
+      ? navigate("/login/BT")
+      : loggedInData?.data?.department === "QC"
+      ? navigate("/login/QC")
       : null;
   }
+
   return (
     <div
       style={{
-        position:"fixed",
-        height:"100vh",
+        position: "fixed",
+        height: "100vh",
         display: "grid",
         gridTemplateColumns: "auto auto",
       }}
@@ -101,12 +112,21 @@ const Login = () => {
                   margin="normal"
                   required
                   fullWidth
+                  id="department"
+                  label="Department"
+                  name="department"
+                  value={inputValue.department}
+                  onChange={handleFieldChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
                   id="email"
                   label="Userid"
                   name="email"
                   value={inputValue.email}
                   onChange={handleFieldChange}
-                  autoComplete="email"
                 />
                 <TextField
                   margin="normal"
@@ -118,7 +138,6 @@ const Login = () => {
                   value={inputValue.password}
                   onChange={handleFieldChange}
                   id="password"
-                  autoComplete="current-password"
                 />
                 <Button
                   type="submit"

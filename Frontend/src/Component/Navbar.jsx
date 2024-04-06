@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom'; 
+import Logo from "../images/signInLogo.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -14,8 +15,8 @@ const Navbar = () => {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-          {/* Your Website */}
+        <Typography className={classes.title} >
+     {/* LOGO */}
         </Typography>
         <Typography variant="h6">
           <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>LOGIN</Link>

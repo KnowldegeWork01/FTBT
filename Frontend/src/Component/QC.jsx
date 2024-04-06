@@ -12,13 +12,11 @@ import {
 } from "@material-ui/core";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import SaveIcon from "@material-ui/icons/Save";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import * as XLSX from "xlsx";
+import axios from "axios";
 
 const QC = () => {
-  const [englishSouce, setEnglishSource] = useState([]);
+  const [englishSource, setEnglishSource] = useState([]);
   const [englishBT, setEnglishBT] = useState([]);
   const [comments, setComments] = useState([]);
 
@@ -81,20 +79,119 @@ const QC = () => {
   const handleSaveComment = (index) => {
     console.log("Comment saved:", comments[index]);
   };
-  const handleDownload = () => {
-    const dataRows = englishSouce.map((source, index) => [
-      source,
-      englishBT[index] || "",
-      comments[index] || "",
-    ]);
-    const ws = XLSX.utils.aoa_to_sheet([
-      ["Source", "BT", "Comment"],
-      ...dataRows,
-    ]);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-    XLSX.writeFile(wb, "qc.csv");
+
+//   const handleDownload = () => {
+//     const fileName = prompt("Enter file name (without extension):", "data");
+//     const combinedData = englishSource.map((source, index) => ({
+//       source,
+//       bt: englishBT[index] || "",
+//       comment: comments[index] || "",
+//     }));
+//     const csvContent =  "Source,BT,Comment\n" +
+//       combinedData
+//         .map((row) => `${row.source},${row.bt},${row.comment}`)
+//         .join("\n");
+//     const blob = new Blob([csvContent]);
+//     const link = document.createElement("a");
+//     link.href = URL.createObjectURL(blob);
+//     link.setAttribute("download",`${fileName}.csv`);
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+//   };
+//   try {
+//     await axios.post("http://localhost:8000/save-filename", {
+//       fileName,
+//       directoryPath, 
+//     });
+//     console.log("File name saved to MongoDB");
+//   } catch (error) {
+//     console.error("Error saving file name to MongoDB:", error);
+//   }
+// };
+
+// const handleDownload = async () => {
+//   const fileName = prompt("Enter file name (without extension):", "data");
+//   if (!fileName) return; 
+//   const combinedData = englishSource.map((source, index) => ({
+//     source,
+//     bt: englishBT[index] || "",
+//     comment: comments[index] || "",
+//   }));
+//   const csvContent = "Source,BT,Comment\n" +
+//     combinedData
+//       .map((row) => `${row.source},${row.bt},${row.comment}`)
+//       .join("\n");
+//   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+//   const link = document.createElement("a");
+//   link.href = URL.createObjectURL(blob);
+//   link.setAttribute("download", `${fileName}.csv`);
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+//   try {
+//     await axios.post("http://localhost:8000/",{
+//       fileName,
+//     });
+//     console.log("File name saved to MongoDB");
+//   } catch (error) {
+//     console.error("Error saving file name to MongoDB:", error);
+//   }
+// };
+ // const randomString = () => {
+  //   const chars = "ABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789";
+
+  //   let result = "";
+
+  //   for (let i = 7; i > 0; i--) {
+  //     result += chars[Math.round(Math.random() * (chars.length - 1))];
+  //   }
+
+  //   return result;
+  // };
+
+
+  const handleDownload = async () => {
+      const fileName = prompt("Enter file name (without extension):", "data");
+      if (!fileName) return; 
+      const combinedData = englishSource.map((source, index) => ({
+        source,
+        bt: englishBT[index] || "",
+        comment: comments[index] || "",
+      }));
+      const csvContent = "Source,BT,Comment\n" +
+        combinedData
+          .map((row) => `${row.source},${row.bt},${row.comment}`)
+          .join("\n");
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute("download", `${fileName}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      try {
+        let data = {
+          name: fileName,
+          _id: logedIn
+        }
+        const response = await fetch('/api/filenames', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        if (response.ok) {
+          console.log('Filename added successfully');
+        } else {
+          console.error('Failed to add filename');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
   };
+  
   return (
     <div>
       <div
@@ -105,7 +202,7 @@ const QC = () => {
           alignItems: "center",
           padding: "1rem",
           position: "sticky",
-          top: "1rem",
+          top: "4rem",
           zIndex: "1",
         }}
       >
@@ -167,12 +264,12 @@ const QC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {englishSouce.map((csvRow, index) => (
+            {englishSource.map((csvRow, index) => (
               <TableRow key={index}>
                 <TableCell
                   style={{
                     fontSize: "1rem",
-                    width: "35%",
+                    width: "30%",
                     padding: "1.5rem",
                   }}
                 >
@@ -186,17 +283,18 @@ const QC = () => {
                 <TableCell
                   style={{
                     fontSize: "1rem",
-                    width: "35%",
+                    width: "30%",
                   }}
                 >
                   {englishBT[index]}
                 </TableCell>
                 <TableCell>
-                  <TextField
+                  <textarea
                     variant="outlined"
-                    style={{ width: "90%" }}
+                    style={{ width: "90%",resize:"none",fontSize:"1rem" }}
                     multiline
-                    maxRows={3}
+                  rows={4}
+
                     value={comments[index] || ""}
                     onChange={(event) => handleCommentChange(index, event)}
                   />

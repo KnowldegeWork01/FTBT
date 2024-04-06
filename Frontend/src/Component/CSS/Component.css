@@ -1,0 +1,13 @@
+.navbarCss {
+  font-size: 1rem;
+}
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  position: sticky;
+  top: 4rem;
+  z-index: 1;
+}
