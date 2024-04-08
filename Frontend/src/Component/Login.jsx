@@ -10,6 +10,7 @@ import Logo from "../images/signInLogo.jpeg";
 import BG from "../images/bgImage.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import QC from "./QC";
 
 const defaultTheme = createTheme();
 
@@ -56,6 +57,9 @@ const Login = () => {
       return [];
     }
   };
+  useEffect(()=>{
+console.log("loggedIn",loggedIn);
+  },[loggedIn])
   useEffect(() => {
     console.log("loggedInData", loggedInData);
   }, [loggedInData]);
@@ -64,15 +68,15 @@ const Login = () => {
     FTComp();
   };
   if (loggedIn) {
-    return loggedInData?.data?.department === "FT"
-      ? navigate("/login/FT")
-      : loggedInData?.data?.department === "BT"
-      ? navigate("/login/BT")
-      : loggedInData?.data?.department === "QC"
-      ? navigate("/login/QC")
-      : null;
+    return loggedInData?.data?.department === "FT" ? (
+      navigate("/login/FT")
+    ) : loggedInData?.data?.department === "BT" ? (
+      navigate("/login/BT")
+    ) : loggedInData?.data?.department === "QC" ? (
+      navigate("/login/QC"),
+      <QC loggedInData={loggedInData} />
+    ) : null;
   }
-
   return (
     <div
       style={{

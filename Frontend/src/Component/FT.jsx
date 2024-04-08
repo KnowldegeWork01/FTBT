@@ -34,11 +34,9 @@ function FT() {
   const handleQCClick = () => {
     setIsQCSelected(true);
   };
-
   const handleSourceClick = () => {
     setIsQCSelected(false);
   };
-
   const handleFileUploadQC = (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -112,18 +110,34 @@ function FT() {
     };
     reader.readAsText(file, "ISO-8859-1");
   };
-
   const compareAndSetFT = (sourceSentence, tmxSentence) => {
-    const cleanSource = String(sourceSentence).trim().replace(/[^\w]/g, "");
-    const cleanTmx = String(tmxSentence).trim().replace(/[^\w]/g, "");
+    const sourceString = String(sourceSentence)
+      .trim()
+      .replace(/[^\w\s]/g, "");
+    const tmxString = String(tmxSentence)
+      .trim()
+      .replace(/[^\w\s]/g, "");
 
-    if (cleanSource === cleanTmx) {
-      return "Right";
-    } else {
+    const sourceWords = sourceString
+      .split(/\s+/)
+      .filter((word) => word.trim() !== "")
+      .sort();
+    const tmxWords = tmxString
+      .split(/\s+/)
+      .filter((word) => word.trim() !== "")
+      .sort();
+
+    if (sourceWords.length !== tmxWords.length) {
       return "";
     }
-  };
 
+    for (let i = 0; i < sourceWords.length; i++) {
+      if (sourceWords[i] !== tmxWords[i]) {
+        return "";
+      }
+    }
+    return "Right";
+  };
   const handleSave = (index) => {
     const newSavedData = [...savedData];
     newSavedData[index] = editableData[index];

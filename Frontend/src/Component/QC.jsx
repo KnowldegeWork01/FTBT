@@ -13,9 +13,10 @@ import {
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import SaveIcon from "@material-ui/icons/Save";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import axios from "axios";
 
-const QC = () => {
+
+const QC = ({ loggedInData }) => {
+  
   const [englishSource, setEnglishSource] = useState([]);
   const [englishBT, setEnglishBT] = useState([]);
   const [comments, setComments] = useState([]);
@@ -80,65 +81,65 @@ const QC = () => {
     console.log("Comment saved:", comments[index]);
   };
 
-//   const handleDownload = () => {
-//     const fileName = prompt("Enter file name (without extension):", "data");
-//     const combinedData = englishSource.map((source, index) => ({
-//       source,
-//       bt: englishBT[index] || "",
-//       comment: comments[index] || "",
-//     }));
-//     const csvContent =  "Source,BT,Comment\n" +
-//       combinedData
-//         .map((row) => `${row.source},${row.bt},${row.comment}`)
-//         .join("\n");
-//     const blob = new Blob([csvContent]);
-//     const link = document.createElement("a");
-//     link.href = URL.createObjectURL(blob);
-//     link.setAttribute("download",`${fileName}.csv`);
-//     document.body.appendChild(link);
-//     link.click();
-//     document.body.removeChild(link);
-//   };
-//   try {
-//     await axios.post("http://localhost:8000/save-filename", {
-//       fileName,
-//       directoryPath, 
-//     });
-//     console.log("File name saved to MongoDB");
-//   } catch (error) {
-//     console.error("Error saving file name to MongoDB:", error);
-//   }
-// };
+  //   const handleDownload = () => {
+  //     const fileName = prompt("Enter file name (without extension):", "data");
+  //     const combinedData = englishSource.map((source, index) => ({
+  //       source,
+  //       bt: englishBT[index] || "",
+  //       comment: comments[index] || "",
+  //     }));
+  //     const csvContent =  "Source,BT,Comment\n" +
+  //       combinedData
+  //         .map((row) => `${row.source},${row.bt},${row.comment}`)
+  //         .join("\n");
+  //     const blob = new Blob([csvContent]);
+  //     const link = document.createElement("a");
+  //     link.href = URL.createObjectURL(blob);
+  //     link.setAttribute("download",`${fileName}.csv`);
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //   };
+  //   try {
+  //     await axios.post("http://localhost:8000/save-filename", {
+  //       fileName,
+  //       directoryPath,
+  //     });
+  //     console.log("File name saved to MongoDB");
+  //   } catch (error) {
+  //     console.error("Error saving file name to MongoDB:", error);
+  //   }
+  // };
 
-// const handleDownload = async () => {
-//   const fileName = prompt("Enter file name (without extension):", "data");
-//   if (!fileName) return; 
-//   const combinedData = englishSource.map((source, index) => ({
-//     source,
-//     bt: englishBT[index] || "",
-//     comment: comments[index] || "",
-//   }));
-//   const csvContent = "Source,BT,Comment\n" +
-//     combinedData
-//       .map((row) => `${row.source},${row.bt},${row.comment}`)
-//       .join("\n");
-//   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-//   const link = document.createElement("a");
-//   link.href = URL.createObjectURL(blob);
-//   link.setAttribute("download", `${fileName}.csv`);
-//   document.body.appendChild(link);
-//   link.click();
-//   document.body.removeChild(link);
-//   try {
-//     await axios.post("http://localhost:8000/",{
-//       fileName,
-//     });
-//     console.log("File name saved to MongoDB");
-//   } catch (error) {
-//     console.error("Error saving file name to MongoDB:", error);
-//   }
-// };
- // const randomString = () => {
+  // const handleDownload = async () => {
+  //   const fileName = prompt("Enter file name (without extension):", "data");
+  //   if (!fileName) return;
+  //   const combinedData = englishSource.map((source, index) => ({
+  //     source,
+  //     bt: englishBT[index] || "",
+  //     comment: comments[index] || "",
+  //   }));
+  //   const csvContent = "Source,BT,Comment\n" +
+  //     combinedData
+  //       .map((row) => `${row.source},${row.bt},${row.comment}`)
+  //       .join("\n");
+  //   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  //   const link = document.createElement("a");
+  //   link.href = URL.createObjectURL(blob);
+  //   link.setAttribute("download", `${fileName}.csv`);
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  //   try {
+  //     await axios.post("http://localhost:8000/",{
+  //       fileName,
+  //     });
+  //     console.log("File name saved to MongoDB");
+  //   } catch (error) {
+  //     console.error("Error saving file name to MongoDB:", error);
+  //   }
+  // };
+  // const randomString = () => {
   //   const chars = "ABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789";
 
   //   let result = "";
@@ -150,48 +151,52 @@ const QC = () => {
   //   return result;
   // };
 
-
   const handleDownload = async () => {
-      const fileName = prompt("Enter file name (without extension):", "data");
-      if (!fileName) return; 
-      const combinedData = englishSource.map((source, index) => ({
-        source,
-        bt: englishBT[index] || "",
-        comment: comments[index] || "",
-      }));
-      const csvContent = "Source,BT,Comment\n" +
-        combinedData
-          .map((row) => `${row.source},${row.bt},${row.comment}`)
-          .join("\n");
-      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.setAttribute("download", `${fileName}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      try {
-        let data = {
-          name: fileName,
-          _id: logedIn
-        }
-        const response = await fetch('/api/filenames', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        if (response.ok) {
-          console.log('Filename added successfully');
-        } else {
-          console.error('Failed to add filename');
-        }
-      } catch (error) {
-        console.error('Error:', error);
+    const fileName = prompt("Enter file name (without extension):", "data");
+    if (!fileName) return;
+    const combinedData = englishSource.map((source, index) => ({
+      source,
+      bt: englishBT[index] || "",
+      comment: comments[index] || "",
+    }));
+    const csvContent =
+      "Source,BT,Comment\n" +
+      combinedData
+        .map((row) => `${row.source},${row.bt},${row.comment}`)
+        .join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute("download", `${fileName}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    try {
+      let data = {
+        _id: loggedInData.data._id,
+        filename: filename,
+      };
+      const response = await fetch("/api/filenames", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        console.log("Filename added successfully");
+      } else {
+        console.error("Failed to add filename");
       }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
-  
+useEffect(()=>{
+  console.log("loggedin :--",loggedInData);
+},[loggedInData])
+
   return (
     <div>
       <div
@@ -291,10 +296,9 @@ const QC = () => {
                 <TableCell>
                   <textarea
                     variant="outlined"
-                    style={{ width: "90%",resize:"none",fontSize:"1rem" }}
+                    style={{ width: "90%", resize: "none", fontSize: "1rem" }}
                     multiline
-                  rows={4}
-
+                    rows={4}
                     value={comments[index] || ""}
                     onChange={(event) => handleCommentChange(index, event)}
                   />

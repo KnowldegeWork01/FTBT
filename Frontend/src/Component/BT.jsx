@@ -122,7 +122,6 @@ function BT() {
       return "";
     }
   };
-
   const handleSave = (index) => {
     const newSavedData = [...savedData];
     newSavedData[index] = editableData[index];
