@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^41.2.1",
     "@ckeditor/ckeditor5-react": "^6.2.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
@@ -17,22 +16,28 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.15.3",
     "axios": "^1.6.8",
-    "ckeditor5": "^41.2.1",
+    "ckeditor5-build-classic-extended": "^20.0.1",
     "csv-parse": "^5.5.5",
     "csv-parser": "^3.0.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-testing-library": "^6.2.0",
+    "exceljs": "^4.4.0",
     "flowtype": "^2.0.0",
+    "FTBT": "file:",
     "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-html-table-to-excel": "^2.0.0",
     "react-icons": "^5.0.1",
+    "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
     "readable-stream": "^4.5.2",
     "stream-browserify": "^3.0.0",
+    "tableexport": "^5.2.0",
     "web-vitals": "^2.1.4",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "xlsx-populate": "^1.21.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,6 +58,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "source-map-loader": "^5.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^4.10.0"
   }
 }

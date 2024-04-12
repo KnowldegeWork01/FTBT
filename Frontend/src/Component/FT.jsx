@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./CSS/Component.css";
-
 import {
   Button,
   Table,
@@ -13,11 +12,14 @@ import {
 } from "@material-ui/core";
 import * as XLSX from "xlsx";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ClassicEditor from "ckeditor5-build-classic-extended";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+
+
+
 
 function FT() {
   const [isQCSelected, setIsQCSelected] = useState(false);
@@ -146,17 +148,125 @@ function FT() {
     newEditableData[index] = "";
     setEditableData(newEditableData);
   };
+  // const handleDownloadCSV = () => {
+  //   const csvContent =
+  //     "data:text/xlsx;charset=utf-8," +
+  //     savedData.map((row) => `"${row}"`).join("\n");
+  //   const encodedUri = encodeURI(csvContent);
+  //   const link = document.createElement("a");
+  //   link.setAttribute("href", encodedUri);
+  //   link.setAttribute("download", "FT.xlsx");
+  //   document.body.appendChild(link);
+  //   link.click();
+  // };
+
+  // const handleDownloadCSV = () => {
+  //   const workbook = XLSX.utils.book_new();
+  //   const worksheet = XLSX.utils.aoa_to_sheet(
+  //     savedData.map((row) => row.split("\t"))
+  //   );
+  //   XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+  //   const excelBuffer = XLSX.write(workbook, {
+  //     bookType: "xlsx",
+  //     type: "array",
+  //   });
+  //   const excelBlob = new Blob([excelBuffer], {
+  //     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  //   });
+  //   const link = document.createElement("a");
+  //   link.href = URL.createObjectURL(excelBlob);
+  //   link.setAttribute("download", "FT.xlsx");
+  //   document.body.appendChild(link);
+  //   link.click();
+  // };
+
+  //   const handleDownloadCSV = () => {
+  //     const workbook = XLSX.utils.book_new();
+  //     const formattedData = savedData.map((row) => {
+  //         let formattedRow = row.replace(/<sub>/g, "_").replace(/<\/sub>/g, "");
+  //         formattedRow = formattedRow
+  //             .replace(/<sup>/g, "^")
+  //             .replace(/<\/sup>/g, "");
+  //         return formattedRow;
+  //     });
+  //     const worksheet = XLSX.utils.aoa_to_sheet(
+  //         formattedData.map((row) => row.split("\t"))
+  //     );
+  //     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+  //     const excelBuffer = XLSX.write(workbook, {
+  //         bookType: "xlsx",
+  //         type: "array",
+  //     });
+  //     const excelBlob = new Blob([excelBuffer], {
+  //         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  //     });
+  //     const link = document.createElement("a");
+  //     link.href = URL.createObjectURL(excelBlob);
+  //     link.setAttribute("download", "FT.xlsx");
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  // };
+
+  
   const handleDownloadCSV = () => {
-    const csvContent =
-      "data:text/xlsx;charset=utf-8," +
-      savedData.map((row) => `"${row}"`).join("\n");
-    const encodedUri = encodeURI(csvContent);
+    const workbook = XLSX.utils.book_new();
+    const sheetName = "Sheet1";
+  
+    const wsData = savedData.map((row) => {
+      const temp = document.createElement("div");
+      temp.innerHTML = row;
+  
+      // Extract text and formatting information
+      const cellValue = {
+        t: "s",
+        v: temp.textContent, // Extract text content
+      };
+  
+      // Check for bold and italic formatting
+      if (temp.querySelector("strong")) {
+        cellValue.s = { font: { bold: true } };
+      }
+  
+      if (temp.querySelector("i") || temp.querySelector("em")) {
+        cellValue.s = { ...cellValue.s, font: { italic: true } };
+      }
+  
+      return [cellValue];
+    });
+  
+    const ws = XLSX.utils.aoa_to_sheet(wsData);
+    XLSX.utils.book_append_sheet(workbook, ws, sheetName);
+  
+    // Generate Excel file object
+    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+    const url = URL.createObjectURL(blob);
+  
+    // Create a link element and trigger download
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "Bt.csv");
+    link.href = url;
+    link.download = "formatted_data.xlsx";
     document.body.appendChild(link);
     link.click();
+  
+    // Clean up
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
+  
+  
+
+ 
+
+  const handleEditorChange = (event, editor, index) => {
+    const data = editor.getData();
+    const newData = [...savedData];
+    const cleanedData = data.replace(/<p>/g, "").replace(/<\/p>/g, "");
+    newData[index] = cleanedData;
+    setSavedData(newData);
+  };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (dataTrue) {
@@ -181,14 +291,13 @@ function FT() {
   }, [ftData]);
 
   useEffect(() => {
-    console.log("saved data", savedData);
+    console.log("saved data :--", savedData);
   }, [savedData]);
 
   const handlehide = () => {
     console.log("handlehide");
     sethideTmxColumn((prevState) => !prevState);
   };
-
   return (
     <div>
       <div className="nav">
@@ -342,7 +451,7 @@ function FT() {
                     <TableCell
                       style={{
                         fontSize: "1rem",
-                        width: "28%",
+                        width: "30%",
                         // border: "1px solid",
                       }}
                     >
@@ -356,58 +465,53 @@ function FT() {
                     <TableCell
                       style={{
                         fontSize: "1rem",
-                        width: "28%",
+                        width: "30%",
                         visibility: hideTmxColumn ? "hidden" : "visible",
                       }}
                     >
                       {tcxData[index]}
                     </TableCell>
-                    <TableCell
-                      style={{
-                        width: "20%",
-                      }}
-                    >
-                      <textarea
-                        variant="outlined"
-                        style={{
-                          width: "65%",
-                          padding: "1rem",
-                          fontSize: "1rem",
-                          resize: "none",
-                        }}
-                        multiline
-                        rows={4}
-                        placeholder={
-                          csvData.length > 0 && tcxData.length > 0
-                            ? compareAndSetFT(csvData[index], tcxData[index])
-                            : ""
-                        }
-                        value={editableData[index]}
-                        onChange={(e) => {
-                          const newEditableData = [...editableData];
-                          newEditableData[index] = e.target.value;
-                          setEditableData(newEditableData);
-                        }}
-                        disabled={
-                          compareAndSetFT(csvData[index], tcxData[index]) ===
-                          "Right"
-                        }
-                      />
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        size="small"
-                        style={{
-                          height: "3.4rem",
-                          marginLeft: "0.5rem",
-                          marginTop: "-3rem",
-                        }}
-                        onClick={() => handleSave(index)}
-                      >
-                        Save
-                      </Button>
-                    </TableCell>
                     <TableCell>
+                        <textarea
+                          variant="outlined"
+                          style={{
+                            padding: "1rem",
+                            fontSize: "1rem",
+                            resize: "none",
+                          }}
+                          multiline
+                          rows={4}
+                          placeholder={
+                            csvData.length > 0 && tcxData.length > 0
+                              ? compareAndSetFT(csvData[index], tcxData[index])
+                              : ""
+                          }
+                          value={editableData[index]}
+                          onChange={(e) => {
+                            const newEditableData = [...editableData];
+                            newEditableData[index] = e.target.value;
+                            setEditableData(newEditableData);
+                          }}
+                          disabled={
+                            compareAndSetFT(csvData[index], tcxData[index]) ===
+                            "Right"
+                          }
+                        />
+                       <Button
+                          variant="contained"
+                          color="primary"
+                          size="small"
+                          style={{
+                            height: "2.4rem",
+                            marginLeft: "0.1rem",
+                            marginTop: "-2rem",
+                          }}
+                          onClick={() => handleSave(index)}
+                        >
+                          Save
+                        </Button>
+                      </TableCell>
+                       <TableCell style={{width:"20%"  }}>
                       <CKEditor
                         editor={ClassicEditor}
                         data={
@@ -416,8 +520,16 @@ function FT() {
                             ? ftData[index]
                             : savedData[index]
                         }
+                        onChange={(event, editor) =>
+                          handleEditorChange(event, editor, index)
+                        }
                         config={{
-                          toolbar: ["bold", "italic"],
+                          toolbar: [
+                            "bold",
+                            "italic",
+                            "subscript",
+                            "superscript",
+                          ],
                         }}
                       />
                     </TableCell>

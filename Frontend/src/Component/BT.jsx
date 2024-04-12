@@ -13,8 +13,8 @@ import {
 } from "@material-ui/core";
 import * as XLSX from "xlsx";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "ckeditor5-build-classic-extended";
+import { CKEditor } from "@ckeditor/ckeditor5-react"
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
@@ -392,7 +392,7 @@ function BT() {
                       </Button>
                     </TableCell>
                     <TableCell>
-                      <CKEditor
+                     <CKEditor
                         editor={ClassicEditor}
                         data={
                           compareAndSetFT(csvData[index], tcxData[index]) ===
@@ -401,7 +401,12 @@ function BT() {
                             : savedData[index]
                         }
                         config={{
-                          toolbar: ["bold", "italic"],
+                          toolbar: [
+                            "bold",
+                            "italic",
+                            "subscript",
+                            "superscript",
+                          ],
                         }}
                       />
                     </TableCell>
