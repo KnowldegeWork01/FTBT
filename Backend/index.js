@@ -1,11 +1,13 @@
 const express = require("express");
 const dbConnect = require("./DB/dbConnect");
+
 const cors = require("cors");
 const app = express();
 const PORT = 8000;
 const userSchema = require("./models/Schema");
 app.use(cors());
 app.use(express.json());
+
 
 app.post("/api/addUser", async (req, res) => {
   try {

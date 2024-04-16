@@ -11,15 +11,13 @@ import {
   Paper,
 } from "@material-ui/core";
 import * as XLSX from "xlsx";
+import * as ExcelJS from "exceljs";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import ClassicEditor from "ckeditor5-build-classic-extended";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-
-
-
 
 function FT() {
   const [isQCSelected, setIsQCSelected] = useState(false);
@@ -148,116 +146,67 @@ function FT() {
     newEditableData[index] = "";
     setEditableData(newEditableData);
   };
-  // const handleDownloadCSV = () => {
-  //   const csvContent =
-  //     "data:text/xlsx;charset=utf-8," +
-  //     savedData.map((row) => `"${row}"`).join("\n");
-  //   const encodedUri = encodeURI(csvContent);
-  //   const link = document.createElement("a");
-  //   link.setAttribute("href", encodedUri);
-  //   link.setAttribute("download", "FT.xlsx");
-  //   document.body.appendChild(link);
-  //   link.click();
-  // };
 
-  // const handleDownloadCSV = () => {
-  //   const workbook = XLSX.utils.book_new();
-  //   const worksheet = XLSX.utils.aoa_to_sheet(
-  //     savedData.map((row) => row.split("\t"))
-  //   );
-  //   XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-  //   const excelBuffer = XLSX.write(workbook, {
-  //     bookType: "xlsx",
-  //     type: "array",
-  //   });
-  //   const excelBlob = new Blob([excelBuffer], {
-  //     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  //   });
-  //   const link = document.createElement("a");
-  //   link.href = URL.createObjectURL(excelBlob);
-  //   link.setAttribute("download", "FT.xlsx");
-  //   document.body.appendChild(link);
-  //   link.click();
-  // };
+  const handleDownloadCSV = async () => {
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet("Sheet1");
 
-  //   const handleDownloadCSV = () => {
-  //     const workbook = XLSX.utils.book_new();
-  //     const formattedData = savedData.map((row) => {
-  //         let formattedRow = row.replace(/<sub>/g, "_").replace(/<\/sub>/g, "");
-  //         formattedRow = formattedRow
-  //             .replace(/<sup>/g, "^")
-  //             .replace(/<\/sup>/g, "");
-  //         return formattedRow;
-  //     });
-  //     const worksheet = XLSX.utils.aoa_to_sheet(
-  //         formattedData.map((row) => row.split("\t"))
-  //     );
-  //     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-  //     const excelBuffer = XLSX.write(workbook, {
-  //         bookType: "xlsx",
-  //         type: "array",
-  //     });
-  //     const excelBlob = new Blob([excelBuffer], {
-  //         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  //     });
-  //     const link = document.createElement("a");
-  //     link.href = URL.createObjectURL(excelBlob);
-  //     link.setAttribute("download", "FT.xlsx");
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  // };
+  savedData.forEach((sentence) => {
+    const row = worksheet.addRow();
+    const cell = row.getCell(1);
+    const textSegments = [];
+    let currentSegment = { text: "", font: {} };
 
-  
-  const handleDownloadCSV = () => {
-    const workbook = XLSX.utils.book_new();
-    const sheetName = "Sheet1";
-  
-    const wsData = savedData.map((row) => {
-      const temp = document.createElement("div");
-      temp.innerHTML = row;
-  
-      // Extract text and formatting information
-      const cellValue = {
-        t: "s",
-        v: temp.textContent, // Extract text content
-      };
-  
-      // Check for bold and italic formatting
-      if (temp.querySelector("strong")) {
-        cellValue.s = { font: { bold: true } };
+    let insideTag = false;
+    let tempText = "";
+    let currentTag = "";
+
+    for (let i = 0; i < sentence.length; i++) {
+      if (sentence[i] === "<") {
+        insideTag = true;
+        textSegments.push(currentSegment);
+        currentSegment = { text: "", font: {} };
+      } else if (sentence[i] === ">") {
+        insideTag = false;
+        const htmlTag = tempText.toLowerCase();
+        if (htmlTag === "strong" || htmlTag === "b") {
+          currentSegment.font.bold = true;
+        } else if (htmlTag === "i") {
+          currentSegment.font.italic = true;
+        } else if (htmlTag === "sup") {
+          currentSegment.font.superscript = true;
+        } else if (htmlTag === "sub") {
+          currentSegment.font.subscript = true;
+        }
+        tempText = "";
+      } else {
+        if (insideTag) {
+          tempText += sentence[i];
+        } else {
+          currentSegment.text += sentence[i];
+        }
       }
-  
-      if (temp.querySelector("i") || temp.querySelector("em")) {
-        cellValue.s = { ...cellValue.s, font: { italic: true } };
-      }
-  
-      return [cellValue];
-    });
-  
-    const ws = XLSX.utils.aoa_to_sheet(wsData);
-    XLSX.utils.book_append_sheet(workbook, ws, sheetName);
-  
-    // Generate Excel file object
-    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
-    const url = URL.createObjectURL(blob);
-  
-    // Create a link element and trigger download
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "formatted_data.xlsx";
-    document.body.appendChild(link);
-    link.click();
-  
-    // Clean up
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
-  
-  
+    }
 
- 
+    textSegments.push(currentSegment);
+    cell.value = { richText: textSegments };
+  });
+
+  const buffer = await workbook.xlsx.writeBuffer();
+  const blob = new Blob([buffer], {
+    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", "formatted_data.xlsx");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
+  
 
   const handleEditorChange = (event, editor, index) => {
     const data = editor.getData();
@@ -472,46 +421,46 @@ function FT() {
                       {tcxData[index]}
                     </TableCell>
                     <TableCell>
-                        <textarea
-                          variant="outlined"
-                          style={{
-                            padding: "1rem",
-                            fontSize: "1rem",
-                            resize: "none",
-                          }}
-                          multiline
-                          rows={4}
-                          placeholder={
-                            csvData.length > 0 && tcxData.length > 0
-                              ? compareAndSetFT(csvData[index], tcxData[index])
-                              : ""
-                          }
-                          value={editableData[index]}
-                          onChange={(e) => {
-                            const newEditableData = [...editableData];
-                            newEditableData[index] = e.target.value;
-                            setEditableData(newEditableData);
-                          }}
-                          disabled={
-                            compareAndSetFT(csvData[index], tcxData[index]) ===
-                            "Right"
-                          }
-                        />
-                       <Button
-                          variant="contained"
-                          color="primary"
-                          size="small"
-                          style={{
-                            height: "2.4rem",
-                            marginLeft: "0.1rem",
-                            marginTop: "-2rem",
-                          }}
-                          onClick={() => handleSave(index)}
-                        >
-                          Save
-                        </Button>
-                      </TableCell>
-                       <TableCell style={{width:"20%"  }}>
+                      <textarea
+                        variant="outlined"
+                        style={{
+                          padding: "1rem",
+                          fontSize: "1rem",
+                          resize: "none",
+                        }}
+                        multiline
+                        rows={4}
+                        placeholder={
+                          csvData.length > 0 && tcxData.length > 0
+                            ? compareAndSetFT(csvData[index], tcxData[index])
+                            : ""
+                        }
+                        value={editableData[index]}
+                        onChange={(e) => {
+                          const newEditableData = [...editableData];
+                          newEditableData[index] = e.target.value;
+                          setEditableData(newEditableData);
+                        }}
+                        disabled={
+                          compareAndSetFT(csvData[index], tcxData[index]) ===
+                          "Right"
+                        }
+                      />
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        style={{
+                          height: "2.4rem",
+                          marginLeft: "0.1rem",
+                          marginTop: "-2rem",
+                        }}
+                        onClick={() => handleSave(index)}
+                      >
+                        Save
+                      </Button>
+                    </TableCell>
+                    <TableCell style={{ width: "20%" }}>
                       <CKEditor
                         editor={ClassicEditor}
                         data={
