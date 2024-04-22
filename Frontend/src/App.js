@@ -6,6 +6,7 @@ import Navbar from "./Component/Navbar";
 import QC from "./Component/QC";
 import "./App.css";
 import Upload from "./Component/Upload"
+import Project from "./Component/Project";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/login/QC" element={<QC />} />
         <Route path="/login/upload" element={<Upload />} />
+        <Route path="/login/project" element={<Project />} />
       </Routes>
     </>
   );

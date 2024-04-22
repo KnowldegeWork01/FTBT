@@ -70,7 +70,12 @@ console.log("loggedIn",loggedIn);
   if (loggedIn) {
     return loggedInData?.data?.department === "FT" ? (
       navigate("/login/FT")
-    ) : loggedInData?.data?.department === "BT" ? (
+    ) 
+    :
+    loggedInData?.data?.department === "PM" ? (
+      navigate("/login/project")
+    )
+    : loggedInData?.data?.department === "BT" ? (
       navigate("/login/BT")
     ) : loggedInData?.data?.department === "QC" ? (
       navigate("/login/QC"),

@@ -12,9 +12,10 @@ import {
   Paper,
 } from "@material-ui/core";
 import * as XLSX from "xlsx";
+import * as ExcelJS from "exceljs";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import ClassicEditor from "ckeditor5-build-classic-extended";
-import { CKEditor } from "@ckeditor/ckeditor5-react"
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
@@ -130,16 +131,73 @@ function BT() {
     newEditableData[index] = "";
     setEditableData(newEditableData);
   };
-  const handleDownloadCSV = () => {
-    const csvContent =
-      "data:text/xlsx;charset=utf-8," +
-      savedData.map((row) => `"${row}"`).join("\n");
-    const encodedUri = encodeURI(csvContent);
+  const handleDownloadCSV = async () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Sheet1");
+
+    savedData.forEach((sentence) => {
+      const row = worksheet.addRow();
+      const cell = row.getCell(1);
+      const textSegments = [];
+      let currentSegment = { text: "", font: {} };
+
+      let insideTag = false;
+      let tempText = "";
+      let currentTag = "";
+
+      for (let i = 0; i < sentence.length; i++) {
+        if (sentence[i] === "<") {
+          insideTag = true;
+          textSegments.push(currentSegment);
+          currentSegment = { text: "", font: {} };
+        } else if (sentence[i] === ">") {
+          insideTag = false;
+          const htmlTag = tempText.toLowerCase();
+          if (htmlTag === "strong" || htmlTag === "b") {
+            currentSegment.font.bold = true;
+          } else if (htmlTag === "i") {
+            currentSegment.font.italic = true;
+          } else if (htmlTag === "sup") {
+            currentSegment.font.size = 11;
+            currentSegment.font.vertAlign = "superscript";
+          } else if (htmlTag === "sub") {
+            currentSegment.font.size = 11;
+            currentSegment.font.vertAlign = "subscript";
+          }
+          tempText = "";
+        } else {
+          if (insideTag) {
+            tempText += sentence[i];
+          } else {
+            currentSegment.text += sentence[i];
+          }
+        }
+      }
+
+      textSegments.push(currentSegment);
+      cell.value = { richText: textSegments };
+    });
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "Bt.csv");
+    link.href = url;
+    link.setAttribute("download", "formatted_data.xlsx");
     document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleEditorChange = (event, editor, index) => {
+    const data = editor.getData();
+    const newData = [...savedData];
+    const cleanedData = data.replace(/<p>/g, "").replace(/<\/p>/g, "");
+    newData[index] = cleanedData;
+    setSavedData(newData);
   };
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -392,7 +450,7 @@ function BT() {
                       </Button>
                     </TableCell>
                     <TableCell>
-                     <CKEditor
+                      <CKEditor
                         editor={ClassicEditor}
                         data={
                           compareAndSetFT(csvData[index], tcxData[index]) ===

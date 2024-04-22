@@ -174,9 +174,11 @@ function FT() {
         } else if (htmlTag === "i") {
           currentSegment.font.italic = true;
         } else if (htmlTag === "sup") {
-          currentSegment.font.superscript = true;
+          currentSegment.font.size = 11; 
+          currentSegment.font.vertAlign = "superscript"; 
         } else if (htmlTag === "sub") {
-          currentSegment.font.subscript = true;
+          currentSegment.font.size = 11; 
+          currentSegment.font.vertAlign = "subscript"; 
         }
         tempText = "";
       } else {
@@ -205,8 +207,6 @@ function FT() {
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 };
-
-  
 
   const handleEditorChange = (event, editor, index) => {
     const data = editor.getData();
@@ -248,8 +248,8 @@ function FT() {
     sethideTmxColumn((prevState) => !prevState);
   };
   return (
-    <div>
-      <div className="nav">
+    <div >
+      <div className="nav" >
         <input
           type="file"
           accept=".csv"
@@ -313,8 +313,8 @@ function FT() {
       </div>
       {isQCSelected ? (
         <div>
-          <TableContainer component={Paper}>
-            <Table aria-label="simple table" sx={{ minWidth: 650 }}>
+          <TableContainer component={Paper} style={{border:"2px solid"}}>
+            <Table aria-label="simple table"  sx={{ minWidth: 650 }}>
               <TableHead>
                 <TableRow>
                   <TableCell className="navbarCss">

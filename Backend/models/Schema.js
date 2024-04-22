@@ -17,6 +17,18 @@ const Schema = new mongoose.Schema(
     filename:{
       type:String
     },
+    name: {
+      type: String,
+      // required: true,
+    },
+    status: {
+      type: String,
+      enum: ["Created", "Pending", "Completed"],
+      default: "Pending",
+    },
+    sourceUpload: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
