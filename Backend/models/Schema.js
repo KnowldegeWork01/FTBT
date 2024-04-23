@@ -14,8 +14,8 @@ const Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    filename:{
-      type:String
+    filename: {
+      type: String,
     },
     name: {
       type: String,
@@ -34,7 +34,3 @@ const Schema = new mongoose.Schema(
 );
 const userSchema = mongoose.model("user", Schema);
 module.exports = userSchema;
-
-
-
-

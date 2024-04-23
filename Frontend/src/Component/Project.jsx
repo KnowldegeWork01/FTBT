@@ -18,15 +18,13 @@ import {
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const MyComponent = () => {
-    const [projectName, setProjectName] = useState("");
-    const [projects, setProjects] = useState(
-      JSON.parse(localStorage.getItem("projects")) || []
-    );
-  
-    useEffect(() => {
-      localStorage.setItem("projects", JSON.stringify(projects));
-    }, [projects]);
-  
+  const [projectName, setProjectName] = useState("");
+  const [projects, setProjects] = useState(
+    JSON.parse(localStorage.getItem("projects")) || []
+  );
+  useEffect(() => {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, [projects]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (projectName === "") {
@@ -137,7 +135,7 @@ const MyComponent = () => {
               {projects.map((project, index) => (
                 <TableRow key={index}>
                   <TableCell style={{ fontSize: "1.2rem", width: "20%" }}>
-                  ({index + 1})
+                    {index + 1}
                   </TableCell>
                   <TableCell style={{ fontSize: "1rem", width: "20%" }}>
                     {project.name}
@@ -160,7 +158,7 @@ const MyComponent = () => {
                       variant="contained"
                       color="error"
                       onClick={() => handleDelete(index)}
-                      style={{ marginLeft: "1rem",padding:"0.9rem" }}
+                      style={{ marginLeft: "1rem", padding: "0.9rem" }}
                     >
                       Delete
                     </Button>

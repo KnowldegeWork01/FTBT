@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -10,7 +9,10 @@ import Logo from "../images/signInLogo.jpeg";
 import BG from "../images/bgImage.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import QC from "./QC";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import { jwtDecode as jwt_decode } from "jwt-decode"; 
+
 
 const defaultTheme = createTheme();
 
@@ -21,8 +23,8 @@ const Login = () => {
     password: "",
     department: "",
   });
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [loggedInData, setLoggedInData] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
@@ -31,57 +33,81 @@ const Login = () => {
       [name]: value,
     }));
   };
-  const FTComp = async () => {
-    const payload = {
-      department: inputValue?.department,
-      userName: inputValue?.email,
-      password: inputValue?.password,
-    };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:8000/api/authenticate",
-        payload
+        {
+          userName: inputValue.email,
+          password: inputValue.password,
+          department: inputValue.department,
+        }
       );
-
-      if (response.status === 200) {
-        setLoggedInData(response);
-        setLoggedIn(true);
-        setLoggedInData(response);
+      if (response.status === 200 && response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        const decodedToken = jwt_decode(response.data.token); // Decode the token
+        const department = decodedToken.department; // Extract department from the decoded token
+        localStorage.setItem("department", department); // Save department to local storage
+        switch (department) {
+          case "FT":
+            navigate("/FT");
+            break;
+          case "BT":
+            navigate("/BT");
+            break;
+          case "QC":
+            navigate("/QC");
+            break;
+          case "PM":
+            navigate("/PM");
+            break;
+          default:
+            navigate("/");
+        }
+      } else {
+        setErrorMessage("Invalid credentials");
+        setOpenSnackbar(true);
       }
-      // console.log(response);
     } catch (error) {
-      console.log("Error fetching data:", error);
-      if (error.response && error.response.status === 500) {
-        alert("Invalid credentials");
-      }
-      return [];
+      console.error("Error logging in:", error);
+      setErrorMessage("Invalid credentials");
+      setOpenSnackbar(true);
     }
   };
-  useEffect(()=>{
-console.log("loggedIn",loggedIn);
-  },[loggedIn])
+
   useEffect(() => {
-    console.log("loggedInData", loggedInData);
-  }, [loggedInData]);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    FTComp();
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt_decode(token); 
+      const department = decodedToken.department; 
+      switch (department) {
+        case "FT":
+          navigate("/FT");
+          break;
+        case "BT":
+          navigate("/BT");
+          break;
+        case "QC":
+          navigate("/QC");
+          break;
+        case "PM":
+          navigate("/PM");
+          break;
+        default:
+          navigate("/");
+      }
+    }
+  }, [navigate]);
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
   };
-  if (loggedIn) {
-    return loggedInData?.data?.department === "FT" ? (
-      navigate("/login/FT")
-    ) 
-    :
-    loggedInData?.data?.department === "PM" ? (
-      navigate("/login/project")
-    )
-    : loggedInData?.data?.department === "BT" ? (
-      navigate("/login/BT")
-    ) : loggedInData?.data?.department === "QC" ? (
-      navigate("/login/QC"),
-      <QC loggedInData={loggedInData} />
-    ) : null;
-  }
+
   return (
     <div
       style={{
@@ -92,7 +118,7 @@ console.log("loggedIn",loggedIn);
       }}
     >
       <Typography>
-        <img src={BG} alt="image error" height={"100%"} width={"100%"} />
+        <img src={BG} alt="background" height={"100%"} width={"100%"} />
       </Typography>
       <div style={{}}>
         <ThemeProvider theme={defaultTheme}>
@@ -106,7 +132,7 @@ console.log("loggedIn",loggedIn);
               }}
             >
               <Typography>
-                <img src={Logo} alt="Image Error" />
+                <img src={Logo} alt="logo" />
               </Typography>
               <Typography component="h1" variant="h5">
                 Sign in
@@ -146,7 +172,6 @@ console.log("loggedIn",loggedIn);
                   type="password"
                   value={inputValue.password}
                   onChange={handleFieldChange}
-                  id="password"
                 />
                 <Button
                   type="submit"
@@ -156,22 +181,27 @@ console.log("loggedIn",loggedIn);
                 >
                   Sign In
                 </Button>
-                <Grid container>
-                  <Grid
-                    item
-                    xs
-                    style={{ display: "flex", justifyContent: "flex-end" }}
-                  >
-                    {/* <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link> */}
-                  </Grid>
-                </Grid>
               </Box>
             </Box>
           </Container>
         </ThemeProvider>
       </div>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        style={{marginTop:"3rem"}}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          severity="error"
+          onClose={handleCloseSnackbar}
+        >
+          {errorMessage}
+        </MuiAlert>
+      </Snackbar>
     </div>
   );
 };
