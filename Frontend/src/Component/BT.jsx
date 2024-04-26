@@ -19,6 +19,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import { useNavigate } from "react-router-dom";
 
 function BT() {
   const [isQCSelected, setIsQCSelected] = useState(false);
@@ -32,6 +33,14 @@ function BT() {
   const [dataTrue, setDataTrue] = useState(false);
   const [hideTmxColumn, sethideTmxColumn] = useState(false);
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
   const handleQCClick = () => {
     setIsQCSelected(true);
   };

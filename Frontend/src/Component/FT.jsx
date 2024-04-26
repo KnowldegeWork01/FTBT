@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./CSS/Component.css";
 import {
   Button,
@@ -13,13 +15,16 @@ import {
 import * as XLSX from "xlsx";
 import * as ExcelJS from "exceljs";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import ClassicEditor from "ckeditor5-build-classic-extended";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import ClassicEditor from "ckeditor5-build-classic-extended";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import Loader from "./Common_Component/Loader";
 
 function FT() {
+  const [isLoading, setIsLoading] = useState(false);
   const [isQCSelected, setIsQCSelected] = useState(false);
   const [uploadedData, setUploadedData] = useState([]);
   const [csvData, setCSVData] = useState([]);
@@ -29,17 +34,21 @@ function FT() {
   const [savedData, setSavedData] = useState([]);
   const [downloadReady, setDownloadReady] = useState(false);
   const [dataTrue, setDataTrue] = useState(false);
-  const [hideTmxColumn, sethideTmxColumn] = useState(false);
+  const [hideTmxColumn, setHideTmxColumn] = useState(false);
 
-  const handleQCClick = () => {
-    setIsQCSelected(true);
-  };
-  const handleSourceClick = () => {
-    setIsQCSelected(false);
-  };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate('/FT');
+    }
+  }, [navigate]);
+
   const handleFileUploadQC = (event) => {
     const file = event.target.files[0];
     if (!file) return;
+    setIsLoading(true); 
     const reader = new FileReader();
     reader.onload = (e) => {
       const content = e.target.result;
@@ -58,6 +67,7 @@ function FT() {
         alert(
           "The uploaded file must have three columns named Source, BT, and Comment."
         );
+        setIsLoading(false);
         return;
       }
       const formattedData = rows.map((row) => ({
@@ -66,13 +76,16 @@ function FT() {
         comment: row[columnNames.indexOf("Comment")],
       }));
       setUploadedData(formattedData);
+      setIsLoading(false); 
     };
 
     reader.readAsBinaryString(file);
   };
+
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
+    setIsLoading(true); 
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
       const data = new Uint8Array(e.target.result);
@@ -84,6 +97,7 @@ function FT() {
         range: 1,
       });
       setCSVData(parsedData);
+      setIsLoading(false);
     };
     fileReader.readAsArrayBuffer(file);
   };
@@ -91,6 +105,7 @@ function FT() {
   const handleFileUploadTcx = (event) => {
     const file = event.target.files[0];
     if (!file) return;
+    setIsLoading(true); 
     const reader = new FileReader();
     reader.onload = (e) => {
       const content = e.target.result;
@@ -107,9 +122,11 @@ function FT() {
         .filter((node) => node.getAttribute("xml:lang") === "KN")
         .map((node) => node.querySelector("seg").textContent);
       setFTData(knTranslations);
+      setIsLoading(false); 
     };
     reader.readAsText(file, "ISO-8859-1");
   };
+
   const compareAndSetFT = (sourceSentence, tmxSentence) => {
     const sourceString = String(sourceSentence)
       .trim()
@@ -138,6 +155,7 @@ function FT() {
     }
     return "Right";
   };
+
   const handleSave = (index) => {
     const newSavedData = [...savedData];
     newSavedData[index] = editableData[index];
@@ -148,65 +166,65 @@ function FT() {
   };
 
   const handleDownloadCSV = async () => {
-  const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet("Sheet1");
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Sheet1");
 
-  savedData.forEach((sentence) => {
-    const row = worksheet.addRow();
-    const cell = row.getCell(1);
-    const textSegments = [];
-    let currentSegment = { text: "", font: {} };
+    savedData.forEach((sentence) => {
+      const row = worksheet.addRow();
+      const cell = row.getCell(1);
+      const textSegments = [];
+      let currentSegment = { text: "", font: {} };
 
-    let insideTag = false;
-    let tempText = "";
-    let currentTag = "";
+      let insideTag = false;
+      let tempText = "";
+      let currentTag = "";
 
-    for (let i = 0; i < sentence.length; i++) {
-      if (sentence[i] === "<") {
-        insideTag = true;
-        textSegments.push(currentSegment);
-        currentSegment = { text: "", font: {} };
-      } else if (sentence[i] === ">") {
-        insideTag = false;
-        const htmlTag = tempText.toLowerCase();
-        if (htmlTag === "strong" || htmlTag === "b") {
-          currentSegment.font.bold = true;
-        } else if (htmlTag === "i") {
-          currentSegment.font.italic = true;
-        } else if (htmlTag === "sup") {
-          currentSegment.font.size = 11; 
-          currentSegment.font.vertAlign = "superscript"; 
-        } else if (htmlTag === "sub") {
-          currentSegment.font.size = 11; 
-          currentSegment.font.vertAlign = "subscript"; 
-        }
-        tempText = "";
-      } else {
-        if (insideTag) {
-          tempText += sentence[i];
+      for (let i = 0; i < sentence.length; i++) {
+        if (sentence[i] === "<") {
+          insideTag = true;
+          textSegments.push(currentSegment);
+          currentSegment = { text: "", font: {} };
+        } else if (sentence[i] === ">") {
+          insideTag = false;
+          const htmlTag = tempText.toLowerCase();
+          if (htmlTag === "strong" || htmlTag === "b") {
+            currentSegment.font.bold = true;
+          } else if (htmlTag === "i") {
+            currentSegment.font.italic = true;
+          } else if (htmlTag === "sup") {
+            currentSegment.font.size = 11;
+            currentSegment.font.vertAlign = "superscript";
+          } else if (htmlTag === "sub") {
+            currentSegment.font.size = 11;
+            currentSegment.font.vertAlign = "subscript";
+          }
+          tempText = "";
         } else {
-          currentSegment.text += sentence[i];
+          if (insideTag) {
+            tempText += sentence[i];
+          } else {
+            currentSegment.text += sentence[i];
+          }
         }
       }
-    }
 
-    textSegments.push(currentSegment);
-    cell.value = { richText: textSegments };
-  });
+      textSegments.push(currentSegment);
+      cell.value = { richText: textSegments };
+    });
 
-  const buffer = await workbook.xlsx.writeBuffer();
-  const blob = new Blob([buffer], {
-    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.setAttribute("download", "formatted_data.xlsx");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-};
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "formatted_data.xlsx");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   const handleEditorChange = (event, editor, index) => {
     const data = editor.getData();
@@ -216,40 +234,9 @@ function FT() {
     setSavedData(newData);
   };
 
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      if (dataTrue) {
-        setDataTrue(false);
-      }
-    }, 500);
-    return () => clearTimeout(timeoutId);
-  }, [dataTrue]);
-
-  useEffect(() => {
-    if (ftData.length > 0) {
-      const newData = [...savedData];
-      ftData.forEach((value, index) => {
-        if (compareAndSetFT(csvData[index], tcxData[index]) === "Right") {
-          newData[index] = value;
-        } else {
-          newData[index] = editableData[index];
-        }
-      });
-      setSavedData(newData);
-    }
-  }, [ftData]);
-
-  useEffect(() => {
-    console.log("saved data :--", savedData);
-  }, [savedData]);
-
-  const handlehide = () => {
-    console.log("handlehide");
-    sethideTmxColumn((prevState) => !prevState);
-  };
   return (
-    <div >
-      <div className="nav" >
+    <div>
+      <div className="nav">
         <input
           type="file"
           accept=".csv"
@@ -261,8 +248,7 @@ function FT() {
           <Button
             variant="contained"
             component="span"
-            onClick={handleQCClick}
-            startIcon={<CloudDownloadIcon />}
+            startIcon={<CloudUploadIcon />}
           >
             QC
           </Button>
@@ -278,7 +264,6 @@ function FT() {
           <Button
             variant="contained"
             component="span"
-            onClick={handleSourceClick}
             startIcon={<CloudUploadIcon />}
           >
             Source
@@ -311,10 +296,15 @@ function FT() {
           FT
         </Button>
       </div>
+        {isLoading && (
+        <div className="spinner-overlay">
+          <Loader />
+        </div>
+      )}
       {isQCSelected ? (
         <div>
-          <TableContainer component={Paper} style={{border:"2px solid"}}>
-            <Table aria-label="simple table"  sx={{ minWidth: 650 }}>
+          <TableContainer component={Paper} style={{ border: "2px solid" }}>
+            <Table aria-label="simple table" sx={{ minWidth: 650 }}>
               <TableHead>
                 <TableRow>
                   <TableCell className="navbarCss">
@@ -335,7 +325,6 @@ function FT() {
                       style={{
                         fontSize: "1rem",
                         width: "28%",
-                        // border: "1px solid",
                       }}
                     >
                       <div style={{ display: "flex" }}>
@@ -378,7 +367,7 @@ function FT() {
                   </TableCell>
                   <TableCell>
                     <b>TMX</b>
-                    <Button onClick={() => handlehide()}>
+                    <Button onClick={() => setHideTmxColumn((prev) => !prev)}>
                       {hideTmxColumn ? (
                         <VisibilityOffIcon />
                       ) : (
@@ -387,7 +376,7 @@ function FT() {
                     </Button>
                   </TableCell>
                   <TableCell>
-                    <b>Edit </b>
+                    <b>Edit</b>
                   </TableCell>
                   <TableCell>
                     <b>FT</b>
@@ -401,7 +390,6 @@ function FT() {
                       style={{
                         fontSize: "1rem",
                         width: "30%",
-                        // border: "1px solid",
                       }}
                     >
                       <div style={{ display: "flex" }}>

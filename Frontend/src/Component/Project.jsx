@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextField,
   Button,
@@ -14,21 +14,36 @@ import {
   IconButton,
   Typography,
   Box,
+  Snackbar,
+  Slide,
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import MuiAlert from "@mui/material/Alert";
 
 const MyComponent = () => {
   const [projectName, setProjectName] = useState("");
   const [projects, setProjects] = useState(
     JSON.parse(localStorage.getItem("projects")) || []
   );
+  const [errorMessage, setErrorMessage] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (projectName === "") {
-      alert("Please enter a project name.");
+      setErrorMessage("Please enter a project name.");
+      setOpenSnackbar(true);
       return;
     }
     const newProject = {
@@ -190,6 +205,22 @@ const MyComponent = () => {
           </Table>
         </TableContainer>
       </div>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={2000}
+        onClose={handleCloseSnackbar}
+        TransitionComponent={Slide}
+        anchorOrigin={{ vertical: "button", horizontal: "right" }}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          severity="error"
+          onClose={handleCloseSnackbar}
+        >
+          {errorMessage}
+        </MuiAlert>
+      </Snackbar>
     </>
   );
 };

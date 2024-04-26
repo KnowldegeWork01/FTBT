@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -11,8 +11,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import { jwtDecode as jwt_decode } from "jwt-decode"; 
-
+import { jwtDecode as jwt_decode } from "jwt-decode";
+import { Slide } from "@mui/material";
 
 const defaultTheme = createTheme();
 
@@ -25,6 +25,32 @@ const Login = () => {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [openSuccessSnackbar, setOpenSuccessSnackbar] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      const department = decodedToken.department;
+      localStorage.setItem("department", department);
+      switch (department) {
+        case "FT":
+          navigate("/FT");
+          break;
+        case "BT":
+          navigate("/BT");
+          break;
+        case "QC":
+          navigate("/QC");
+          break;
+        case "PM":
+          navigate("/PM");
+          break;
+        default:
+          navigate("/");
+      }
+    }
+  }, [navigate]);
 
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
@@ -47,25 +73,28 @@ const Login = () => {
       );
       if (response.status === 200 && response.data.token) {
         localStorage.setItem("token", response.data.token);
-        const decodedToken = jwt_decode(response.data.token); // Decode the token
-        const department = decodedToken.department; // Extract department from the decoded token
-        localStorage.setItem("department", department); // Save department to local storage
-        switch (department) {
-          case "FT":
-            navigate("/FT");
-            break;
-          case "BT":
-            navigate("/BT");
-            break;
-          case "QC":
-            navigate("/QC");
-            break;
-          case "PM":
-            navigate("/PM");
-            break;
-          default:
-            navigate("/");
-        }
+        const decodedToken = jwt_decode(response.data.token);
+        const department = decodedToken.department;
+        localStorage.setItem("department", department);
+        setOpenSuccessSnackbar(true);
+        setTimeout(() => {
+          switch (department) {
+            case "FT":
+              navigate("/FT");
+              break;
+            case "BT":
+              navigate("/BT");
+              break;
+            case "QC":
+              navigate("/QC");
+              break;
+            case "PM":
+              navigate("/PM");
+              break;
+            default:
+              navigate("/");
+          }
+        }, 1000);
       } else {
         setErrorMessage("Invalid credentials");
         setOpenSnackbar(true);
@@ -77,35 +106,18 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const decodedToken = jwt_decode(token); 
-      const department = decodedToken.department; 
-      switch (department) {
-        case "FT":
-          navigate("/FT");
-          break;
-        case "BT":
-          navigate("/BT");
-          break;
-        case "QC":
-          navigate("/QC");
-          break;
-        case "PM":
-          navigate("/PM");
-          break;
-        default:
-          navigate("/");
-      }
-    }
-  }, [navigate]);
-
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setOpenSnackbar(false);
+  };
+
+  const handleCloseSuccessSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSuccessSnackbar(false);
   };
 
   return (
@@ -188,10 +200,10 @@ const Login = () => {
       </div>
       <Snackbar
         open={openSnackbar}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleCloseSnackbar}
-        style={{marginTop:"3rem"}}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        TransitionComponent={Slide}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <MuiAlert
           elevation={6}
@@ -200,6 +212,22 @@ const Login = () => {
           onClose={handleCloseSnackbar}
         >
           {errorMessage}
+        </MuiAlert>
+      </Snackbar>
+      <Snackbar
+        open={openSuccessSnackbar}
+        autoHideDuration={2000}
+        onClose={handleCloseSuccessSnackbar}
+        TransitionComponent={Slide}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          severity="success"
+          onClose={handleCloseSuccessSnackbar}
+        >
+          Login Successful
         </MuiAlert>
       </Snackbar>
     </div>
