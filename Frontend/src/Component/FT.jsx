@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import "./CSS/Component.css";
+
 import {
   Button,
   Table,
@@ -15,17 +14,17 @@ import {
 import * as XLSX from "xlsx";
 import * as ExcelJS from "exceljs";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ClassicEditor from "ckeditor5-build-classic-extended";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import ClassicEditor from "ckeditor5-build-classic-extended";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import Loader from "./Common_Component/Loader";
+import { useNavigate } from "react-router-dom";
+import Loader from "../Component/Common_Component/Loader";
 
 function FT() {
-  const [isLoading, setIsLoading] = useState(false);
   const [isQCSelected, setIsQCSelected] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [uploadedData, setUploadedData] = useState([]);
   const [csvData, setCSVData] = useState([]);
   const [tcxData, setTcxData] = useState([]);
@@ -34,21 +33,29 @@ function FT() {
   const [savedData, setSavedData] = useState([]);
   const [downloadReady, setDownloadReady] = useState(false);
   const [dataTrue, setDataTrue] = useState(false);
-  const [hideTmxColumn, setHideTmxColumn] = useState(false);
+  const [hideTmxColumn, sethideTmxColumn] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      navigate('/FT');
+    if (!token) {
+      navigate("/login");
     }
   }, [navigate]);
+
+
+  const handleQCClick = () => {
+    setIsQCSelected(true);
+  };
+
+  const handleSourceClick = () => {
+    setIsQCSelected(false);
+  };
 
   const handleFileUploadQC = (event) => {
     const file = event.target.files[0];
     if (!file) return;
-    setIsLoading(true); 
     const reader = new FileReader();
     reader.onload = (e) => {
       const content = e.target.result;
@@ -67,7 +74,6 @@ function FT() {
         alert(
           "The uploaded file must have three columns named Source, BT, and Comment."
         );
-        setIsLoading(false);
         return;
       }
       const formattedData = rows.map((row) => ({
@@ -76,16 +82,14 @@ function FT() {
         comment: row[columnNames.indexOf("Comment")],
       }));
       setUploadedData(formattedData);
-      setIsLoading(false); 
     };
-
     reader.readAsBinaryString(file);
   };
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
-    setIsLoading(true); 
+    setIsLoading(true);
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
       const data = new Uint8Array(e.target.result);
@@ -105,7 +109,7 @@ function FT() {
   const handleFileUploadTcx = (event) => {
     const file = event.target.files[0];
     if (!file) return;
-    setIsLoading(true); 
+    setIsLoading(true);
     const reader = new FileReader();
     reader.onload = (e) => {
       const content = e.target.result;
@@ -122,38 +126,20 @@ function FT() {
         .filter((node) => node.getAttribute("xml:lang") === "KN")
         .map((node) => node.querySelector("seg").textContent);
       setFTData(knTranslations);
-      setIsLoading(false); 
+      setIsLoading(false);
     };
     reader.readAsText(file, "ISO-8859-1");
   };
 
   const compareAndSetFT = (sourceSentence, tmxSentence) => {
-    const sourceString = String(sourceSentence)
-      .trim()
-      .replace(/[^\w\s]/g, "");
-    const tmxString = String(tmxSentence)
-      .trim()
-      .replace(/[^\w\s]/g, "");
+    const cleanSource = String(sourceSentence).trim().replace(/[^\w]/g, "");
+    const cleanTmx = String(tmxSentence).trim().replace(/[^\w]/g, "");
 
-    const sourceWords = sourceString
-      .split(/\s+/)
-      .filter((word) => word.trim() !== "")
-      .sort();
-    const tmxWords = tmxString
-      .split(/\s+/)
-      .filter((word) => word.trim() !== "")
-      .sort();
-
-    if (sourceWords.length !== tmxWords.length) {
+    if (cleanSource === cleanTmx) {
+      return "Right";
+    } else {
       return "";
     }
-
-    for (let i = 0; i < sourceWords.length; i++) {
-      if (sourceWords[i] !== tmxWords[i]) {
-        return "";
-      }
-    }
-    return "Right";
   };
 
   const handleSave = (index) => {
@@ -177,7 +163,6 @@ function FT() {
 
       let insideTag = false;
       let tempText = "";
-      let currentTag = "";
 
       for (let i = 0; i < sentence.length; i++) {
         if (sentence[i] === "<") {
@@ -207,7 +192,6 @@ function FT() {
           }
         }
       }
-
       textSegments.push(currentSegment);
       cell.value = { richText: textSegments };
     });
@@ -234,6 +218,37 @@ function FT() {
     setSavedData(newData);
   };
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (dataTrue) {
+        setDataTrue(false);
+      }
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [dataTrue]);
+
+  useEffect(() => {
+    if (ftData.length > 0) {
+      const newData = [...savedData];
+      ftData.forEach((value, index) => {
+        if (compareAndSetFT(csvData[index], tcxData[index]) === "Right") {
+          newData[index] = value;
+        } else {
+          newData[index] = editableData[index];
+        }
+      });
+      setSavedData(newData);
+    }
+  }, [ftData]);
+
+  useEffect(() => {
+    console.log("saved data", savedData);
+  }, [savedData]);
+
+  const handlehide = () => {
+    sethideTmxColumn((prevState) => !prevState);
+  };
+
   return (
     <div>
       <div className="nav">
@@ -248,7 +263,8 @@ function FT() {
           <Button
             variant="contained"
             component="span"
-            startIcon={<CloudUploadIcon />}
+            onClick={handleQCClick}
+            startIcon={<CloudDownloadIcon />}
           >
             QC
           </Button>
@@ -264,6 +280,7 @@ function FT() {
           <Button
             variant="contained"
             component="span"
+            onClick={handleSourceClick}
             startIcon={<CloudUploadIcon />}
           >
             Source
@@ -296,14 +313,14 @@ function FT() {
           FT
         </Button>
       </div>
-        {isLoading && (
-        <div className="spinner-overlay">
+      {isLoading && (
+        <div className="loader-container">
           <Loader />
         </div>
       )}
       {isQCSelected ? (
         <div>
-          <TableContainer component={Paper} style={{ border: "2px solid" }}>
+          <TableContainer component={Paper}>
             <Table aria-label="simple table" sx={{ minWidth: 650 }}>
               <TableHead>
                 <TableRow>
@@ -337,7 +354,7 @@ function FT() {
                     <TableCell
                       style={{
                         fontSize: "1rem",
-                        width: "28%",
+                        width: "25%",
                       }}
                     >
                       {row.bt}
@@ -345,7 +362,7 @@ function FT() {
                     <TableCell
                       style={{
                         fontSize: "1rem",
-                        width: "28%",
+                        width: "25%",
                       }}
                     >
                       {row.comment}
@@ -367,7 +384,7 @@ function FT() {
                   </TableCell>
                   <TableCell>
                     <b>TMX</b>
-                    <Button onClick={() => setHideTmxColumn((prev) => !prev)}>
+                    <Button onClick={() => handlehide()}>
                       {hideTmxColumn ? (
                         <VisibilityOffIcon />
                       ) : (
@@ -376,10 +393,10 @@ function FT() {
                     </Button>
                   </TableCell>
                   <TableCell>
-                    <b>Edit</b>
+                    <b>Edit </b>
                   </TableCell>
                   <TableCell>
-                    <b>FT</b>
+                    <b>BT</b>
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -389,7 +406,7 @@ function FT() {
                     <TableCell
                       style={{
                         fontSize: "1rem",
-                        width: "30%",
+                        width: "25%",
                       }}
                     >
                       <div style={{ display: "flex" }}>
@@ -402,16 +419,21 @@ function FT() {
                     <TableCell
                       style={{
                         fontSize: "1rem",
-                        width: "30%",
+                        width: "25%",
                         visibility: hideTmxColumn ? "hidden" : "visible",
                       }}
                     >
                       {tcxData[index]}
                     </TableCell>
-                    <TableCell>
+                    <TableCell
+                      style={{
+                        width: "20%",
+                      }}
+                    >
                       <textarea
                         variant="outlined"
                         style={{
+                          width: "60%",
                           padding: "1rem",
                           fontSize: "1rem",
                           resize: "none",
@@ -439,8 +461,8 @@ function FT() {
                         color="primary"
                         size="small"
                         style={{
-                          height: "2.4rem",
-                          marginLeft: "0.1rem",
+                          height: "2rem",
+                          marginLeft: "0.5rem",
                           marginTop: "-2rem",
                         }}
                         onClick={() => handleSave(index)}
@@ -448,7 +470,7 @@ function FT() {
                         Save
                       </Button>
                     </TableCell>
-                    <TableCell style={{ width: "20%" }}>
+                    <TableCell style={{ width: "25%" }}>
                       <CKEditor
                         editor={ClassicEditor}
                         data={
@@ -480,5 +502,4 @@ function FT() {
     </div>
   );
 }
-
 export default FT;

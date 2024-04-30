@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 function BT() {
   const [isQCSelected, setIsQCSelected] = useState(false);
   const [uploadedData, setUploadedData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [csvData, setCSVData] = useState([]);
   const [tcxData, setTcxData] = useState([]);
   const [editableData, setEditableData] = useState([]);
@@ -152,7 +153,6 @@ function BT() {
 
       let insideTag = false;
       let tempText = "";
-      let currentTag = "";
 
       for (let i = 0; i < sentence.length; i++) {
         if (sentence[i] === "<") {
@@ -304,6 +304,11 @@ function BT() {
           BT
         </Button>
       </div>
+      {isLoading && (
+        <div className="loader-container">
+          <Loader />
+        </div>
+      )}
       {isQCSelected ? (
         <div>
           <TableContainer component={Paper}>
@@ -466,6 +471,9 @@ function BT() {
                           "Right"
                             ? ftData[index]
                             : savedData[index]
+                        }
+                        onChange={(event, editor) =>
+                          handleEditorChange(event, editor, index)
                         }
                         config={{
                           toolbar: [

@@ -1,14 +1,29 @@
 import React from "react";
-import { Vortex } from "react-loader-spinner";
+import { RotatingLines } from "react-loader-spinner";
 
-function Loding() {
+function Loading() {
   return (
     <div
-      style={{ height: "350px", width: "100%" }}
-      className="d-flex justify-content-center align-items-center"
+      style={{
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        padding: "20px",
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        zIndex: "9999",
+      }}
     >
-      <Vortex width="200" height="200" color="#4fa94d" />
+      <div className="d-flex justify-content-center align-items-center">
+        <RotatingLines
+          strokeWidth="4"
+          animationDuration="0.75"
+          width="96"
+          visible={true}
+        />
+      </div>
     </div>
   );
 }
-export default Loding;
+
+export default Loading;

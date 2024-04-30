@@ -49,8 +49,8 @@ const MyComponent = () => {
     const newProject = {
       id: projects.length + 1,
       name: projectName,
-      status: "Pending",
-      sourceUpload: null,
+      status: "Created",
+      sourceUpload: null, // Initialize sourceUpload as null
     };
     setProjects([...projects, newProject]);
     setProjectName("");
@@ -70,8 +70,18 @@ const MyComponent = () => {
   const handleUploadChange = (e, index) => {
     const file = e.target.files[0];
     const updatedProjects = [...projects];
-    updatedProjects[index].sourceUpload = file;
+    const fileName = file ? file.name : null; // Store file name
+    updatedProjects[index].sourceUpload = fileName; // Update sourceUpload with file name
     setProjects(updatedProjects);
+    
+    // Save the file to local storage
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        localStorage.setItem(`projectFile-${index}`, e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -194,7 +204,7 @@ const MyComponent = () => {
                       </label>
                       <Typography variant="body1">
                         {project.sourceUpload
-                          ? project.sourceUpload.name
+                          ? project.sourceUpload
                           : "No file chosen"}
                       </Typography>
                     </Box>
@@ -210,7 +220,7 @@ const MyComponent = () => {
         autoHideDuration={2000}
         onClose={handleCloseSnackbar}
         TransitionComponent={Slide}
-        anchorOrigin={{ vertical: "button", horizontal: "right" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <MuiAlert
           elevation={6}
