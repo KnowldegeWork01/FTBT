@@ -74,8 +74,12 @@ const Login = () => {
       if (response.status === 200 && response.data.token) {
         localStorage.setItem("token", response.data.token);
         const decodedToken = jwt_decode(response.data.token);
-        const department = decodedToken.department;
-        localStorage.setItem("department", department);
+        const department = decodedToken.department; // Use department from decoded token
+        localStorage.setItem("department", department); 
+  
+        // Use the userName from the backend response
+        localStorage.setItem("userName", response.data.userName); 
+  
         setOpenSuccessSnackbar(true);
         setTimeout(() => {
           switch (department) {
@@ -100,12 +104,12 @@ const Login = () => {
         setOpenSnackbar(true);
       }
     } catch (error) {
-      console.error("Error logging in:", error);
-      setErrorMessage("Invalid credentials");
+      // console.error("Error logging in:", error);
+      setErrorMessage("User Not Found...");
       setOpenSnackbar(true);
     }
   };
-
+  
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -170,7 +174,7 @@ const Login = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Userid"
+                  label="Name"
                   name="email"
                   value={inputValue.email}
                   onChange={handleFieldChange}

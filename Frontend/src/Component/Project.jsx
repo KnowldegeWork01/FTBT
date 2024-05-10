@@ -27,10 +27,17 @@ const MyComponent = () => {
   );
   const [errorMessage, setErrorMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [tmxFiles, setTmxFiles] = useState(
+    JSON.parse(localStorage.getItem("tmxFiles")) || []
+  );
 
   useEffect(() => {
     localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
+
+  useEffect(() => {
+    localStorage.setItem("tmxFiles", JSON.stringify(tmxFiles)); 
+  }, [tmxFiles]);
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
@@ -50,7 +57,7 @@ const MyComponent = () => {
       id: projects.length + 1,
       name: projectName,
       status: "Created",
-      sourceUpload: null, // Initialize sourceUpload as null
+      sourceUpload: null,
     };
     setProjects([...projects, newProject]);
     setProjectName("");
@@ -67,18 +74,33 @@ const MyComponent = () => {
     setProjects(updatedProjects);
   };
 
-  const handleUploadChange = (e, index) => {
+  const handleSourceUploadChange = (e, index) => {
     const file = e.target.files[0];
     const updatedProjects = [...projects];
-    const fileName = file ? file.name : null; // Store file name
-    updatedProjects[index].sourceUpload = fileName; // Update sourceUpload with file name
+    const fileName = file ? file.name : null;
+    updatedProjects[index].sourceUpload = fileName;
     setProjects(updatedProjects);
-    
-    // Save the file to local storage
+
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
         localStorage.setItem(`projectFile-${index}`, e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleTmxUploadChange = (e, index) => {
+    const file = e.target.files[0];
+    const fileName = file ? file.name : null;
+    const updatedTmxFiles = [...tmxFiles];
+    updatedTmxFiles[index] = fileName;
+    setTmxFiles(updatedTmxFiles);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        localStorage.setItem(`tmxFile-${index}`, e.target.result);
       };
       reader.readAsDataURL(file);
     }
@@ -152,7 +174,16 @@ const MyComponent = () => {
                     width: "20%",
                   }}
                 >
-                  Source Upload
+                  Source
+                </TableCell>
+                <TableCell
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                    width: "20%",
+                  }}
+                >
+                  TMX
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -188,16 +219,16 @@ const MyComponent = () => {
                       Delete
                     </Button>
                   </TableCell>
-                  <TableCell style={{ fontSize: "1rem", width: "20%" }}>
-                    <Box display="flex" alignItems="center">
+                  <TableCell style={{ fontSize: "1rem", width: "15%"}}>
+                    <Box display="flex" alignItems="center" >
                       <input
-                        id={`file-input-${index}`}
+                        id={`source-file-input-${index}`}
                         type="file"
                         accept=".csv"
-                        onChange={(e) => handleUploadChange(e, index)}
+                        onChange={(e) => handleSourceUploadChange(e, index)}
                         style={{ display: "none" }}
                       />
-                      <label htmlFor={`file-input-${index}`}>
+                      <label htmlFor={`source-file-input-${index}`}>
                         <IconButton component="span">
                           <CloudUploadIcon />
                         </IconButton>
@@ -209,6 +240,25 @@ const MyComponent = () => {
                       </Typography>
                     </Box>
                   </TableCell>
+                  <TableCell style={{ fontSize: "1rem", width: "20%" }}>
+                    <Box display="flex" alignItems="center" paddingRight="5rem">
+                      <input
+                        id={`tmx-file-input-${index}`}
+                        type="file"
+                        accept=".tmx"
+                        onChange={(e) => handleTmxUploadChange(e, index)}
+                        style={{ display: "none" }}
+                      />
+                      <label htmlFor={`tmx-file-input-${index}`}>
+                        <IconButton component="span">
+                          <CloudUploadIcon />
+                        </IconButton>
+                      </label>
+                      <Typography variant="body1">
+                        {tmxFiles[index] ? tmxFiles[index] : "No file chosen"}
+                      </Typography>
+                    </Box>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -217,7 +267,7 @@ const MyComponent = () => {
       </div>
       <Snackbar
         open={openSnackbar}
-        autoHideDuration={2000}
+        autoHideDuration={1500}
         onClose={handleCloseSnackbar}
         TransitionComponent={Slide}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}

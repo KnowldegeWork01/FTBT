@@ -13,15 +13,22 @@ import {
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import SaveIcon from "@material-ui/icons/Save";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-
+import { useFunctionContext } from "./Context/Function";
 
 const QC = ({ loggedInData }) => {
-  
-  const [englishSource, setEnglishSource] = useState([]);
-  const [englishBT, setEnglishBT] = useState([]);
-  const [comments, setComments] = useState([]);
+  const context = useFunctionContext();
 
-  // const handleFileUpload = (event) => {
+  const {
+    handleCommentChange,
+    englishSource,
+    englishBT,
+    comments,
+  } = context;
+  // const [englishSource, setEnglishSource] = useState([]);
+  // const [englishBT, setEnglishBT] = useState([]);
+  // const [comments, setComments] = useState([]);
+
+  // const handleFileUploadQCSource = (event) => {
   //   const file = event.target.files[0];
   //   if (!file) return;
   //   const reader = new FileReader();
@@ -38,50 +45,50 @@ const QC = ({ loggedInData }) => {
   //   reader.readAsText(file, "ISO-8859-1");
   // };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const content = e.target.result;
-      const rows = content.split("\n").map((row) => row.trim());
-      const data = rows
-        .map((row, index) => {
-          if (index === 0) return null;
-          return row.split(",");
-        })
-        .filter((row) => row !== null);
-      setEnglishSource(data);
-    };
-    reader.readAsText(file, "ISO-8859-1");
-  };
+  // const handleFileUploadQCSource = (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+  //   const reader = new FileReader();
+  //   reader.onload = (e) => {
+  //     const content = e.target.result;
+  //     const rows = content.split("\n").map((row) => row.trim());
+  //     const data = rows
+  //       .map((row, index) => {
+  //         if (index === 0) return null;
+  //         return row.split(",");
+  //       })
+  //       .filter((row) => row !== null);
+  //     setEnglishSource(data);
+  //   };
+  //   reader.readAsText(file, "ISO-8859-1");
+  // };
 
-  const handleFileUpload2 = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const content = e.target.result;
-      const rows = content.split("\n").map((row) => row.trim());
-      const data = rows
-        .map((row, index) => {
-          return row.replace(/["']/g, "").split(",");
-        })
-        .filter((row) => row !== null);
-      setEnglishBT(data);
-    };
-    reader.readAsText(file, "ISO-8859-1");
-  };
-  const handleCommentChange = (index, event) => {
-    const newComments = [...comments];
-    newComments[index] = event.target.value;
-    setComments(newComments);
-  };
+  // const handleFileUploadQCSource2 = (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+  //   const reader = new FileReader();
+  //   reader.onload = (e) => {
+  //     const content = e.target.result;
+  //     const rows = content.split("\n").map((row) => row.trim());
+  //     const data = rows
+  //       .map((row, index) => {
+  //         return row.replace(/["']/g, "").split(",");
+  //       })
+  //       .filter((row) => row !== null);
+  //     setEnglishBT(data);
+  //   };
+  //   reader.readAsText(file, "ISO-8859-1");
+  // };
+  // const handleCommentChange = (index, event) => {
+  //   const newComments = [...comments];
+  //   newComments[index] = event.target.value;
+  //   setComments(newComments);
+  // };
   const handleSaveComment = (index) => {
     console.log("Comment saved:", comments[index]);
   };
 
-  //   const handleDownload = () => {
+  //   const handleDownloadQC = () => {
   //     const fileName = prompt("Enter file name (without extension):", "data");
   //     const combinedData = englishSource.map((source, index) => ({
   //       source,
@@ -111,7 +118,7 @@ const QC = ({ loggedInData }) => {
   //   }
   // };
 
-  // const handleDownload = async () => {
+  // const handleDownloadQC = async () => {
   //   const fileName = prompt("Enter file name (without extension):", "data");
   //   if (!fileName) return;
   //   const combinedData = englishSource.map((source, index) => ({
@@ -151,55 +158,55 @@ const QC = ({ loggedInData }) => {
   //   return result;
   // };
 
-  const handleDownload = async () => {
-    const fileName = prompt("Enter file name (without extension):", "data");
-    if (!fileName) return;
-    const combinedData = englishSource.map((source, index) => ({
-      source,
-      bt: englishBT[index] || "",
-      comment: comments[index] || "",
-    }));
-    const csvContent =
-      "Source,BT,Comment\n" +
-      combinedData
-        .map((row) => `${row.source},${row.bt},${row.comment}`)
-        .join("\n");
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.setAttribute("download", `${fileName}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    try {
-      let data = {
-        _id: loggedInData.data._id,
-        filename: filename,
-      };
-      const response = await fetch("/api/filenames", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+  // const handleDownloadQC = async () => {
+  //   const fileName = prompt("Enter file name (without extension):", "data");
+  //   if (!fileName) return;
+  //   const combinedData = englishSource.map((source, index) => ({
+  //     source,
+  //     bt: englishBT[index] || "",
+  //     comment: comments[index] || "",
+  //   }));
+  //   const csvContent =
+  //     "Source,BT,Comment\n" +
+  //     combinedData
+  //       .map((row) => `${row.source},${row.bt},${row.comment}`)
+  //       .join("\n");
+  //   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  //   const link = document.createElement("a");
+  //   link.href = URL.createObjectURL(blob);
+  //   link.setAttribute("download", `${fileName}.csv`);
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  //   try {
+  //     let data = {
+  //       _id: loggedInData.data._id,
+  //       filename: filename,
+  //     };
+  //     const response = await fetch("/api/filenames", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //     });
 
-      if (response.ok) {
-        console.log("Filename added successfully");
-      } else {
-        console.error("Failed to add filename");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-useEffect(()=>{
-  console.log("loggedin :--",loggedInData);
-},[loggedInData])
+  //     if (response.ok) {
+  //       console.log("Filename added successfully");
+  //     } else {
+  //       console.error("Failed to add filename");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+  // useEffect(()=>{
+  //   console.log("loggedin :--",loggedInData);
+  // },[loggedInData])
 
   return (
     <div>
-      <div
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "flex-end",
@@ -211,10 +218,10 @@ useEffect(()=>{
           zIndex: "1",
         }}
       >
-        <input
+        {/* <input
           type="file"
           accept=".csv,.xlsx"
-          onChange={handleFileUpload}
+          onChange={handleFileUploadQCSource}
           style={{ display: "none" }}
           id="fileInput"
         />
@@ -230,7 +237,7 @@ useEffect(()=>{
         <input
           type="file"
           accept=".csv,.xlsx"
-          onChange={handleFileUpload2}
+          onChange={handleFileUploadQCSource2}
           style={{ display: "none" }}
           id="fileInput2"
         />
@@ -245,14 +252,14 @@ useEffect(()=>{
           <Button
             variant="contained"
             color="secondary"
-            onClick={handleDownload}
+            onClick={handleDownloadQC}
             style={{ marginLeft: "1rem" }}
             startIcon={<CloudDownloadIcon />}
           >
             (QC)
           </Button>
-        </label>
-      </div>
+        </label> */}
+      {/* </div> */}
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>

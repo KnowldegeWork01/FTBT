@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Schema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     userName: {
       type: String,
@@ -14,23 +14,10 @@ const Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    filename: {
-      type: String,
-    },
-    name: {
-      type: String,
-      // required: true,
-    },
-    status: {
-      type: String,
-      enum: ["Created", "Pending", "Completed"],
-      default: "Pending",
-    },
-    sourceUpload: {
-      type: String,
-    },
   },
   { timestamps: true }
 );
-const userSchema = mongoose.model("user", Schema);
-module.exports = userSchema;
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
