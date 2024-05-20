@@ -19,12 +19,15 @@ export const FunctionProvider = ({ children }) => {
   const [englishBT, setEnglishBT] = useState([]);
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate]);
+
+  //URL blockage
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   }
+  // }, [navigate]);
 
   const handleQCClick = () => {
     setIsQCSelected(true);
@@ -292,10 +295,6 @@ export const FunctionProvider = ({ children }) => {
   // const handleSaveComment = (index) => {
   //   console.log("Comment saved:", comments[index]);
   // };
-
-
-
-
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

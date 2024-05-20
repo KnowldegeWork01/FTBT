@@ -12,12 +12,14 @@ function Loading() {
         padding: "20px",
         backgroundColor: "rgba(255, 255, 255, 0.8)",
         zIndex: "9999",
+
       }}
     >
       <div className="d-flex justify-content-center align-items-center">
         <RotatingLines
           strokeWidth="4"
           animationDuration="0.75"
+          color="black"
           width="96"
           visible={true}
         />

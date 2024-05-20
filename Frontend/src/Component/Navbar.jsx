@@ -338,7 +338,7 @@ const Navbar = () => {
   open={isChatOpen}
   onClose={handleCloseChat}
   fullWidth
-  maxWidth="xl" 
+  maxWidth="lg" 
 >
   <DialogTitle>Login_User: <b>{userName}</b></DialogTitle>
   <DialogContent style={{ overflow: "hidden" }}> 

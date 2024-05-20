@@ -6,8 +6,9 @@ import Navbar from "./Component/Navbar";
 import QC from "./Component/QC";
 import "./App.css";
 import Project from "./Component/Project";
-import Loading from "./Component/Common_Component/Loader";
 import { FunctionProvider } from "./Component/Context/Function";
+import Docs from "./Component/Docs";
+import Loading from "./Component/Common_Component/Loader";
 function App() {
   return (
     <>
@@ -20,7 +21,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/QC" element={<QC />} />
           <Route path="/PM" element={<Project />} />
-          <Route path="/loading" element={<Loading />} />
+          {/* <Route path="/docs" element={<Docs/>} /> */}
+          <Route path="/loader" element={<Loading/>} />
+
+
         </Routes>
       </FunctionProvider>
     </>
