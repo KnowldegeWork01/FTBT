@@ -2,74 +2,6 @@ const express = require("express");
 const router = express.Router();
 const ChatMessage = require("../models/Chat_Message");
 
-// router.post("/send", async (req, res) => {
-//   try {
-//     const { toSender, message, toReceiver } = req.body;
-//     if (!toSender || !message || !toReceiver) {
-//       return res.status(400).json({ error: "All fields are required" });
-//     }
-
-//     let chatMessage;
-//     chatMessage = await ChatMessage.findOne({
-//       $and: [
-//         { "participants.toSender": toSender || toReceiver},
-//         { "participants.toReceiver": toReceiver || toSender}
-//       ]
-//     });
-//     console.log(chatMessage);
-//     if (!chatMessage) {
-//       chatMessage = new ChatMessage({
-//         participants: { toSender, toReceiver },
-//         messages: [],
-//       });
-//     }
-//     chatMessage.messages.push({ toSender, toReceiver, message });
-//     await chatMessage.save();
-//     res.status(201).json({ message });
-//   } catch (error) {
-//     console.error("Error sending message:", error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-// router.post("/send", async (req, res) => {
-//   try {
-//     const { toSender, message, toReceiver } = req.body;
-//     if (!toSender || !message || !toReceiver) {
-//       return res.status(400).json({ error: "All fields are required" });
-//     }
-//     let chatMessage = await ChatMessage.findOne({
-//       $or: [
-//         {
-//           $and: [
-//             { "toSender": toSender },
-//             { "toReceiver": toReceiver },
-//           ],
-//         },
-//         {
-//           $and: [
-//             { "toSender": toReceiver },
-//             { "toReceiver": toSender },
-//           ],
-//         },
-//       ],
-//     });
-
-//     if (!chatMessage) {
-//       chatMessage = new ChatMessage({toSender, toReceiver, messages:[] });
-//     }
-//     chatMessage.messages.push({
-//       toSender: toSender,
-//       toReceiver: toReceiver,
-//       message,
-//     });
-//     await chatMessage.save();
-//     res.status(201).json({ message });
-//   } catch (error) {
-//     console.error("Error sending message:", error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
 
 router.post("/send", async (req, res) => {
   try {
@@ -77,8 +9,8 @@ router.post("/send", async (req, res) => {
     if (!toSender || !message || !toReceiver) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    const newMessage = new ChatMessage({ toSender, toReceiver, message });
-    await newMessage.save();
+    const newMessage = new ChatMessage({ toSender, toReceiver, message, timestamp: new Date() });
+    await newMessage.save();  
     res.status(201).json({ message: message });
   } catch (error) {
     console.error("Error sending message:", error);
@@ -96,6 +28,47 @@ router.post("/send", async (req, res) => {
 //   } catch (error) {
 //     console.error("Error fetching messages:", error);
 //     res.status(500).json({ error: "Error fetching messages" });
+//   }
+// });
+
+
+// router.post("/send", async (req, res) => {
+//   try {
+//     const { toSender, message, toReceiver } = req.body;
+//     if (!toSender || !message || !toReceiver) {
+//       return res.status(400).json({ error: "All fields are required" });
+//     }
+//     // Save message to database
+//     const newMessage = new ChatMessage({ toSender, toReceiver, message });
+//     await newMessage.save();
+//     // Emit the message to all connected clients
+//     io.emit("chat message", newMessage);
+//     res.status(201).json({ message });
+//   } catch (error) {
+//     console.error("Error sending message:", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
+
+// Handle sending messages
+// router.post("/send", async (req, res) => {
+//   try {
+//     const { toSender, message, toReceiver } = req.body;
+//     if (!toSender || !message || !toReceiver) {
+//       return res.status(400).json({ error: "All fields are required" });
+//     }
+    
+//     // Save message to database
+//     const newMessage = new ChatMessage({ toSender, toReceiver, message });
+//     await newMessage.save();
+
+//     // Emit the message to all connected clients
+//     io.emit("chat message", newMessage);
+
+//     res.status(201).json({ message });
+//   } catch (error) {
+//     console.error("Error sending message:", error);
+//     res.status(500).json({ error: "Internal Server Error" });
 //   }
 // });
 

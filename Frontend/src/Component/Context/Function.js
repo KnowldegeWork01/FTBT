@@ -22,12 +22,12 @@ export const FunctionProvider = ({ children }) => {
 
   //URL blockage
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (!token) {
-  //     navigate("/login");
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleQCClick = () => {
     setIsQCSelected(true);
@@ -354,7 +354,7 @@ export const FunctionProvider = ({ children }) => {
     editableData,
     ftData,
     savedData,
-    downloadReady ,
+    downloadReady,
     dataTrue,
     hideTmxColumn,
     englishSource,
@@ -385,7 +385,7 @@ export const FunctionProvider = ({ children }) => {
     handleFileUploadQCSource,
     handleFileUploadQCSource2,
     handleCommentChange,
-    handleDownloadQC
+    handleDownloadQC,
   };
 
   return (

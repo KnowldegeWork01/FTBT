@@ -7,8 +7,9 @@ import QC from "./Component/QC";
 import "./App.css";
 import Project from "./Component/Project";
 import { FunctionProvider } from "./Component/Context/Function";
-import Docs from "./Component/Docs";
+import Docs from "./Component/Docx";
 import Loading from "./Component/Common_Component/Loader";
+import PDF from "./Component/Pdf";
 function App() {
   return (
     <>
@@ -21,14 +22,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/QC" element={<QC />} />
           <Route path="/PM" element={<Project />} />
-          {/* <Route path="/docs" element={<Docs/>} /> */}
-          <Route path="/loader" element={<Loading/>} />
-
-
+          <Route path="/pdf" element={<PDF />} />
+          <Route path="/Docx" element={<Docs />} />
+          <Route path="/loader" element={<Loading />} />
         </Routes>
       </FunctionProvider>
     </>
   );
 }
-
 export default App;

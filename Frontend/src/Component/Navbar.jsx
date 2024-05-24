@@ -15,6 +15,7 @@ import { useFunctionContext } from "./Context/Function";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import ChatIcon from "@mui/icons-material/Chat";
+import logo from '../images/logo.png'
 import Chat from "./Chat";
 
 const useStyles = makeStyles((theme) => ({
@@ -311,7 +312,9 @@ const Navbar = () => {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <Typography className={classes.title}>{/* LOGO */}</Typography>
+        <Typography className={classes.title}>
+          {/* <img src={logo} alt="logo" height={"70vh"} style={{marginRight:"20px"}} /> */}
+        </Typography>
         {renderFileUpload()}
         {isLoggedIn && location.pathname !== "/login" ? (
           <Typography variant="h6">
