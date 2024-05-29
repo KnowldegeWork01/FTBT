@@ -100,7 +100,6 @@ const Chat = ({ selectedUser }) => {
       console.error("Error fetching messages:", error);
     }
   };
-
   useEffect(() => {
     fetchMessages();
     if (selectedUser) {

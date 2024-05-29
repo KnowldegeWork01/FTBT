@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const ChatMessage = require("../models/Chat_Message");
-
-
 router.post("/send", async (req, res) => {
   try {
     const { toSender, message, toReceiver } = req.body;

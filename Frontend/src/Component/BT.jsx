@@ -100,37 +100,33 @@ function FT() {
         </div>
       ) : (
         <div>
-           <TableHead
-        style={{
-          position: "fixed",
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-          backgroundColor: "white",
-          zIndex: 1,
-          fontSize: "1.2rem",
-        }}
-      >
-        <b>FT(Front-Translation)</b>
-        <span>
-          <b>TMX</b>
-          <Button onClick={() => handlehide()}>
-            {hideTmxColumn ? (
-              <VisibilityOffIcon />
-            ) : (
-              <RemoveRedEyeIcon />
-            )}
-          </Button>
-        </span>
-        <b>Edit </b>
-        <b>BT(Back-Translation)</b>
-           </TableHead>
-          <TableContainer component={Paper} >
-            <Table sx={{ minWidth: 650 }} aria-label="simple table" >
+          <TableHead
+            style={{
+              position: "fixed",
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              backgroundColor: "white",
+              zIndex: 1,
+              fontSize: "1.2rem",
+            }}
+          >
+            <b>FT(Front-Translation)</b>
+            <span>
+              <b>TMX</b>
+              <Button onClick={() => handlehide()}>
+                {hideTmxColumn ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
+              </Button>
+            </span>
+            <b>Edit </b>
+            <b>BT(Back-Translation)</b>
+          </TableHead>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableBody >
-                {csvData.map((csvRow, index)  => (
-                  <TableRow key={index}  >
+                {csvData.map((csvRow, index) => (
+                  <TableRow key={index} >
                     <TableCell
                       style={{
                         fontSize: "1rem",
@@ -148,7 +144,7 @@ function FT() {
                       style={{
                         fontSize: "1rem",
                         width: "25%",
-                        paddingTop:"1rem",
+                        paddingTop: "1rem",
                         visibility: hideTmxColumn ? "hidden" : "visible",
                       }}
                     >
@@ -156,7 +152,8 @@ function FT() {
                     </TableCell>
                     <TableCell
                       style={{
-                        width: "20%",paddingTop:"3rem"
+                        width: "20%",
+                        paddingTop: "3rem",
                       }}
                     >
                       <textarea
@@ -166,7 +163,6 @@ function FT() {
                           padding: "1.3rem",
                           fontSize: "1rem",
                           resize: "none",
-                         
                         }}
                         multiline
                         rows={4}
@@ -194,15 +190,19 @@ function FT() {
                           height: "2rem",
                           marginLeft: "0.1rem",
                           marginTop: "-2rem",
-
                         }}
                         onClick={() => handleSave(index)}
                       >
                         Save
                       </Button>
                     </TableCell>
-                        
-                    <TableCell style={{ width: "20%", fontSize: "1rem",paddingTop:"3rem" }}>
+
+                    <TableCell
+                      style={{
+                        width: "20%",
+                        fontSize: "1rem",
+                      }}
+                    >
                       <CKEditor
                         editor={ClassicEditor}
                         data={
@@ -230,7 +230,7 @@ function FT() {
             </Table>
           </TableContainer>
         </div>
-     )}
+      )}
     </div>
   );
 }

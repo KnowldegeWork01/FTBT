@@ -47,12 +47,10 @@ router.post("/authenticate", async (req, res) => {
 //   try {
 //     const { userName, password, department } = req.body;
 //     const user = await userSchema.findOne({ userName, department });
-    
 //     if (!user) {
 //       return res.status(400).json({ message: "User Not Found" });
 //     }
 //     const isPasswordValid = await bcrypt.compare(password, user.password);
-    
 //     if (!isPasswordValid) {
 //       return res.status(400).json({ message: "Invalid Password" });
 //     }

@@ -14,7 +14,7 @@ const getPM = async (req, res) => {
     let PMdetails = await PM_model.findOne({ _id: id }).select(
       "-password - __id - __v"
     );
-    res.send(PMdetails);
+    res.send(PMdetails); 
   } catch (error) {
     console.log("Error fetching PM details", error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -46,5 +46,4 @@ const loginPM = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
-
 module.exports = { getPM, loginPM };

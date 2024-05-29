@@ -84,7 +84,7 @@ const DocxViewer = () => {
           style={{ display: "none" }}
         />
       </Button>
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="lg">
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="lg" style={{border:"2px solid"}}>
         <DialogTitle
           sx={{
             display: "flex",

@@ -21,7 +21,6 @@ export const FunctionProvider = ({ children }) => {
   const navigate = useNavigate();
 
   //URL blockage
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -103,7 +102,7 @@ export const FunctionProvider = ({ children }) => {
       setEditableData(new Array(englishTranslations.length).fill(""));
       setDownloadReady(true);
       const knTranslations = Array.from(tuvNodes)
-        .filter((node) => node.getAttribute("xml:lang") === "KN")
+        .filter((node) => node.getAttribute("xml:lang") !== "EN-US")
         .map((node) => node.querySelector("seg").textContent);
       setFTData(knTranslations);
       setIsLoading(false);
@@ -120,7 +119,7 @@ export const FunctionProvider = ({ children }) => {
       const xmlDoc = parser.parseFromString(content, "text/xml");
       const tuvNodes = xmlDoc.getElementsByTagName("tuv");
       const englishTranslations = Array.from(tuvNodes)
-        .filter((node) => node.getAttribute("xml:lang") === "KN")
+        .filter((node) => node.getAttribute("xml:lang") !== "EN-US")
         .map((node) => node.querySelector("seg").textContent);
       setTcxData(englishTranslations);
       setEditableData(new Array(englishTranslations.length).fill(""));
