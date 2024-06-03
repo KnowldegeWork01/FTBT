@@ -27,7 +27,7 @@ io.on("connection", (socket) => {
   // Join the user-specific room
   socket.on("joinRoom", (userName) => {
     socket.join(userName);
-    console.log(`${userName} joined the room`);
+    // console.log(`${userName} joined the room`);
   });
   socket.on("sendMessage", async (message) => {
     const chatMessage = new ChatMessage(message);
@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
     io.to(message.toSender).to(message.toReceiver).emit("receiveMessage", chatMessage);
   });
   socket.on("disconnect", () => {
-    console.log("Client disconnected");
+    // console.log("Client disconnected");
   });
 });
 

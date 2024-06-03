@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {
+  Button,
+  TextField,
+  Box,
+  Typography,
+  Container,
+  createTheme,
+  ThemeProvider,
+  Snackbar,
+  Slide,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import MuiAlert from "@mui/material/Alert";
 import Logo from "../images/signInLogo.jpeg";
 import BG from "../images/bgImage.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
 import { jwtDecode as jwt_decode } from "jwt-decode";
-import { Slide } from "@mui/material";
 
 const defaultTheme = createTheme();
 
@@ -23,6 +30,7 @@ const Login = () => {
     password: "",
     department: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [openSuccessSnackbar, setOpenSuccessSnackbar] = useState(false);
@@ -58,6 +66,14 @@ const Login = () => {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   const handleSubmit = async (e) => {
@@ -104,26 +120,22 @@ const Login = () => {
         setOpenSnackbar(true);
       }
     } catch (error) {
-      // console.error("Error logging in:", error);
       setErrorMessage("User Not Found...");
       setOpenSnackbar(true);
     }
   };
-  
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setOpenSnackbar(false);
   };
-
   const handleCloseSuccessSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setOpenSuccessSnackbar(false);
   };
-
   return (
     <div
       style={{
@@ -136,7 +148,7 @@ const Login = () => {
       <Typography>
         <img src={BG} alt="background" height={"100%"} width={"100%"} />
       </Typography>
-      <div style={{}}>
+      <div>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
             <Box
@@ -185,9 +197,23 @@ const Login = () => {
                   fullWidth
                   name="password"
                   label="Password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={inputValue.password}
                   onChange={handleFieldChange}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <Button
                   type="submit"

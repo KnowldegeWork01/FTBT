@@ -127,7 +127,7 @@ const Navbar = () => {
               </label>
               <input
                 type="file"
-                accept=".csv"
+                accept=".csv,.docx,.doc"
                 onChange={handleFileUpload}
                 style={{ display: "none" }}
                 id="fileInput"

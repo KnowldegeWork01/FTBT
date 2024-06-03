@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 import * as ExcelJS from "exceljs";
+import * as docx from "docx-preview";
 export const FunctionContext = createContext();
 export const FunctionProvider = ({ children }) => {
   const [isQCSelected, setIsQCSelected] = useState(false);
@@ -66,25 +67,72 @@ export const FunctionProvider = ({ children }) => {
     };
     reader.readAsBinaryString(file);
   };
+  // const handleFileUpload = (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+  //   setIsLoading(true);
+  //   const fileReader = new FileReader();
+  //   fileReader.onload = (e) => {
+  //     const data = new Uint8Array(e.target.result);
+  //     const workbook = XLSX.read(data, { type: "array" });
+  //     const firstSheetName = workbook.SheetNames[0];
+  //     const worksheet = workbook.Sheets[firstSheetName];
+  //     const parsedData = XLSX.utils.sheet_to_json(worksheet, {
+  //       header: 1,
+  //       range: 1,
+  //     });
+  //     setCSVData(parsedData);
+  //     setIsLoading(false);
+  //   };
+  //   fileReader.readAsArrayBuffer(file);
+  // };
+
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
     setIsLoading(true);
+    const extension = file.name.split(".").pop().toLowerCase();
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
       const data = new Uint8Array(e.target.result);
-      const workbook = XLSX.read(data, { type: "array" });
-      const firstSheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[firstSheetName];
-      const parsedData = XLSX.utils.sheet_to_json(worksheet, {
-        header: 1,
-        range: 1,
-      });
-      setCSVData(parsedData);
-      setIsLoading(false);
+      if (extension === "csv") {
+        processCSV(data);
+      } else if (extension === "docx") {
+        processDOCX(data);
+      }
     };
     fileReader.readAsArrayBuffer(file);
   };
+  const processCSV = (data) => {
+    const workbook = XLSX.read(data, { type: "array" });
+    const firstSheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[firstSheetName];
+    const parsedData = XLSX.utils.sheet_to_json(worksheet, {
+      header: 1,
+      range: 1,
+    });
+    setCSVData(parsedData);
+    setIsLoading(false);
+  };
+  const processDOCX = async (arrayBuffer) => {
+    return new Promise((resolve, reject) => {
+      const container = document.createElement("div");
+      docx
+        .renderAsync(arrayBuffer, container, null, { className: "docx" })
+        .then(() => {
+          const paragraphs = container.querySelectorAll("p");
+          const content = Array.from(paragraphs).flatMap((p) => {
+            const text = p.innerText;
+            const lines = text.split(/(?<=[.,])/g).map((line) => line.trim());
+            return lines.filter((line) => line.length > 0);
+          });
+          setCSVData(content.map((line) => [line]));
+          setIsLoading(false);
+        })
+        .catch(reject);
+    });
+  };
+
   const handleFileUploadTcx = (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -231,18 +279,18 @@ export const FunctionProvider = ({ children }) => {
   const handleFileUploadQCSource2 = (event) => {
     const file = event.target.files[0];
     if (!file) return;
+
     const reader = new FileReader();
     reader.onload = (e) => {
-      const content = e.target.result;
-      const rows = content.split("\n").map((row) => row.trim());
-      const data = rows
-        .map((row, index) => {
-          return row.replace(/["']/g, "").split(",");
-        })
-        .filter((row) => row !== null);
-      setEnglishBT(data);
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+      const filteredData = jsonData.slice(1);
+      setEnglishBT(filteredData);
     };
-    reader.readAsText(file, "ISO-8859-1");
+    reader.readAsArrayBuffer(file);
   };
   const handleCommentChange = (index, event) => {
     const newComments = [...comments];

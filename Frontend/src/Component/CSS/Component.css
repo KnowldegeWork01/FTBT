@@ -23,3 +23,19 @@
   backdrop-filter: blur(8px); 
   z-index: 9999; 
 }
+.docx-table-container {
+  margin-top: 20px;
+}
+
+.docx-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.docx-table th,
+.docx-table td {
+  border: 1px solid #d4d4d4;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}

@@ -10,6 +10,7 @@ import { FunctionProvider } from "./Component/Context/Function";
 import Docs from "./Component/Docx";
 import Loading from "./Component/Common_Component/Loader";
 import PDF from "./Component/Pdf";
+import Docx_IntoCells from "./Component/Docx_IntoCells"
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/pdf" element={<PDF />} />
           <Route path="/Docx" element={<Docs />} />
           <Route path="/loader" element={<Loading />} />
+          <Route path="/docxIntoCells" element={<Docx_IntoCells />} />
         </Routes>
       </FunctionProvider>
     </>
