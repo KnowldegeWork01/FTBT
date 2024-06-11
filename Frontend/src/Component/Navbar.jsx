@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = () => {
-  const userId = "123"; // Change userId according to your logic
+  const userId = "123";
   const context = useFunctionContext();
   const {
     handleFileUploadQC,
@@ -162,7 +162,7 @@ const Navbar = () => {
                 className={classes.fileUploadButton}
                 color="secondary"
                 onClick={handleDownloadCSV}
-                disabled={!downloadReady}
+                // disabled={!downloadReady}
                 startIcon={<CloudDownloadIcon />}
               >
                 FT
@@ -197,7 +197,7 @@ const Navbar = () => {
               </label>
               <input
                 type="file"
-                accept=".csv"
+                accept=".xlsx"
                 onChange={handleFileUpload}
                 style={{ display: "none" }}
                 id="fileInput"

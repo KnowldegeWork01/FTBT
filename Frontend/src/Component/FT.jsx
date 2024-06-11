@@ -16,6 +16,8 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Loader from "../Component/Common_Component/Loader";
+import parse from "html-react-parser";
+
 function FT() {
   const context = useFunctionContext();
   const {
@@ -135,9 +137,14 @@ function FT() {
                         <div>
                           <b>({index + 1})</b>
                         </div>
-                        <div style={{ marginLeft: "0.5rem" }}>{csvRow}</div>
+                        <div style={{ marginLeft: "0.5rem" }}>
+                          {parse(csvRow[0])}
+                        </div>
                       </div>
                     </TableCell>
+                    {csvRow.slice(1).map((cell, cellIndex) => (
+                      <TableCell key={cellIndex}>{parse(cell)}</TableCell>
+                    ))}
                     <TableCell
                       style={{
                         fontSize: "1rem",

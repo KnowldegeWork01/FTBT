@@ -2,8 +2,12 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 import * as ExcelJS from "exceljs";
-import * as docx from "docx-preview";
+import * as docxPreview from "docx-preview";
+import parse from "html-react-parser";
+import mammoth from "mammoth";
+
 export const FunctionContext = createContext();
+
 export const FunctionProvider = ({ children }) => {
   const [isQCSelected, setIsQCSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +24,10 @@ export const FunctionProvider = ({ children }) => {
   const [englishBT, setEnglishBT] = useState([]);
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("savedData", savedData);
+  }, [savedData]);
 
   //URL blockage
   useEffect(() => {
@@ -103,6 +111,7 @@ export const FunctionProvider = ({ children }) => {
     };
     fileReader.readAsArrayBuffer(file);
   };
+
   const processCSV = (data) => {
     const workbook = XLSX.read(data, { type: "array" });
     const firstSheetName = workbook.SheetNames[0];
@@ -114,24 +123,57 @@ export const FunctionProvider = ({ children }) => {
     setCSVData(parsedData);
     setIsLoading(false);
   };
+
+  // const processDOCX = async (arrayBuffer) => {
+  //   try {
+  //     const { value } = await mammoth.convertToHtml({ arrayBuffer });
+  //     const container = document.createElement("div");
+  //     container.innerHTML = value;
+  //     const paragraphs = container.querySelectorAll("p");
+  //     const content = Array.from(paragraphs).flatMap((p) => {
+  //       const html = p.innerHTML;
+  //       const lines = html.split(/(?<=[.,])/g).map((line) => line.trim());
+  //       return lines.filter((line) => line.length > 0);
+  //     });
+  //     setCSVData(content.map((line) => [line]));
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     console.error("Error processing DOCX file:", error);
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const processDOCX = async (arrayBuffer) => {
-    return new Promise((resolve, reject) => {
-      const container = document.createElement("div");
-      docx
-        .renderAsync(arrayBuffer, container, null, { className: "docx" })
-        .then(() => {
-          const paragraphs = container.querySelectorAll("p");
-          const content = Array.from(paragraphs).flatMap((p) => {
-            const text = p.innerText;
-            const lines = text.split(/(?<=[.,])/g).map((line) => line.trim());
-            return lines.filter((line) => line.length > 0);
-          });
-          setCSVData(content.map((line) => [line]));
-          setIsLoading(false);
-        })
-        .catch(reject);
-    });
+    try {
+      const { value } = await mammoth.convertToHtml({ arrayBuffer });
+      const lines = value.split(/(?<=[.,])/g).map((line) => line.trim());
+      setCSVData(lines.filter((line) => line.length > 0).map((line) => [line]));
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error processing DOCX file:", error);
+      setIsLoading(false);
+    }
   };
+
+  // const processDOCX = async (arrayBuffer) => {
+  //   try {
+  //     const { value } = await mammoth.convertToHtml({ arrayBuffer });
+  //     const container = document.createElement("div");
+  //     container.innerHTML = value;
+  //     const paragraphs = container.querySelectorAll("p");
+  //     const content = Array.from(paragraphs).flatMap((p) => {
+  //       const html = p.innerHTML;
+  //       const lines = html.split(/(?<=[.,])/g).map((line) => line.trim());
+  //       return lines.filter((line) => line.length > 0);
+  //     });
+  //     setCSVData(content.map((line) => [line]));
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     console.error("Error processing DOCX file:", error);
+  //     setIsLoading(false);
+  //   }
+  // };
+  
 
   const handleFileUploadTcx = (event) => {
     const file = event.target.files[0];
@@ -238,7 +280,6 @@ export const FunctionProvider = ({ children }) => {
       textSegments.push(currentSegment);
       cell.value = { richText: textSegments };
     });
-
     const buffer = await workbook.xlsx.writeBuffer();
     const blob = new Blob([buffer], {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -246,12 +287,13 @@ export const FunctionProvider = ({ children }) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", "formatted_data.xlsx");
+    link.setAttribute("download", "front_translation_data.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
+
   const handleEditorChange = (event, editor, index) => {
     const data = editor.getData();
     const newData = [...savedData];
