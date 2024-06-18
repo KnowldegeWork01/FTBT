@@ -82,7 +82,7 @@ const Login = () => {
       const response = await axios.post(
         "http://localhost:8000/api/authenticate",
         {
-          userName: inputValue.email,
+          email: inputValue.email,
           password: inputValue.password,
           department: inputValue.department,
         }
@@ -90,12 +90,12 @@ const Login = () => {
       if (response.status === 200 && response.data.token) {
         localStorage.setItem("token", response.data.token);
         const decodedToken = jwt_decode(response.data.token);
-        const department = decodedToken.department; // Use department from decoded token
-        localStorage.setItem("department", department); 
-  
-        // Use the userName from the backend response
-        localStorage.setItem("userName", response.data.userName); 
-  
+        // Use department from decoded token
+        const department = decodedToken.department;
+        localStorage.setItem("department", department);
+
+        // Use the emaail from the backend response
+        localStorage.setItem("email", response.data.email);
         setOpenSuccessSnackbar(true);
         setTimeout(() => {
           switch (department) {
@@ -186,7 +186,8 @@ const Login = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Name"
+                  label="Email"
+                  type="email"
                   name="email"
                   value={inputValue.email}
                   onChange={handleFieldChange}

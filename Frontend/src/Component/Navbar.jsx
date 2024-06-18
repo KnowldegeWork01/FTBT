@@ -16,6 +16,7 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import ChatIcon from "@mui/icons-material/Chat";
 import logo from '../images/logo.png'
+import { IoMdCloseCircle } from "react-icons/io";
 import Chat from "./Chat";
 
 const useStyles = makeStyles((theme) => ({
@@ -73,7 +74,7 @@ const Navbar = () => {
   const handleCloseChat = () => {
     setIsChatOpen(false);
   };
-  const userName = localStorage.getItem("userName");
+  const email = localStorage.getItem("email");
 
   // UseEffect to set isLoggedIn, isFT, and isBT based on token and department
   useEffect(() => {
@@ -197,7 +198,7 @@ const Navbar = () => {
               </label>
               <input
                 type="file"
-                accept=".xlsx"
+                accept=".csv,.docx,.doc"
                 onChange={handleFileUpload}
                 style={{ display: "none" }}
                 id="fileInput"
@@ -341,17 +342,20 @@ const Navbar = () => {
   open={isChatOpen}
   onClose={handleCloseChat}
   fullWidth
-  maxWidth="lg" 
+  maxWidth="lg"
 >
-  <DialogTitle>Login_User: <b>{userName}</b></DialogTitle>
-  <DialogContent style={{ overflow: "hidden" }}> 
-    <Chat userId={userId} />
-  </DialogContent>
+  <div style={{display:"flex",justifyContent:"space-between"}}>
+  <DialogTitle>Login_User: <b>{email}</b></DialogTitle>
   <DialogActions>
-    <Button onClick={handleCloseChat} color="primary">
-      Close
+    <Button onClick={handleCloseChat} style={{fontSize:"2rem"}}>
+    <IoMdCloseCircle/>
     </Button>
   </DialogActions>
+  </div>
+  <DialogContent style={{ overflow: "hidden"}}> 
+    <Chat userId={userId} />
+  </DialogContent>
+
 </Dialog>
     </AppBar>
   );

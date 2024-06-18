@@ -1,5 +1,5 @@
 import React from "react";
-import { RotatingLines } from "react-loader-spinner";
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Loading() {
   return (
@@ -14,18 +14,7 @@ function Loading() {
         zIndex: "9999",
       }}
     >
-      <div className="d-flex justify-content-center align-items-center">
-        <RotatingLines
-          height={80}
-          width={80}
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="oval-loading"
-          strokeWidth={2}
-          strokeWidthSecondary={2}
-        />
-      </div>
+       <CircularProgress disableShrink />
     </div>
   );
 }

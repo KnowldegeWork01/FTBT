@@ -111,7 +111,6 @@ export const FunctionProvider = ({ children }) => {
     };
     fileReader.readAsArrayBuffer(file);
   };
-
   const processCSV = (data) => {
     const workbook = XLSX.read(data, { type: "array" });
     const firstSheetName = workbook.SheetNames[0];
@@ -123,38 +122,46 @@ export const FunctionProvider = ({ children }) => {
     setCSVData(parsedData);
     setIsLoading(false);
   };
-
   // const processDOCX = async (arrayBuffer) => {
   //   try {
   //     const { value } = await mammoth.convertToHtml({ arrayBuffer });
-  //     const container = document.createElement("div");
-  //     container.innerHTML = value;
-  //     const paragraphs = container.querySelectorAll("p");
-  //     const content = Array.from(paragraphs).flatMap((p) => {
-  //       const html = p.innerHTML;
-  //       const lines = html.split(/(?<=[.,])/g).map((line) => line.trim());
-  //       return lines.filter((line) => line.length > 0);
-  //     });
-  //     setCSVData(content.map((line) => [line]));
+  //     const lines = value.split(/(?<=[.,])/g).map((line) => line.trim());
+  //     setCSVData(lines.filter((line) => line.length > 0).map((line) => [line]));
+  //     console.log(lines);
   //     setIsLoading(false);
   //   } catch (error) {
   //     console.error("Error processing DOCX file:", error);
   //     setIsLoading(false);
   //   }
   // };
-
   const processDOCX = async (arrayBuffer) => {
     try {
       const { value } = await mammoth.convertToHtml({ arrayBuffer });
-      const lines = value.split(/(?<=[.,])/g).map((line) => line.trim());
-      setCSVData(lines.filter((line) => line.length > 0).map((line) => [line]));
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(value, "text/html");
+      const lines = Array.from(doc.querySelectorAll("p, br")).map((node) =>
+        node.innerHTML.trim()
+      );
+      const sentences = lines.flatMap((line) =>
+        line
+          .split(".")
+          .map((sentence) => sentence.trim())
+          .filter(Boolean)
+          .map((sentence, index, arr) =>
+            index === arr.length - 1 && sentence !== line
+              ? sentence
+              : sentence + "."
+          )
+      );
+      setCSVData(sentences.map((sentence) => [sentence]));
       setIsLoading(false);
+      return sentences;
     } catch (error) {
       console.error("Error processing DOCX file:", error);
       setIsLoading(false);
+      return [];
     }
   };
-
   // const processDOCX = async (arrayBuffer) => {
   //   try {
   //     const { value } = await mammoth.convertToHtml({ arrayBuffer });
@@ -173,7 +180,6 @@ export const FunctionProvider = ({ children }) => {
   //     setIsLoading(false);
   //   }
   // };
-  
 
   const handleFileUploadTcx = (event) => {
     const file = event.target.files[0];
@@ -224,7 +230,6 @@ export const FunctionProvider = ({ children }) => {
   const compareAndSetFT = (sourceSentence, tmxSentence) => {
     const cleanSource = String(sourceSentence).trim().replace(/[^\w]/g, "");
     const cleanTmx = String(tmxSentence).trim().replace(/[^\w]/g, "");
-
     if (cleanSource === cleanTmx) {
       return "Right";
     } else {
@@ -293,7 +298,6 @@ export const FunctionProvider = ({ children }) => {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
-
   const handleEditorChange = (event, editor, index) => {
     const data = editor.getData();
     const newData = [...savedData];

@@ -8,9 +8,9 @@ import "./App.css";
 import Project from "./Component/Project";
 import { FunctionProvider } from "./Component/Context/Function";
 import Docs from "./Component/Docx";
-import Loading from "./Component/Common_Component/Loader";
 import PDF from "./Component/Pdf";
-import Docx_IntoCells from "./Component/Docx_IntoCells"
+import Docx_IntoCells from "./Component/Docx_IntoCells";
+import Word_Xliff from "./Component/WordToXLIFFConverter";
 function App() {
   return (
     <>
@@ -25,8 +25,8 @@ function App() {
           <Route path="/PM" element={<Project />} />
           <Route path="/pdf" element={<PDF />} />
           <Route path="/Docx" element={<Docs />} />
-          <Route path="/loader" element={<Loading />} />
           <Route path="/docxIntoCells" element={<Docx_IntoCells />} />
+          <Route path="/word-xliff" element={<Word_Xliff />} />
         </Routes>
       </FunctionProvider>
     </>

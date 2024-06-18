@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./CSS/Component.css";
 import {
   Button,
@@ -15,7 +15,9 @@ import ClassicEditor from "ckeditor5-build-classic-extended";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import Loader from "../Component/Common_Component/Loader";
+import parse from "html-react-parser";
 
 function FT() {
   const context = useFunctionContext();
@@ -31,7 +33,6 @@ function FT() {
     hideTmxColumn,
     setEditableData,
     compareAndSetFT,
-    handleFileUploadTcxBT,
     handlehide,
     handleSave,
     handleEditorChange,
@@ -124,9 +125,9 @@ function FT() {
           </TableHead>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableBody >
+              <TableBody>
                 {csvData.map((csvRow, index) => (
-                  <TableRow key={index} >
+                  <TableRow key={index}>
                     <TableCell
                       style={{
                         fontSize: "1rem",
@@ -137,9 +138,14 @@ function FT() {
                         <div>
                           <b>({index + 1})</b>
                         </div>
-                        <div style={{ marginLeft: "0.5rem" }}>{csvRow}</div>
+                        <div style={{ marginLeft: "0.5rem" }}>
+                          {parse(csvRow[0])}
+                        </div>
                       </div>
                     </TableCell>
+                    {csvRow.slice(1).map((cell, cellIndex) => (
+                      <TableCell key={cellIndex}>{parse(cell)}</TableCell>
+                    ))}
                     <TableCell
                       style={{
                         fontSize: "1rem",
@@ -182,19 +188,18 @@ function FT() {
                           "Right"
                         }
                       />
-                      <Button
-                        variant="contained"
-                        color="secondary"
-                        size="small"
+                      <FaRegArrowAltCircleRight
                         style={{
-                          height: "2rem",
-                          marginLeft: "0.1rem",
-                          marginTop: "-2rem",
+                         fontSize:"2.5rem",
+                         color:"green",
+                         cursor:"progress",
+                        marginBottom:"2.5rem",
+                        marginLeft:"0.5rem"
                         }}
                         onClick={() => handleSave(index)}
                       >
                         Save
-                      </Button>
+                      </FaRegArrowAltCircleRight>
                     </TableCell>
 
                     <TableCell
@@ -203,7 +208,7 @@ function FT() {
                         fontSize: "1rem",
                       }}
                     >
-                      <CKEditor
+                      <CKEditor 
                         editor={ClassicEditor}
                         data={
                           compareAndSetFT(csvData[index], tcxData[index]) ===
@@ -220,9 +225,9 @@ function FT() {
                             "italic",
                             "subscript",
                             "superscript",
-                          ],
+                          ],     
                         }}
-                      />
+                                             />
                     </TableCell>
                   </TableRow>
                 ))}

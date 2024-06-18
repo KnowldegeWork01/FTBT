@@ -8,6 +8,7 @@ const ChatMessage = require("./models/Chat_Message");
 const http = require("http");
 const socketIo = require("socket.io");
 const chatRoute = require("./Routes/Chat");
+const Projects = require("./Routes/Projects");
 const login = require("./Routes/login");
 const server = http.createServer(app);
 
@@ -15,24 +16,25 @@ const io = socketIo(server, {
   cors: {
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
-  }
+  },
 });
 
 app.use(cors());
-
 
 // Socket.IO connection
 io.on("connection", (socket) => {
   console.log("New client connected");
   // Join the user-specific room
-  socket.on("joinRoom", (userName) => {
-    socket.join(userName);
-    // console.log(`${userName} joined the room`);
+  socket.on("joinRoom", (email) => {
+    socket.join(email);
+    console.log(`${email} joined the room`);
   });
   socket.on("sendMessage", async (message) => {
     const chatMessage = new ChatMessage(message);
     await chatMessage.save();
-    io.to(message.toSender).to(message.toReceiver).emit("receiveMessage", chatMessage);
+    io.to(message.toSender)
+      .to(message.toReceiver)
+      .emit("receiveMessage", chatMessage);
   });
   socket.on("disconnect", () => {
     // console.log("Client disconnected");
@@ -64,13 +66,12 @@ app.use(bodyParser.json());
 // Use the chat route
 app.use("/api/chat", chatRoute);
 app.use("/api", login);
+app.use("/api", Projects);
 
 // Set the io object on the app
 app.set("io", io);
 
-
 app.get("/", async (req, res) => res.send("<h1>Connected ...</h1>"));
-
 
 server.listen(PORT, async () => {
   await dbConnect();

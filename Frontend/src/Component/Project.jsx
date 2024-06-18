@@ -19,90 +19,126 @@ import {
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import MuiAlert from "@mui/material/Alert";
+import { MdDelete } from "react-icons/md";
+import { FaRegSave } from "react-icons/fa";
+import axios from "axios";
 
 const MyComponent = () => {
   const [projectName, setProjectName] = useState("");
-  const [projects, setProjects] = useState(
-    JSON.parse(localStorage.getItem("projects")) || []
-  );
+  const [projects, setProjects] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [tmxFiles, setTmxFiles] = useState(
-    JSON.parse(localStorage.getItem("tmxFiles")) || []
-  );
 
   useEffect(() => {
-    localStorage.setItem("projects", JSON.stringify(projects));
-  }, [projects]);
+    fetchProjects();
+  }, []);
 
-  useEffect(() => {
-    localStorage.setItem("tmxFiles", JSON.stringify(tmxFiles)); 
-  }, [tmxFiles]);
-
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/api/projects");
+      setProjects(response.data);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setOpenSnackbar(false);
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (projectName === "") {
       setErrorMessage("Please enter a project name.");
       setOpenSnackbar(true);
       return;
     }
-    const newProject = {
-      id: projects.length + 1,
-      name: projectName,
-      status: "Created",
-      sourceUpload: null,
-    };
-    setProjects([...projects, newProject]);
-    setProjectName("");
+    const email = localStorage.getItem("email");
+    if (!email) {
+      setErrorMessage("User email not found in localStorage.");
+      setOpenSnackbar(true);
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/projects",
+        {
+          projectName: projectName,
+          email: email,
+          sourceUpload: "",
+          tmxUpload: "",
+        }
+      );
+      setProjects([...projects, response.data]);
+      setProjectName("");
+    } catch (error) {
+      console.error("Error creating project:", error);
+    }
   };
-
-  const handleStatusChange = (index, newStatus) => {
-    const updatedProjects = [...projects];
-    updatedProjects[index].status = newStatus;
-    setProjects(updatedProjects);
+  const handleStatusChange = async (index, newStatus) => {
+    try {
+      const updatedProject = { ...projects[index], status: newStatus };
+      await axios.put(
+        `http://localhost:8000/api/projects/${updatedProject._id}`,
+        updatedProject
+      );
+      const updatedProjects = [...projects];
+      updatedProjects[index] = updatedProject;
+      setProjects(updatedProjects);
+    } catch (error) {
+      console.error("Error updating project:", error);
+    }
   };
-
-  const handleDelete = (index) => {
-    const updatedProjects = projects.filter((project, i) => i !== index);
-    setProjects(updatedProjects);
-  };
-
-  const handleSourceUploadChange = (e, index) => {
-    const file = e.target.files[0];
-    const updatedProjects = [...projects];
-    const fileName = file ? file.name : null;
-    updatedProjects[index].sourceUpload = fileName;
-    setProjects(updatedProjects);
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        localStorage.setItem(`projectFile-${index}`, e.target.result);
-      };
-      reader.readAsDataURL(file);
+  const handleDelete = async (index) => {
+    try {
+      await axios.delete(
+        `http://localhost:8000/api/projects/${projects[index]._id}`
+      );
+      const updatedProjects = projects.filter((project, i) => i !== index);
+      setProjects(updatedProjects);
+    } catch (error) {
+      console.error("Error deleting project:", error);
     }
   };
 
-  const handleTmxUploadChange = (e, index) => {
+  const handleSourceUploadChange = async (e, index) => {
     const file = e.target.files[0];
-    const fileName = file ? file.name : null;
-    const updatedTmxFiles = [...tmxFiles];
-    updatedTmxFiles[index] = fileName;
-    setTmxFiles(updatedTmxFiles);
+    if (!file) return;
 
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        localStorage.setItem(`tmxFile-${index}`, e.target.result);
-      };
-      reader.readAsDataURL(file);
+    const formData = new FormData();
+    formData.append("sourceUpload", file);
+
+    try {
+      const response = await axios.post(
+        `http://localhost:8000/api/projects/${projects[index]._id}/upload-source`,
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+      const updatedProjects = [...projects];
+      updatedProjects[index].sourceUpload = response.data.fileName;
+      setProjects(updatedProjects);
+    } catch (error) {
+      console.error("Error uploading source file:", error);
+    }
+  };
+
+  const handleTmxUploadChange = async (e, index) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("tmxUpload", file);
+    try {
+      const response = await axios.post(
+        `http://localhost:8000/api/projects/${projects[index]._id}/upload-tmx`,
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+      const updatedProjects = [...projects];
+      updatedProjects[index].tmxUpload = response.data.fileName;
+      setProjects(updatedProjects);
+    } catch (error) {
+      console.error("Error uploading TMX file:", error);
     }
   };
 
@@ -111,18 +147,13 @@ const MyComponent = () => {
       <div style={{ margin: "2rem" }}>
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Project Name"
+            label="Project Name..."
             variant="outlined"
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
           />
-          <Button
-            type="submit"
-            style={{ marginLeft: "1rem", padding: "0.9rem" }}
-            variant="contained"
-            color="primary"
-          >
-            Add Project
+          <Button type="submit" style={{ fontSize: "2rem" }}>
+            <FaRegSave />
           </Button>
         </form>
       </div>
@@ -187,21 +218,22 @@ const MyComponent = () => {
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody style={{}}>
               {projects.map((project, index) => (
                 <TableRow key={index}>
-                  <TableCell style={{ fontSize: "1.2rem", width: "20%" }}>
-                    {index + 1}
+                  <TableCell style={{ fontSize: "1.2rem" }}>
+                    [{index + 1}]
                   </TableCell>
-                  <TableCell style={{ fontSize: "1rem", width: "20%" }}>
-                    {project.name}
+                  <TableCell style={{ fontSize: "1.2rem" }}>
+                    {project.projectName}
                   </TableCell>
-                  <TableCell style={{ fontSize: "1rem", width: "20%" }}>
+                  <TableCell style={{ fontSize: "1.2rem" }}>
                     {project.status}
                   </TableCell>
-                  <TableCell style={{ fontSize: "1rem", width: "20%" }}>
+                  <TableCell style={{ fontSize: "1.2rem" }}>
                     <Select
                       value={project.status}
+                      style={{width:"45%"}}
                       onChange={(e) =>
                         handleStatusChange(index, e.target.value)
                       }
@@ -211,16 +243,14 @@ const MyComponent = () => {
                       <MenuItem value="Completed">Completed</MenuItem>
                     </Select>
                     <Button
-                      variant="contained"
-                      color="error"
                       onClick={() => handleDelete(index)}
-                      style={{ marginLeft: "1rem", padding: "0.9rem" }}
+                      style={{ fontSize: "2rem" }}
                     >
-                      Delete
+                      <MdDelete />
                     </Button>
                   </TableCell>
-                  <TableCell style={{ fontSize: "1rem", width: "15%"}}>
-                    <Box display="flex" alignItems="center" >
+                  <TableCell>
+                    <Box display="flex" alignItems="center">
                       <input
                         id={`source-file-input-${index}`}
                         type="file"
@@ -240,7 +270,7 @@ const MyComponent = () => {
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell style={{ fontSize: "1rem", width: "20%" }}>
+                  <TableCell>
                     <Box display="flex" alignItems="center" paddingRight="5rem">
                       <input
                         id={`tmx-file-input-${index}`}
@@ -255,7 +285,9 @@ const MyComponent = () => {
                         </IconButton>
                       </label>
                       <Typography variant="body1">
-                        {tmxFiles[index] ? tmxFiles[index] : "No file chosen"}
+                        {project.tmxUpload
+                          ? project.tmxUpload
+                          : "No file chosen"}
                       </Typography>
                     </Box>
                   </TableCell>
@@ -284,5 +316,4 @@ const MyComponent = () => {
     </>
   );
 };
-
 export default MyComponent;

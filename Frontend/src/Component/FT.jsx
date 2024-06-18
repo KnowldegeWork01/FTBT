@@ -15,6 +15,7 @@ import ClassicEditor from "ckeditor5-build-classic-extended";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import Loader from "../Component/Common_Component/Loader";
 import parse from "html-react-parser";
 
@@ -187,29 +188,27 @@ function FT() {
                           "Right"
                         }
                       />
-                      <Button
-                        variant="contained"
-                        color="secondary"
-                        size="small"
+                      <FaRegArrowAltCircleRight
                         style={{
-                          height: "2rem",
-                          marginLeft: "0.1rem",
-                          marginTop: "-2rem",
+                         fontSize:"2.5rem",
+                         color:"green",
+                         cursor:"progress",
+                        marginBottom:"2.5rem",
+                        marginLeft:"0.5rem"
                         }}
                         onClick={() => handleSave(index)}
                       >
                         Save
-                      </Button>
+                      </FaRegArrowAltCircleRight>
                     </TableCell>
 
                     <TableCell
                       style={{
                         width: "20%",
                         fontSize: "1rem",
-                        paddingTop: "3rem",
                       }}
                     >
-                      <CKEditor
+                      <CKEditor 
                         editor={ClassicEditor}
                         data={
                           compareAndSetFT(csvData[index], tcxData[index]) ===
@@ -226,8 +225,9 @@ function FT() {
                             "italic",
                             "subscript",
                             "superscript",
-                          ],
+                          ],     
                         }}
+                        className="custom-editor"
                       />
                     </TableCell>
                   </TableRow>

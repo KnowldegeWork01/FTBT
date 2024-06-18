@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const ChatMessage = require("../models/Chat_Message");
+const { error } = require("pdf-lib");
+
+
 router.post("/send", async (req, res) => {
   try {
     const { toSender, message, toReceiver } = req.body;
@@ -12,6 +15,7 @@ router.post("/send", async (req, res) => {
       toReceiver,
       message,
       timestamp: new Date(),
+      seen:false
     });
     await newMessage.save();
     res.status(201).json({ message: message });
@@ -110,4 +114,22 @@ router.post("/mark-as-seen", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+router.post("/edit-message",async(req,res)=>{
+  try{
+    const {chatId,messageId, chatMessage} = req.body
+  const findChatMessage = await ChatMessage.findById(chatId)
+  if(!findChatMessage) return res.status(404).json({error: "Message not found"})
+    findChatMessage.message = messageId
+  await findChatMessage.save()
+  io.emit("message-edited",{messageId})
+  res.status(200).json({message:"Message edited Succesfully"})
+  }
+  catch (error) {
+    console.error("Error editing message:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+}});
+
+
+
 module.exports = router;

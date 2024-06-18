@@ -61,7 +61,7 @@ const chatMessageSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: async function (value) {
-        const user = await mongoose.model("User").findOne({ userName: value });
+        const user = await mongoose.model("User").findOne({ email: value });
         return !!user;
       },
     },
@@ -79,6 +79,9 @@ const chatMessageSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  seen:{
+    type:Boolean,default:false
+  }
 });
 
 const ChatMessage = mongoose.model("ChatMessage", chatMessageSchema);
