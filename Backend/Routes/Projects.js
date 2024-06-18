@@ -18,7 +18,7 @@ router.post(
         return res.status(400).json({
           error: "Email not found in localStorage",
           details: "User email is required to create a project",
-        });`
+        });
       }
 
       const user = await User.findOne({ email });
@@ -46,7 +46,7 @@ router.post(
         .json({ error: "Error Creating Project", details: error.message });
     }
   }
-);`
+);
 
 router.get("/projects", async (req, res) => {
   try {
