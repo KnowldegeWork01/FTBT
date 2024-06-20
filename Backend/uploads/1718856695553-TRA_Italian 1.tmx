@@ -1,0 +1,1869 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tmx version="1.4">
+<header adminlang="en-US" creationtool="SDL Language Platform" creationtoolversion="8.0" datatype="xml" o-tmf="SDL TM8 Format" segtype="sentence" srclang="EN-US"/>
+<body>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Source</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>- Attenzione: durante le fasi di miscelazione/carico e di irrorazione del prodotto, utilizzare adeguati 
+dispositivi di protezione delle vie respiratorie (quando si manipola il prodotto concentrato respiratore a visiera del tipo EN146 o THP2 o equivalente con cappuccio e mantellina), indumenti protettivi, guanti adatti e occhiali protettivi - In caso di applicazioni su mele o altri fruttiferi posizionati in alto utilizzare solo irroratori montati su trattori con cabina chiusa o auto-assistiti.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>- Caution: during the mixing/loading and spraying phases of the product, use appropriate respiratory protection
+ devices (when handling the concentrated product, use a visor respirator of type EN146 or THP2, or equivalent with hood and cape), protective clothing, suitable gloves, and protective goggles - In case of applications on apples or other fruit trees positioned high up, use only sprayers mounted on tractors with closed or self-assisted cabs</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>- BP 80 Route D’Artix, 64150 Noguères- Francia - Tel. 0033.5.59609292</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>- BP 80 Route D’Artix, 64150 Noguères, France - Tel. 0033.5.59609292</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>- Modena</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>- Modena</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>- Nera Montoro (TR), KWIZDA AGRO GmbH - Loebendorf (Austria)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>- 3.1 Liters / 0.82 Imperial gallon</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>- Noguères (Francia), KWIZDA AGRO GmbH - Loebendorf (Austria)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>- Noguères (France), KWIZDA AGRO GmbH - Loebendorf (Austria)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>- Noguères (Francia), TAMINCO bvba - Gent (Belgio), SBM Formulation - Beziers Cedex (Francia), A.D.I.C.A.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>- Noguères (France), TAMINCO bvba - Gent (Belgium), SBM Formulation - Beziers Cedex (France), A.D.I.C.A.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>(giorni)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>(days)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>(UE) 540/2011 della Commissione del 25 maggio 2011.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>(EU) 540/2011 of the Commission of 25 May 2011.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>(UE) 540/2011 e 541/2011 della Commissione, tra le quali la sostanza attiva captano;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>(EU) 540/2011 and 541/2011 of the Commission, including the active substance captan;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>(UE) n. 545/2011 della Commissione, relativo al prodotto fitosanitario di riferimento CAPTAN ARVESTA 80 WG;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>(EU) No. 545/2011 of the Commission, regarding the reference plant protection product CAPTAN ARVESTA 80 WG;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>(UE) n. 545/2011 della Commissione;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>(EU) no. 545/2011 of the Commission;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>(Wilsonomyces carpophilus)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>(Wilsonomyces carpophilus)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>[Non pulire il materiale d’applicazione in prossimità delle acque di superficie evitare la contaminazione attraverso i sistemi di scolo delle acque dalle aziende agricole e dalle strade].</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>[Do not clean application equipment near surface water to avoid contamination through water drainage systems from farms and roads].</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>0,05-0,1 Partita n</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>0.05-0.1 Lot No.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>100 grammi dì prodotto contengono</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>100 grams of product contains</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Aggiungere la quantità raccomandata di CAPTAN ARVESTA 80 WG nel serbatoio dell'irroratore riempito a metà.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Add the recommended quantity of CAPTAN ARVESTA 80 WG to the half-filled sprayer tank.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Aggiungere la quantità richiesta di CAPTAN ARVESTA 80 WG quindi portare a volume, mantenendo il serbatoio in agitazione fino a quando la miscela è completa.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Then add the required quantity of CAPTAN ARVESTA 80 WG and make up to volume, shaking the tank until the mixture is complete.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Agitare accuratamente prima e durante l’applicazione.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Shake thoroughly before and during the application.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Albicocche, Susine</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Apricots, Plums</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Alla comparsa dfl primi sintomi</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>When the first symptoms appear</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>ALLEGATO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>ANNEX</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Alternaria (Alternar ia sp)., Muffa grigia (Botrytis cinerea), Peronospora (Phythophtora infestans)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Alternaria (Alternaria sp.), Gray mold (Botrytis cinerea), Downy Mildew (Phythophtora infestans)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Applicare su fruttiferi un volume minimo di 500 litri d’acqua per ettaro.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Apply a minimum volume of 500 liters of water per hectare to fruit trees.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>ARYSTA LIFESCIENCE S.A.S, - BP 80 Route D'Artix, 64150 Noguères - Francia - Tel. 0033.5.59609292</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>ARYSTA LIFESCIENCE S.A.S, - BP 80 Route D'Artix, 64150 Noguères - France - Tel. 0033.5.59609292</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Assicurarsi che l’attrezzatura sia correttamente calibrata prima dell’uso.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Ensure that the equipment is correctly calibrated before use.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>ATTENZ I ONE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>ATTENTION</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Avvertenza:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Warning:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Bolla ( Taphrina deformans ), Monilia (Monilia sp), (Wilsonomyces carpophilus).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Peach Leaf Curl (Taphrina deformans), Monilia (Monilia sp), (Wilsonomyces carpophilus).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Cambio di formulazione in adeguamento al prodotto di riferimento da:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Change in formulation to adapt to the reference product by:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Cambio nome da: captan sti</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Change of name from: captan sti</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Cambio nome da: captano 80 WG</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Change of name from: captan 80 WG</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>CAPTAN ARVESTA 80 WG è un fungicida ad azione preventiva, quindi la prima applicazione deve essere fatta subito prima che compaia la malattia, con applicazioni ripetute agli intervalli raccomandati per garantire l'opportuna protezione.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>CAPTAN ARVESTA 80 WG is a fungicide with preventive action, therefore the first application must be made immediately before the onset of the disease, with repeated applications at recommended intervals to ensure proper protection.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>CAPTAN ARVESTA 80 WG PERICOLO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>CAPTAN ARVESTA 80 WG DANGER</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Captano FASE II-Ri-reg. secondo principi uniformi</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Captan PHASE II-Re-reg. according to uniform principles</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Captano puro g 80</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Pure Captan 80 g</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Chi impiega il prodotto è responsabile degli eventuali danni derivanti da uso improprio del preparato</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Whoever uses the product is responsible for any damage resulting from improper use of the preparation</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Ciliegie</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Cherries</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Coformuiantì q.b. a g 100</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Co-formulants to make up to 100 g</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>COLTURE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>CROPS</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>COMPATIBILITÀ: non impiegare CAPTAN ARVESTA 80 WG in miscela estemporanea.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>COMPATIBILITY: Do not use CAPTAN ARVESTA 80 WG in an extemporaneous mixture.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Composizione</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Composition</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Comunque il controllo meccanico può sostituire l’equipaggiamento di protezione personale se una valutazione del COSHH dimostri che questi forniscono un uguale o maggiore standard di protezione - Non rientrare nelle zone trattate prima di 48 ore.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>However, mechanical control can replace personal protective equipment if a COSHH assessment demonstrates that they provide an equal or higher standard of protection - Do not re-enter areas treated before 48 hours.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Conservare fuori della portata dei bambini.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Keep out of reach of children.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Conservare lontano da alimenti o mangimi e da bevande.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Keep away from food or feed and drinks.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Conservare sotto chiave (P405).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Keep locked up (P405).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>CONSIDERATO che i prodotti fitosanitari indicati in allegato al presente decreto ed attualmente in commercio riportano l’etichetta conforme alle direttive 67/548/CEE e 1999/45/CE;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>CONSIDERING that the plant protection products listed in the annex to this decree, which are currently on the market, carry a label compliant with Directives 67/548/EEC and 1999/45/EC;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>CONSIDERATO che l’impresa titolare delle autorizzazioni dei prodotti fitosanitari di cui trattasi ha ottemperato a quanto previsto dal decreto 26 aprile 2007, nei tempi e nelle forme da esso stabiliti ed in conformità alle condizioni definite per la sostanza attiva captano;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>CONSIDERING that the company holding the authorizations for the plant protection products concerned has complied with the provisions of the decree of 26 April 2007, within the times and in the manner established by it and in conformity with the conditions defined for the active substance captan;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>CONSIDERATO che la Commissione consultiva dei prodotti fitosanitari di cui all’articolo 20 del D.L.vo 17 marzo 1995, n. 194, ha preso atto della conclusione della valutazione del sopracitato fascicolo CAPTAN 80 WG, svolta dall’Università di Milano, al fine di ri-registrare i prodotti fitosanitari di cui trattasi fino 30 settembre 2017, alle nuove condizioni di impiego e con eventuale adeguamento alla composizione del prodotto fitosanitario di riferimento;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>CONSIDERING that the Consultative Commission for Plant Protection Products as per Article 20 of Legislative Decree of 17 March 1995, No. 194, has taken note of the conclusion of the evaluation of the aforementioned CAPTAN 80 WG dossier, conducted by the University of Milan, in order to re-register the plant protection products concerned until 30 September 2017, under the new conditions of use and with any adaptation to the composition of the reference plant protection product;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Consigli di Prudenza</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Precautionary Advice</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Consultare un centro antiveleni.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Consult a poison control center.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Contenuto netto:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Net Content:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Continuare a sciacquare (P305+P351+P338).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Continue rinsing (P305+P351+P338).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Da impiegarsi esclusivamente per gli usi e aile condizioni riportate in questa etichetta</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>To be used exclusively for the uses and conditions indicated on this label</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Da non applicare con mezzi aerei</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Not to be applied using aerial means</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Da non vendersi sfuso</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Not to be sold loose</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Dall’inizio della fioritura</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>From the beginning of flowering</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Data reg.ne</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Registration Date</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>DECRETO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>DECREE</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Deve inoltre essere usato, ove percorribile, un controllo automatico dell’esposizione dell’operatore in aggiunta ai suddetti dispositivi di protezione individuale.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Furthermore, where practicable, an automatic operator exposure control must be used in addition to the aforementioned personal protective equipment.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>DF quindi portare a volume, mantenendo il serbatoio in abitazione lino a quando la miscela e complete.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>DF then bring to volume, maintaining the tank agitated until the mixture is complete.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>DIREZIONE GENERALE PER L’IGIENE E LA SICUREZZA DEGLI ALIMENTI</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>GENERAL DIRECTORATE FOR HYGIENE AND FOOD SAFETY</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Disciplina igienica della produzione e della vendita delle sostanze alimentari e delle bevande”, e successive modifiche, ed in particolare l’articolo 6;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Hygienic regulation of the production and sale of food substances and beverages", and subsequent amendments, and in particular Article 6;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Distribuito da:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Distributed by:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Dose</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Dose</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Dose d’impiego</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Applied dose</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Dose massima</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Maximum dose</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>dott. Giuseppe Ruocco</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Dr. Giuseppe Ruocco</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>E altresì tenuta ad adottare ogni iniziativa, nei confronti degli utilizzatori, idonea ad assicurare un corretto impiego dei prodotti fitosanitari in conformità alle nuove disposizioni.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>It is also required to adopt every initiative towards the users, suitable for ensuring the correct use of plant protection products in compliance with the new provisions.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>E DELLA NUTRIZIONE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>AND OF NUTRITION</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>È essenziale garantire una buona copertura.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>It is essential to ensure a good coverage.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>E’ fatto comunque salvo ogni eventuale successivo adempimento ed adeguamento delle condizioni di autorizzazione dei prodotti fitosanitari, anche in conformità a provvedimenti comunitari e ulteriori disposizioni riguardanti le sostanze attive componenti.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>However, this is without prejudice to any subsequent fulfillment and modification of the authorization conditions for plant protection products, also in compliance with community provisions and further provisions regarding the active ingredients.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Eliminazione delle colture: cavolo, cavolfiore, cocomero, melone, spinacio, fagiolo, pisello, concia delle sementi d mais e sorgo.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Elimination of crops: cabbage, cauliflower, watermelon, melon, spinach, bean, pea, seed dressing of corn and sorghum.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Epoca di applicazione</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Timing of application</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>ESSERE DISPERSO NELL’AMBIENTE.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>DO NOT DISPOSE OF IN THE ENVIRONMENT.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Estensione alle colture: nashi, pesche, nettarine,albicocco, susine, ciliegie, pomodori, fragole in serra,</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Extension to crops: nashi, peaches, nectarines, apricots, plums, cherries, tomatoes, greenhouse strawberries,</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Estensione officina di produzione:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Expansion of production facility:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Estensioni alle taglie:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Size enlargements:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Etichetta autorizzata con decreto dirigenziale del _____08 OTT, 2014____</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Label authorized by executive order of _____08 OCT 2014____</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Etichetta autorizzata con Decreto Ministerale del ____08 OTT, 2014_____</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Label authorized by Ministerial Order of ____08 OCT 2014_____</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Etichetta autorizzata con Ministeriale del __08 OTT, 2014_______</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Label authorized by Ministerial Order of _____08 OCT 2014_______</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>ETICHETTA E FOGLIO ILLUSTRATIVO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>LABEL AND INSTRUCTION LEAFLET</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Etichetta in formato ridotto per le taglie da 50 e 100 grammi</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Reduced size label for 50 and 100 gram sizes</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Evitare il contatto con gli occhi e con la pelle, in caso di contatto con gli occhi, lavare immediatamente e abbondantemente con acqua e consultare il medico.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Avoid contact with eyes and skin, in case of contact with eyes, wash immediately with abundant water and consult a doctor.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Fragole in serra</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Greenhouse strawberries</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Frasi di Rischio</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Risk Phrases</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Fungicida per la lotta contro le malattie crittogamiche di pomacee, drupacee, pomodoro e fragola</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Fungicide for the control of cryptogamic diseases of pome fruit, stone fruit, tomato, and strawberry</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Gazzetta Ufficiale della Repubblica Italiana</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Official Gazette of the Italian Republic</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Gli irroratori usati precedentemente per l’applicazione di sostanze alcaline o oli devono essere lavati accuratamente prima di usare SANTHANE DF</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Crop sprayers previously used for applying alkaline substances or oils should be thoroughly washed before using SANTHANE DF</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Granuli idrodispersibili</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Water-dispersible granules</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>H318 Provoca grave irritazione oculare - H317 Può provocare una reazione allergica cutanea - H351 Sospettato di provocare il cancro - H410 Molto tossico per gli organismi acquatici con effetti di lunga durata - EUH401 Per evitare rischi per la salute umana e per l'ambiente seguire le istruzioni per l'uso</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>H318 Causes serious eye irritation - H317 May cause an allergic skin reaction - H351 Suspected of causing cancer - H410 Very toxic to aquatic life with long-lasting effects - EUH401 To avoid risks to human health and the environment, follow the instructions for use</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>I dati relativi al/i suindicato/i prodotto/i sono disponibili nel sito del Ministero della salute . nella sezione “Banca dati”.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Details related to the above product(s) are available on the website of the Ministry of Health, in the “Database” section.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>III fino al 30 settembre 2017 ai sensi del Reg.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>III until 30 September 2017 pursuant to Reg.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>IL CONTENITORE COMPLETAMENTE SVUOTATO NON DEVE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>THE COMPLETELY EMPTIED CONTAINER MUST NOT</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Il contenitore completamente svuotato non deve essere disperso nell’ambiente</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>The completely emptied container must not be disposed of in the environment</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Il contenitore non può essere riutilizzato</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>The container cannot be reused</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>IL CONTENITORE NON PUÒ ESSERE RIUTILIZZATO.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>THE CONTAINER CANNOT BE REUSED.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>IL DIRETTORE GENERALE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>THE DIRECTOR GENERAL</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Il presente decreto sarà pubblicato nella Gazzetta Ufficiale della Repubblica italiana e comunicato all'impresa interessata.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>This decree will be published in the Official Gazette of the Italian Republic and communicated to the company  concerned.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Il rispetto di tutte le indicazioni contenute nella presente etichetta è condizione essenziale per assicurare l’efficacia del trattamento e per evitare danni alle piante, alle persone ed agli animali</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Compliance with all of the instructions contained in this label is an essential condition to ensure the effectiveness of the treatment and to prevent harm to plants, people, and animals.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Impresa</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Company</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>In caso di contatto con gli occhi, lavare immediatamente e abbondantemente con acqua e consultare il medico.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>In case of contact with eyes, wash immediately with abundant water and consult a doctor.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>IN CASO DI CONTATTO CON LA PELLE:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>IN CASE OF CONTACT WITH SKIN:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>IN CASO DI CONTATTO GLI OCCHI:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>IN CASE OF CONTACT WITH EYES:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>IN CASO di esposizione o di possibile esposizione, consultare un medico (P308+P313).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>IN CASE of exposure or possible exposure, consult a doctor (P308+P313).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>In caso d'ingestione consultare immediatamente il medico e mostrargli il contenitore o l'etichetta.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>In case ingested, consult a doctor immediately and show him/her the container or the label.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>INDICAZIONI DI PERICOLO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAZARD WARNINGS</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Indicazioni di pericolo (H)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Hazard warnings (H)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Indossare guanti/indumenti protettivi/proteggere gli occhi/il viso (P280).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Wear protective gloves/protective clothing/eye protection/face protection (P280).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>INFORMAZIONI PER II MEDICO:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>INFORMATION FOR THE DOCTOR:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Intervallo</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Interval</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Intervallo pre-raccolta (giorni)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Pre-harvest interval (days)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>It.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>It.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Kg.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Kg.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Kwizda Aero GmbH Leobendorf (A)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Kwizda Aero GmbH Leobendorf (A)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>L’impresa titolare dell’autorizzazione è tenuta a rietichettare i restanti prodotti fitosanitari inseriti nell’allegato al presente decreto, muniti dell’etichetta precedentemente autorizzata, non ancora immessi in commercio e a fornire ai rivenditori un fac-simile della nuova etichetta per le confezioni di prodotto giacenti presso gli esercizi di vendita al fine della sua consegna all’acquirente/utilizzatore finale.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>The company holding the authorization is required to re-label the remaining plant protection products listed in the annex to this decree, which are equipped with the previously authorized label and have not yet been placed on the market, and to provide retailers with a sample of the new label for product packages in stock at sales outlets for their delivery to the purchaser/end user.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>La commercializzazione e l’impiego delle scorte giacenti dei prodotti fitosanitari adeguati secondo i principi uniformi ma non ai criteri stabiliti dal suindicato regolamento (CE) n. 1272/2008, sono concessi fino al 1 giugno 2017, ai sensi dell’articolo 61 del suddetto regolamento.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>The marketing and use of existing stocks of relevant plant protection products that are compliant with the uniform principles but not with the criteria established by the above-mentioned Regulation (EC) No. 1272/2008 are allowed until 1 June 2017, pursuant to Article 61 of the same regulation.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>La produzione con le etichette conformi alle direttive 67/548/CEE e 1999/45/CE, allegate al presento decreto, è consentita non oltre il 31 maggio 2015.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Production with labels compliant with directives 67/548/EEC and 1999/45/EC, attached to this decree, will not be permitted beyond 31 May 2015.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>La succitata impresa Arysta Lifescience S.A.S. è tenuta alla presentazione dei dati tecnico - scientifici aggiuntivi sopra indicati nel termine di cui in premessa.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>The aforementioned company Arysta Lifescience S.A.S. is has to submit the additional techno-scientific data indicated above within the deadline set out in the introduction.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Lavare abbondantemente con acqua e sapone (P302+P352).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Wash with abundant water and soap (P302+P352).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>li rispetto di tutte le indicazioni contenute nella presente etichetta è condizione essenziale per assicurare l'efficacia del trattamento e per evitare danni alle piante, alle persone ed agli animali</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Compliance with all the instructions contained in this label is an essential condition to ensure the effectiveness of the treatment and to avoid harm to plants, people, and animals.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>LIFESCIENCE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>LIFE SCIENCE</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Malattie controllate</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Controlled diseases</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>MALVIN®80 WG è un fungicida ad azione preventiva, quindi la prima applicazione deve essere fatta subito prima che compaia la malattia, con applicazioni ripetute agli intervalli raccomandati per garantire l'opportuna protezione.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>MALVIN®80 WG is a fungicide with preventive action, so the first application must be made immediately before the onset of disease, with repeated applications at recommended intervals to ensure a proper protection.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>massima</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>maximum</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Mele, Pere, Cotogne, Nashi</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Apples, Pears, Quinces, Nashi</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>MG</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>MG</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>MICOSPOR MGD è un fungicida ad azione preventiva, quindi la prima applicazione deve essere fatta subito prima che compaia la malattia, con applicazioni ripetute agli intervalli raccomandati per garantire l'opportuna protezione.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>MICOSPOR MGD is a fungicide with preventive action, so the first application must be made immediately before the onset of disease, with repeated applications at recommended intervals to ensure a proper protection.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>MODALITÀ D’IMPIEGO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>METHOD OF USE</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Modifiche autorizzate</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Authorized modifications</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Monilia ( Monilia sp), (Wilsonomyces carpophilus).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Monilia (Monilia sp), (Wilsonomyces carpophilus).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Muffa grigia (Botrytis cinerea)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Gray mold (Botrytis cinerea)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>N.reg.ne</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Registration no.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Nashi</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Nashi</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Nettarine</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Nectarines</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>NOCIVO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HARMFUL</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Nome prodotto</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Product name</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Non contaminare l’acqua con il prodotto o il suo contenitore.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Do not contaminate water with the product or its container.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Non disfarsi del prodotto e del recipiente se non con le dovute precauzioni, in caso d’ingestione consultare immediatamente il medico e mostrargli il contenitore o l'etichetta.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Do not dispose of the product or the container without taking due precautions; in case of ingestion, immediately consult a doctor and show him/her the container or the label.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Non lasciare la soluzione di prodotto nell’irroratore per lunghi periodi, (ad es. durante i pasti o la notte).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Do not leave the product solution in the sprayer for long periods (e.g., during meals or at night).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Non mangiare, né bere, né fumare durante l’impiego.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Do not eat, drink or smoke during use.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Non manipolare prima di avere letto e compreso tutte le avvertenze (P202).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Do not handle before reading and understanding all the warnings (P202).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Non pulire il materiale d’applicazione in prossimità delle acque di superficie evitare la contaminazione attraverso i sistemi di scolo delle acque dalle aziende agricole e dalle strade.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Do not clean the application equipment near surface waters to avoid contamination through water drainage systems from farms and roads.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Non respirare gli aerosoli.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Do not breathe the aerosols.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Numero massimo di trattamenti</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Maximum number of treatments</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Nuova classificazione: gravi lesioni oculari, cancerogeno, pericoloso per l’ambiente acquatico.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>New classification: serious eye damage, carcinogenic, hazardous to the aquatic environment.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Nuova classificazione: gravi lesioni oculari, cancerogeno, pericoloso per l’ambiente acquatico.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>New classification: serious eye damage, carcinogenic, hazardous to the aquatic environment.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Officina di confezionamento:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Packaging facility:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Officina di produzione:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Production facility:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Officine di produzione e confezionamento:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Production and packaging facilities:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Operare in assenza di vento</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Operate in the absence of wind</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>ORTHOCIDE® 80 WG è un fungicida ad azione preventiva, quindi la prima applicazione deve essere fatta subito prima che compaia la malattia, con applicazioni ripetute agli intervalli raccomandati per garantire l'opportuna protezione.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>ORTHOCIDE® 80 WG is a fungicide with preventive action, so the first application must be made immediately before the onset of the disease, with repeated applications at recommended intervals to ensure proper protection.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>P er pompe a spalla: mescolare con cura ed usare immediatamente.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>For backpack pumps: mix carefully and use immediately.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>P202 Non manipolare prima di avere letto e compreso tutte le avvertenze - P280 Indossare guanti/indumenti protettivi e proteggere gli occhi/il viso - P302+P352 IN CASO DI CONTATTO CON LA PELLE: lavare abbondantemente con acqua e sapone - P305+P351+P338 IN CASO DI CONTATTO CON GLI OCCHI:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>P202 Do not handle before reading and understanding all the warnings - P280 Wear protective gloves/clothing and protect eyes/face - P302+P352 IF CONTACT WITH SKIN: wash with abundant water and soap - P305+P351+P338 IF CONTACT WITH EYES:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Partita n</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Lot No</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per 12 mesi dalla data del presente decreto è consentito lo smaltimento delle scorte giacenti presso le rivendite, dei prodotti fitosanitari ORTHOCIDE 80 WG n. reg. 7884 e CAPTANO ARYSTA 80 WG n. reg. 12720 muniti dell’etichetta precedentemente autorizzata.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>For 12 months from the date of this decree, disposal of existing stocks at sales outlets of plant protection products ORTHOCIDE 80 WG reg. no. 7884 and CAPTAN ARYSTA 80 WG reg. no. 12720, which are equipped with the previously authorized label, is permitted.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per evitare rischi per l’uomo e per l’ambiente seguire le istruzioni per l’uso.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>To avoid risks to humans and the environment, follow the instructions for use.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per evitare rischi per la salute umana e per l’ambiente, seguire le istruzioni per l’uso (EUH401).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>To avoid risks to human health and the environment, follow the instructions for use (EUH401).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per evitare rischi per l'uomo e per l'ambiente seguire le istruzioni per l'uso.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>To avoid risks to humans and the environment, follow the instructions for use.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per irro ratore idraulico: riempire a metà il serbatoio spray con acqua pulita e mantenerlo in agitazione.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>For hydraulic sprayers: Half-fill the spray tank with clean water and keep it agitated.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per lavorazioni agricole tra le 48 e le 96 ore dal trattamento, indossare indumenti protettivi atti ad evitare il contatto con la pelle - Impedire l’accesso degli animali domestici alle aree trattate prima che sia trascorso il tempo di carenza.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>For agricultural work between 48 and 96 hours after treatment, wear protective clothing to avoid contact with the skin - Prevent domestic animals from accessing the treated areas before the safety time period has elapsed.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per pomp e a spalla: mescolare con cura ed usare immediatamente.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>For backpack pumps: Mix carefully and use immediately.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per proteggere gli organismi acquatici rispettare una fascia di sicurezza non trattata di 20 m da corpi idrici superficiali per: pomodoro</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>To protect aquatic organisms, maintain an untreated buffer zone of 20 m from surface water bodies for: tomato</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Per proteggere le acque sotterranee non applicare sui suoli contenenti una percentuale di sabbia superiore all' 80%.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>To protect groundwater, do not apply on soils containing more than 80% sand.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>PERICOLO</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>DANGER</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>PERICOLOSO PER L'AMBIENTE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAZARDOUS FOR THE ENVIRONMENT</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Pesche,</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Peaches,</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Pesche, Nettarine</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Peaches, Nectarines</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Pomodori</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Tomatoes</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Possibilità di effetti cancerogeni - prove insufficienti - Rischio di gravi lesioni oculari - Può provocare sensibilizzazione per contatto con la pelle - Altamente tossico per gli organismi acquatici.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Possibility of carcinogenic effects - insufficient evidence - Risk of serious eye damage - May cause sensitization by skin contact - Highly toxic to aquatic organisms.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>pre</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>pre</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Preparazione delia miscela</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Preparation of the mixture</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>pre-raccolta</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>pre-harvest</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>PRESCRIZIONI SUPPLEMENTARI</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>ADDITIONAL INSTRUCTIONS</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>PRIMA DELL’USO LEGGERE IL FOGLIO ILLUSTRATFVO.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>READ THE INSTRUCTION LEAFLET BEFORE USE.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>PRIMA DELL'USO LEGGERE IL FOGLIÒ ILLÙSTRATIVO - SMALTIRE SECONDO LE NORME VIGENTI ~ IL CONTENITORE NON PUÒ' ESSERE RIUTILIZZATO - IL CONTENITORE COMPLETAMENTE SVUOTATO NON DEVE ESSERE DISPERSO NELL'AMBIENTE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>READ THE INSTRUCTION LEAFLET BEFORE USE - DISPOSE  IN ACCORDANCE WITH THE REGULATIONS IN FORCE ~ THE CONTAINER CANNOT BE REUSED - THE COMPLETELY EMPTIED CONTAINER MUST NOT BE DISPOSED INTO THE ENVIRONMENT</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>PRIMA DELL'USO LEGGERE"ÌL F OGLIO ILLUSTRATIVO - IL CONTENITORE NON PUÒ ESSERE RIUTILIZZATO -IL CONTENITORE COMPLETAMENTE SVUOTATO NON DEVE ESSERE DISPERSO NEU'AMBIENTE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>READ THE INSTRUCTION LEAFLET BEFORE USE - THE CONTAINER CANNOT BE REUSED -THE COMPLETELY EMPTIED CONTAINER MUST NOT BE DISPOSED INTO THE ENVIRONMENT</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Prodotti Chimici per l'Agricoltura Milano S.p.A.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Prodotti Chimici per l'Agricoltura Milano S.p.A. [Chemical Products for Agriculture Milan Joint-stock company]</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Prodotti fitosanitari a base della sostanza attiva captano ri-registrati alla luce dei principi uniformi sulla base del dossier CAPTAN 80 WG di All.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Plant protection products based on the active substance captan re-registered in accordance with the uniform principles based on the CAPTAN 80 WG dossier of Annex III.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Provoca gravi lesioni oculari (H318), Sospettato di provocare il cancro (H351), Molto tossico per gli organismi acquatici con effetti di lunga durata (H410).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Causes serious eye damage (H318), Suspected of causing cancer (H351), Very toxic to aquatic life with long-lasting effects (H410).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Può provocare ; lungo termine effetti negativi per l'ambiente acquatico</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>May cause long-term adverse effects on the aquatic environment</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Può provocare una reazione allergica cutanea (H317).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>May cause an allergic skin reaction (H317).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>raccolta</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>harvest</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Registrazione Ministero delia Sanità n. 8284 del 04/05/1993</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Ministry of Health registration No. 8284 of 04/05/1993</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Ri-registrazione di prodotti fitosanitari, a base di captano, sulla base del dossier CAPTAN 80 WG di Allegato III, alla luce dei principi uniformi per la valutazione e l’autorizzazione dei prodotti fitosanitari, ai sensi del regolamento (CE) n. 546/2011.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Re-registration of captan-based plant protection products, on the basis of the CAPTAN 80 WG dossier of Annex III, in accordance with the uniform principles for the evaluation and authorization of plant protection products, pursuant to Regulation (EC) no. 546/2011.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>RITENUTO di ri-registrare fino al 30 settembre 2017, data di scadenza dell’approvazione della sostanza attiva captano, i prodotti fitosanitari indicati in allegato al presente decreto, alle condizioni definite dalla valutazione secondo i principi uniformi di cui all’allegato VI del regolamento (CE) n. 546/2011, sulla base del dossier conforme ai requisiti di cui all’allegato III del citato decreto legislativo 194/1995, trasposti nel Reg.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>CONSIDERED to re-register until 30 September 2017, expiry date of the approval of the active substance captan, the plant protection products listed in the annex to this decree, under the conditions defined by the evaluation according to the uniform principles referred to in Annex VI of the regulation (EC) no. 546/2011, based on the dossier compliant with the requirements set out in Annex III of the aforementioned Legislative Decree 194/1995, transposed into Reg.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Roma li, 08 OTT.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Rome, 08 OCT.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>SANTHANE DF - Composizione</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>SANTHANE DF - Composition</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>SANTHANE DF è un fungicida ad azione preventiva, quindi la prima applicazione deve essere fatta subito prima che compaia la maialila, con applicazioni ripetute agli intervalli raccomandati per garantire l’opportuna protezione,</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>SANTHANE DF is a fungicide with preventive action, so the first application must be done immediately before the appearance of swine, with repeated applications at recommended intervals to ensure proper protection,</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>SCAM S.p.A.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>SCAM S.p.A.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Sciacquare accuratamente per parecchi minuti - P308+P313 IN CASO di esposizione o di possibile esposizione, consultare un medico - P405 Conservare sotto chiave - P501 Smaltire il prodotto/recipiente in conformità alla regolamentazione nazionali vigente</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Rinse thoroughly for several minutes - P308+P313 IN CASE of exposure or possible exposure, consult a doctor - P405 Store locked up - P501 Dispose of the product/container in accordance with currently applicable national regulations</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Sciacquare accuratamente per parecchi minuti Togliere le eventuali lenti a contatto se e agevole farlo.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Rinse thoroughly for several minutes. Remove any contact lenses if it is easy to do so.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Serie generale - n. 258</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>General Series - No. 258</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Sintomi: irritante per cute e mucose (congiuntiviti, rinofaringiti) con fotosehsibilizzazione e resistenza a terapia; irritazione gastrp intestinale (bruciori gastroesofagei, anoressia, vomito, diarrea); interessamento dell'apparato cardiocircolatorio (ipotensione, cianosi, aritmia); interessamento del SNCcon irritabilità o depressione; possibili anemia e nefropatia (ematuria, proteinuria, urobilinogeno nelle urine).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Symptoms: irritant to skin and mucous membranes (conjunctivitis, rhinopharyngitis) with photosensitivity and resistance to therapy; gastrointestinal irritation (heartburn, anorexia, vomiting, diarrhea); involvement of the cardiovascular system (hypotension, cyanosis, arrhythmia); involvement of the CNS with irritability or depression; possible anemia and nephropathy (hematuria, proteinuria, urobilinogen in urine).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>SIPCAM S.p.A,- Salerano sul Lambro (LO)</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>SIPCAM S.p.A,- Salerano sul Lambro (LO)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>SIPCAM Soc.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>SIPCAM Soc.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Smaltire il prodotto/recipiente in conformità alla regolamentazione nazionali vigente (P501).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Dispose of the product/container in accordance with the currently applicable national regulations (P501).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Smaltire le confezioni secondo le norme vigenti</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Dispose of packages according to the currently applicable regulations</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Sono approvate quale parte integrante del presente decreto le etichette allegate.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>The attached labels are approved as an integral part of this decree.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Sono autorizzate le modifiche di composizione in adeguamento a quella del prodotto di riferimento nonché le modifiche indicate per ciascun prodotto fitosanitario riportate in allegato al presente decreto.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Changes to the composition are authorized to be adapted to that of the reference product, just as the changes indicated for each plant protection product listed in the annex to this decree.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Sono ri-registrati fino al 30 settembre 2017, data di scadenza dell’approvazione della sostanza attiva captano, i prodotti fitosanitari indicati in allegato al presente decreto registrati al numero, alla data e a nome dell’impresa a fianco indicata, autorizzati con la nuova composizione, alle condizioni e sulle colture indicate nelle rispettive etichette allegate al presente decreto, fissate in applicazione dei principi uniformi.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>The plant protection products indicated in the annex to this decree registered under the number, on the date and in the name of the company indicated alongside, authorized with the new composition, are re-registered until 30 September 2017, the expiry date of the approval of the active substance captan, under the conditions and on the crops indicated in the respective labels attached to this decree, established in application of the uniform principles.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Susine</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Plums</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Taglie: g 100</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Sizes: 100 g</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Terapia Sintomatica, Avvertenza:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Symptomatic Therapy, Warning:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Ticchiolatura ( Centuria inaequalis j.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Apple Scab (Venturia inaequalis)</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Ticchiolatura ( Ventuno inaequalis), Monilia (Monilia sp).</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Apple scab (Venturia inaequalis), Monilia (Monilia sp).</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>TITOLARE DELLA REGISTRAZIONE</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>REGISTRATION HOLDER</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>UFFICIO VII - Prodotti Fitosanitari</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>OFFICE VII - Plant Protection Products</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Usare contenitori adeguati per evitare l'inquinamento ambientale</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Use appropriate containers to avoid environmental pollution</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Usare indumenti protettivi e guanti adatti e proteggersi gli occhi/la faccia.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Wear protective clothing and suitable gloves and protect the eyes/face.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Usare sofo acqua pulita.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Use only clean water.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Utilizzare solo in luogo ben ventilato.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Use only in a well-ventilated place.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>Via Carroccio 8 - 20123 Milano</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>Via Carroccio 8 - 20123 Milan</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTA la dichiarazione di responsabilità dell’Impresa titolare, attestante che l’adeguamento della classificazione dei prodotti fitosanitari riportati in allegato al presente decreto, non comporta la preventiva valutazione dell’ISS, secondo la procedura definita nel suindicato comunicato;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the declaration of responsibility of the owner company, certifying that the adaptation of the classification of the plant protection products listed in the annex to this decree does not require the prior evaluation of the ISS, according to the procedure defined in the aforementioned announcement;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTA la direttiva 1999/45/CE del Parlamento europeo e del Consiglio del 31 maggio 1999, concernente il ravvicinamento delle disposizioni legislative, regolamentari ed amministrative degli Stati membri relative alla classificazione, all’imballaggio e all’etichettatura dei preparati pericolosi, e successive modifiche, per la parte ancora vigente;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to Directive 1999/45/EC of the European Parliament and the Council of 31 May 1999, concerning the approximation of the legislative, regulatory and administrative provisions of the Member States relating to the classification, packaging and labeling of hazardous preparations, and subsequent amendments , for the part still in force;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTA la legge 13 novembre 2009 n. 172 concernente “Istituzione del Ministero della salute e incremento del numero complessivo dei Sottosegretari di Stato” e successive modifiche;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the law of 13 November 2009 no. 172 concerning "Establishment of the Ministry of Health and increase in the total number of Undersecretaries of State" and subsequent amendments;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTA la legge 30 aprile 1962, n. 283, concernente “Modifica degli articoli 242, 243, 247, 250 e 262 del testo unico delle leggi sanitarie, approvato con regio decreto 27 luglio 1934, n. 1265:</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the law of 30 April 1962, no. 283, concerning “Amendment of articles 242, 243, 247, 250 and 262 of the consolidated text of health laws, approved by royal decree of 27 July 1934, no. 1265:</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTA la nota dell'Ufficio protocollo n° 13523 in data 04/04/2014 con la quale è stata richiesta all’impresa Arysta Lifescience S.A.S. titolare del dossier la documentazione ed i dati tecnico - scientifici aggiuntivi indicati dal sopracitato Istituto da presentarsi rispettivamente entro sei, dodici e ventiquattro mesi dalla data della medesima;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the note from the Protocol Office no. 13523 dated 04/04/2014 by which the company Arysta Lifescience S.A.S., holder of the dossier, was requested to submit the documentation and additional techno-scientific data indicated by the aforementioned Institute respectively within six, twelve and twenty-four months from the date of the same;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTE le istanze presentate dall’impresa titolare volte ad ottenere la ri-registrazione secondo i principi uniformi dei prodotti fitosanitari riportati nell’allegato al presente decreto, sulla base del dossier relativo al prodotto fitosanitario di riferimento CAPTAN ARVESTA 80 WG, presentato dall’impresa Arysta Lifescience S.A.S., conforme ai requisiti di cui all’allegato III del citato decreto legislativo 194/1995, trasposti nel Reg.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the applications submitted by the registration-holding company aimed at obtaining re-registration according to the uniform principles of the plant protection products listed in the annex to this decree, on the basis of the dossier relating to the reference plant protection product CAPTAN ARVESTA 80 WG, submitted by the company Arysta Lifescience S.A.S., compliant with the requirements set out in Annex III of the aforementioned Legislative Decree 194/1995, transposed into Reg.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTE le note con le quali l’impresa titolare delle registrazioni dei prodotti fitosanitari riportati nell’allegato al presente decreto, ha ottemperato a quanto richiesto daH'Ufficio;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the notes with which the company holding the registrations of the plant protection products listed in the annex to this decree has complied with the requirements of the Office;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTI i decreti di autorizzazione all’immissione in commercio e all’impiego dei prodotti fitosanitari riportati nell’allegato al presente decreto;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the decrees authorizing the marketing and the use of plant protection products listed in the annex to this decree;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il comunicato del 14 gennaio 2014, relativo all’applicazione del regolamento (CE) n. 1272/2008 in materia di classificazione, etichettatura e imballaggio delle sostanze e delle miscele;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the announcement of 14 January 2014, relating to the application of Regulation (EC) no. 1272/2008 regarding classification, labeling and packaging of substances and mixtures;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il decreto del Presidente del Consiglio dei Ministri 11 febbraio 2014, n. 59 concernente “Regolamento di organizzazione del Ministero della salute”, ed in particolare l’art. 19, recante “Disposizioni transitorie e finali”;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the decree of the President of the Council of Ministers of 11 February 2014, no. 59 concerning "Regulations on the organization of the Ministry of Health", and in particular art. 19, containing "Transitional and final provisions";</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il decreto del Presidente della Repubblica 23 aprile 2001, n. 290 concernente “Regolamento di semplificazione dei procedimenti di autorizzazione alla produzione, all’immissione in commercio e alla vendita di prodotti fitosanitari e relativi coadiuvanti”, e successive modifiche;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the decree of the President of the Republic of 23 April 2001, no. 290 concerning "Regulation for the simplification of authorization procedures for  production, marketing and sale of plant protection products and related adjuvants", and subsequent amendments;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il decreto del Presidente della Repubblica 28 marzo 2013, n. 44, concernente “Regolamento recante il riordino degli organi collegiali ed altri organismi operanti presso il Ministero della salute, ai sensi dell’articolo 2, comma 4, della legge 4 novembre 2010, n. 183”;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the decree of the President of the Republic of 28 March 2013, No. 44, concerning "Regulations for reorganizing collegial bodies and other bodies operating in the Ministry of Health, pursuant to Article 2, paragraph 4, of the law of 4 November 2010, No. 183";</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il decreto legislativo 14 marzo 2003, n. 65, concernente “Attuazione delle direttive 1999/45/CE e 2001/60/CE relative alla classificazione, all’imballaggio e all’etichettatura dei preparati pericolosi”, e successive modifiche;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the Legislative Decree of 14 March 2003, no. 65, on "Implementation of Directives 1999/45/EC and 2001/60/EC relating to the classification, packaging, and labeling of hazardous preparations," and subsequent amendments;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il decreto legislativo 17 marzo 1995, n. 194, concernente “Attuazione della direttiva 91/414/CEE in materia di immissione in commercio di prodotti fitosanitari”, e successive modifiche;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the Legislative Decree of 17 March 1995, No. 194, on "Implementation of Directive 91/414/EEC on the marketing of plant protection products," and subsequent modifications;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il decreto legislativo 31 marzo 1998 n. 112, concernente “Conferimento di funzioni e compitiamministrativi dello Stato alle regioni ed agli enti locali, in attuazione del capo I della legge 15 marzo 1997, n. 59”, convertito con modificazioni dalla legge 6 agosto 2008, n. 133, e successive modifiche, ed in particolare gli articoli 115 recante “Ripartizione delle competenze” e l’articolo 119 recante “Autorizzazioni”;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the Legislative Decree of 31 March 1998 no. 112, on "Delegation of functions and administrative tasks of the State to the regions and local authorities, in implementation of chapter I of the law of 15 March 1997, no. 59," converted with amendments by the law of 6 August 2008, no. 133, and subsequent amendments, and in particular Article 115 concerning "Division of competences" and Article 119 concerning "Authorizations";</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il decreto ministeriale 26 aprile 2007 di recepimento della direttiva 2007/5/CE della Commissione del 7/02/2007, relativo all’iscrizione nell’allegato I del decreto legislativo 17 marzo 1995, n. 194, di alcune sostanze attive che ora figurano nei Reg.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the ministerial decree of 26 April 2007 implementing Commission Directive 2007/5/EC of 07/02/2007, relating to the entry in Annex I of Legislative Decree of 17 March 1995, no. 194, of certain active substances that now appear in the Reg.</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il regolamento (CE) n. 1107/2009 del Parlamento europeo e del Consiglio del 21 ottobre 2009 relativo all’immissione sul mercato dei prodotti fitosanitari e che abroga le direttive del Consiglio 79/117/CEE e 91/414/CEE, e successivi regolamenti di attuazione e/o modifica; ed in particolare l’articolo 80 concernente “Misure transitorie”;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the Regulation (EC) No. 1107/2009 of the European Parliament and of the Council of 21 October 2009 on the marketing of plant protection products and repealing Council Directives 79/117/EEC and 91/414/EEC, and subsequently implementing and/or amending regulations; particularly Article 80 concerning "Transitional measures";</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il regolamento (CE) n. 1272/2008 del Parlamento Europeo e del Consiglio del 16 dicembre 2008 relativo alla classificazione, all’etichettatura e alPimballaggio delle sostanze e delle miscele che modifica e abroga le direttive 67/548/CEE e 1999/45/CE e che reca modifica al regolamento (CE) n. 1907/2006, e successive modifiche;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the Regulation (EC) No. 1272/2008 of the European Parliament and of the Council of 16 December 2008 on the classification, labeling, and packaging of substances and mixtures, amending and repealing Directives 67/548/EEC and 1999/45/EC, and amending Regulation (EC) No. 1907/2006, and subsequent amendments;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il regolamento (CE) n. 396/2005 del Parlamento Europeo e del Consiglio del 23 febbraio 2005 concernente i livelli massimi di residui di antiparassitari nei o sui prodotti alimentari e mangimi di origine vegetale e animale e che modifica la direttiva 91/414/CEE del Consiglio, e successive modifiche;</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the Regulation (EC) No. 396/2005 of the European Parliament and of the Council of 23 February 2005, on maximum levels of pesticide residues in or on food and feed of plant and animal origin and amending the Council Directive 91/414/EEC, and subsequent amendments;</seg>
+</tuv>
+</tu>
+<tu changedate="2024012T131121Z" changeid="VPKW" creationdate="2024012T131121Z" creationid="VPKW" lastusagedate="2024012T131121Z">
+<tuv xml:lang="IT">
+<seg>VISTO il versamento effettuato ai sensi del decreto ministeriale 28 settembre 2012 concernente “Rideterminazione delle tariffe relative all’immissione in commercio dei prodotti fìtosanitari a copertura delle prestazioni sostenute e rese a richiesta, in attuazione del Regolamento (CE) 1107/2009 del parlemento del Consiglio”.</seg>
+</tuv>
+<tuv xml:lang="EN-US">
+<seg>HAVING REGARD to the payment made pursuant to the Ministerial Decree of 28 September 2012, on "Redetermination of fees related to the marketing of plant protection products to cover the services provided and rendered upon request, in implementation of the Regulation (EC) 1107/2009 of the Parliament and of the Council”.</seg>
+</tuv>
+</tu>
+</body>
+</tmx>

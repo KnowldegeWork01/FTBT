@@ -10,7 +10,9 @@ const socketIo = require("socket.io");
 const chatRoute = require("./Routes/Chat");
 const Projects = require("./Routes/Projects");
 const login = require("./Routes/login");
+const fileUpload = require("./Routes/file_Upload");
 const server = http.createServer(app);
+const path = require("path");
 
 const io = socketIo(server, {
   cors: {
@@ -46,27 +48,16 @@ const PORT = process.env.PORT || 8000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
-// app.post("/api/filenames", async (req, res) => {
-//   try {
-//     const { _id, filename } = req.body;
-//     const user = await userSchema.findById(_id);
-//     if (!user) {
-//       return res.status(404).json({ error: "User not found" });
-//     }
-//     user.filename = filename;
-//     await user.save();
-//     res.status(200).json({ message: "Filename updated successfully" });
-//   } catch (error) {
-//     console.error("Error updating filename:", error);
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
-
-// Use the chat route
+// Use the route
 app.use("/api/chat", chatRoute);
 app.use("/api", login);
 app.use("/api", Projects);
+app.use("/api",fileUpload)
+
+// Serve static files from the 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Set the io object on the app
 app.set("io", io);

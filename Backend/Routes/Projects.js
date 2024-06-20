@@ -2,60 +2,62 @@ const express = require("express");
 const router = express.Router();
 const Project = require("../models/Project.js");
 const User = require("../models/Schema.js");
-const upload = require("../file_upload/upload.js");
 
-router.post(
-  "/projects",
-  upload.fields([
-    { name: "sourceUpload", maxCount: 1 },
-    { name: "tmxUpload", maxCount: 1 },
-  ]),
-  async (req, res) => {
-    try {
-      const { projectName, email, tmxUpload, sourceUpload } = req.body;
-
-      if (!email) {
-        return res.status(400).json({
-          error: "Email not found in localStorage",
-          details: "User email is required to create a project",
-        });
-      }
-
-      const user = await User.findOne({ email });
-      if (!user) {
-        return res.status(404).json({
-          error: "User not found",
-          details: `User with email ${email} not found`,
-        });
-      }
-
-      const newProject = new Project({
-        projectName,
-        userId: user._id,
-        status: "Created",
-        sourceUpload,
-        tmxUpload,
-        email,
+router.post("/projects", async (req, res) => {
+  try {
+    const { projectName, email, tmxUpload, sourceUpload } = req.body;
+    if (!email) {
+      return res.status(400).json({
+        error: "Email not found in localStorage",
+        details: "User email is required to create a project",
       });
-
-      const savedProject = await newProject.save();
-      res.status(201).json(savedProject);
-    } catch (error) {
-      res
-        .status(500)
-        .json({ error: "Error Creating Project", details: error.message });
     }
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({
+        error: "User not found",
+        details: `User with email ${email} not found`,
+      });
+    }
+    const newProject = new Project({
+      projectName,
+      userId: user._id,
+      status: "Created",
+      sourceUpload:[],
+      tmxUpload:[],
+      email,
+    });
+    const savedProject = await newProject.save();
+    res.status(201).json(savedProject);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Error Creating Project", details: error.message });
   }
-);
+});
 
 router.get("/projects", async (req, res) => {
   try {
-    const projects = await Project.find();
+    const { email } = req.query;
+    if (!email) {
+      return res.status(400).json({
+        error: "Email not provided",
+        details: "User email is required to fetch projects",
+      });
+    }
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({
+        error: "User not found",
+        details: `User with email ${email} not found`,
+      });
+    }
+    const projects = await Project.find({ userId: user._id });
     res.status(200).json(projects);
   } catch (error) {
     res
       .status(500)
-      .json({ error: "Error fetching Projects", details: error.message });
+      .json({ error: "Error fetching projects", details: error.message });
   }
 });
 

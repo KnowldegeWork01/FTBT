@@ -18,14 +18,16 @@ import {
   Slide,
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import "./CSS/Component.css"
 import MuiAlert from "@mui/material/Alert";
 import { MdDelete } from "react-icons/md";
 import { FaRegSave } from "react-icons/fa";
 import axios from "axios";
+import { MdOutlinePeople } from "react-icons/md";
 
 const MyComponent = () => {
   const [projectName, setProjectName] = useState("");
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -35,7 +37,10 @@ const MyComponent = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/projects");
+      const email = localStorage.getItem("email");
+      const response = await axios.get("http://localhost:8000/api/projects", {
+        params: { email },
+      });
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -50,7 +55,7 @@ const MyComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (projectName === "") {
-      setErrorMessage("Please enter a project name.");
+      setErrorMessage("Please enter a project name");
       setOpenSnackbar(true);
       return;
     }
@@ -61,15 +66,12 @@ const MyComponent = () => {
       return;
     }
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/projects",
-        {
-          projectName: projectName,
-          email: email,
-          sourceUpload: "",
-          tmxUpload: "",
-        }
-      );
+      const response = await axios.post("http://localhost:8000/api/projects", {
+        projectName: projectName,
+        email: email,
+        sourceUpload: "",
+        tmxUpload: "",
+      });
       setProjects([...projects, response.data]);
       setProjectName("");
     } catch (error) {
@@ -95,7 +97,7 @@ const MyComponent = () => {
       await axios.delete(
         `http://localhost:8000/api/projects/${projects[index]._id}`
       );
-      const updatedProjects = projects.filter((project, i) => i !== index);
+      const updatedProjects = projects?.filter((project, i) => i !== index);
       setProjects(updatedProjects);
     } catch (error) {
       console.error("Error deleting project:", error);
@@ -105,10 +107,8 @@ const MyComponent = () => {
   const handleSourceUploadChange = async (e, index) => {
     const file = e.target.files[0];
     if (!file) return;
-
     const formData = new FormData();
     formData.append("sourceUpload", file);
-
     try {
       const response = await axios.post(
         `http://localhost:8000/api/projects/${projects[index]._id}/upload-source`,
@@ -116,7 +116,7 @@ const MyComponent = () => {
         { headers: { "Content-Type": "multipart/form-data" } }
       );
       const updatedProjects = [...projects];
-      updatedProjects[index].sourceUpload = response.data.fileName;
+      updatedProjects[index].sourceUpload = response?.data?.fileName;
       setProjects(updatedProjects);
     } catch (error) {
       console.error("Error uploading source file:", error);
@@ -135,7 +135,7 @@ const MyComponent = () => {
         { headers: { "Content-Type": "multipart/form-data" } }
       );
       const updatedProjects = [...projects];
-      updatedProjects[index].tmxUpload = response.data.fileName;
+      updatedProjects[index].tmxUpload = response?.data?.files;
       setProjects(updatedProjects);
     } catch (error) {
       console.error("Error uploading TMX file:", error);
@@ -147,12 +147,15 @@ const MyComponent = () => {
       <div style={{ margin: "2rem" }}>
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Project Name..."
+            label="Enter Project Name..."
             variant="outlined"
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
           />
-          <Button type="submit" style={{ fontSize: "2rem" }}>
+          <Button
+            type="submit"
+            style={{ fontSize: "2.4rem", margin: "0.2rem" }}
+          >
             <FaRegSave />
           </Button>
         </form>
@@ -166,7 +169,6 @@ const MyComponent = () => {
                   style={{
                     fontWeight: "bold",
                     fontSize: "1rem",
-                    width: "20%",
                   }}
                 >
                   S.NO.
@@ -216,10 +218,19 @@ const MyComponent = () => {
                 >
                   TMX
                 </TableCell>
+                <TableCell
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                    width: "20%",
+                  }}
+                >
+                  Actions
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody style={{}}>
-              {projects.map((project, index) => (
+              {projects?.map((project, index) => (
                 <TableRow key={index}>
                   <TableCell style={{ fontSize: "1.2rem" }}>
                     [{index + 1}]
@@ -233,7 +244,7 @@ const MyComponent = () => {
                   <TableCell style={{ fontSize: "1.2rem" }}>
                     <Select
                       value={project.status}
-                      style={{width:"45%"}}
+                      style={{ width: "45%" }}
                       onChange={(e) =>
                         handleStatusChange(index, e.target.value)
                       }
@@ -265,7 +276,7 @@ const MyComponent = () => {
                       </label>
                       <Typography variant="body1">
                         {project.sourceUpload
-                          ? project.sourceUpload
+                          ? project.sourceUpload.length + " "+ "Files"
                           : "No file chosen"}
                       </Typography>
                     </Box>
@@ -286,11 +297,16 @@ const MyComponent = () => {
                       </label>
                       <Typography variant="body1">
                         {project.tmxUpload
-                          ? project.tmxUpload
+                          ? project.tmxUpload.length + " "+ "Files"
                           : "No file chosen"}
                       </Typography>
                     </Box>
                   </TableCell>
+                  <TableCell>
+      <Box display="flex" alignItems="center" paddingRight="5rem" className="icon-container">
+        <MdOutlinePeople className="icon" />
+      </Box>
+    </TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -39,3 +39,43 @@
   text-align: left;
   vertical-align: top;
 }
+
+.icon-container {
+  position: relative;
+  width: fit-content; /* Adjust width as needed */
+}
+
+.icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Add smooth transition for transform */
+}
+
+.icon:hover {
+  transform: scale(1.2); 
+}
+
+.icon-container:hover::before {
+  position: absolute;
+  top: -1.5rem; /* Adjust top position */
+  left: calc(100% + 1rem); /* Adjust left position */
+  background-color: rgba(0, 0, 0, 0.8); /* Background color of the tooltip */
+  color: white; /* Text color of the tooltip */
+  padding: 0.5rem; /* Padding around the tooltip text */
+  border-radius: 0.5rem; /* Rounded corners of the tooltip */
+  font-size: 1rem; /* Font size of the tooltip text */
+  white-space: nowrap; /* Prevent tooltip from wrapping */
+}
+
+.icon-container:hover::after {
+  content: '';
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 100%; /* Position on the right of the icon */
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  width: 1.5rem; 
+  height: 1.5rem; 
+  background-color: rgba(0, 0, 0, 0.8); /* Background color of the circle */
+  border-radius: 50%; /* Make it a circle */
+  z-index: -1; /* Behind the icon */
+}

@@ -21,10 +21,10 @@ const projectSchema = new Schema({
     default: 'Created',
   },
   sourceUpload: {
-    type: String,
+    type: [String],
   },
   tmxUpload: {
-    type: String,
+    type: [String],
   },
 }, { timestamps: true });
 
