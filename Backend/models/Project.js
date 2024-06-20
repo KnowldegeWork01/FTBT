@@ -11,14 +11,14 @@ const projectSchema = new Schema({
     ref: 'User', 
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-  },
+  // email: {
+  //   type: String,
+  //   required: true,
+  // },
   status: {
     type: String,
-    enum: ['Created', 'Pending', 'Completed'],
-    default: 'Created',
+    enum: ['init', 'In Progress', 'Completed'],
+    default: 'init',
   },
   sourceUpload: {
     type: [String],
@@ -26,6 +26,13 @@ const projectSchema = new Schema({
   tmxUpload: {
     type: [String],
   },
+  targetLanguage: {
+    type: [String],required: true,
+  },
+  sourceLanguage:{
+    type: String,
+    required: true,
+  }
 }, { timestamps: true });
 
 const Project = mongoose.model('Project', projectSchema);

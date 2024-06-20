@@ -16,29 +16,36 @@ import {
   Box,
   Snackbar,
   Slide,
+  Drawer,
+  AppBar,
+  Toolbar,
+  IconButton as MUIButton,
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import "./CSS/Component.css"
 import MuiAlert from "@mui/material/Alert";
-import { MdDelete } from "react-icons/md";
-import { FaRegSave } from "react-icons/fa";
+import { MdDelete, MdOutlinePeople } from "react-icons/md";
+import { GoPlus } from "react-icons/go";
 import axios from "axios";
-import { MdOutlinePeople } from "react-icons/md";
+import CloseIcon from "@mui/icons-material/Close";
+import "./CSS/Component.css";
 
 const MyComponent = () => {
   const [projectName, setProjectName] = useState("");
   const [projects, setProjects] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [language, setLanguage] = useState([]);
+  const [sourceLanguage, setSourceLanguage] = useState("");
+  const [targetLanguage, setTargetLanguage] = useState([]);
+  const [clientName, setClientName] = useState("");
   useEffect(() => {
     fetchProjects();
+    fetchLanguage();
   }, []);
 
   const fetchProjects = async () => {
     try {
       const email = localStorage.getItem("email");
-      const response = await axios.get("http://localhost:8000/api/projects", {
+      const response = await axios.get("http://localhost:8000/api/Projects", {
         params: { email },
       });
       setProjects(response.data);
@@ -46,12 +53,28 @@ const MyComponent = () => {
       console.error("Error fetching projects:", error);
     }
   };
-  const handleCloseSnackbar = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
+  const fetchLanguage = async () => {
+    try {
+      const languageData = await fetch("http://localhost:8000/language", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("email"),
+        },
+      });
+      const json = await languageData.json();
+      setLanguage(json);
+    } catch (err) {
+      console.log(err);
     }
-    setOpenSnackbar(false);
   };
+
+  // const handleCloseSnackbar = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+  //   setOpenSnackbar(false);
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (projectName === "") {
@@ -69,15 +92,35 @@ const MyComponent = () => {
       const response = await axios.post("http://localhost:8000/api/projects", {
         projectName: projectName,
         email: email,
-        sourceUpload: "",
-        tmxUpload: "",
+        sourceUpload: [],
+        tmxUpload: [],
       });
       setProjects([...projects, response.data]);
       setProjectName("");
+      setIsDrawerOpen(false); // Close the drawer after submission
     } catch (error) {
       console.error("Error creating project:", error);
     }
   };
+  const handleCreateProject = async () => {
+    const email = localStorage.getItem("email");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/createProject",
+        {
+          projectName: clientName + Date.now(),
+          email: email,
+          sourceLanguage,
+          targetLanguage,
+        }
+      );
+      console.log("Project created:", response.data);
+    } catch (error) {
+      console.error("Error creating project:", error);
+    }
+  };
+
   const handleStatusChange = async (index, newStatus) => {
     try {
       const updatedProject = { ...projects[index], status: newStatus };
@@ -92,12 +135,13 @@ const MyComponent = () => {
       console.error("Error updating project:", error);
     }
   };
+
   const handleDelete = async (index) => {
     try {
       await axios.delete(
         `http://localhost:8000/api/projects/${projects[index]._id}`
       );
-      const updatedProjects = projects?.filter((project, i) => i !== index);
+      const updatedProjects = projects?.filter((_, i) => i !== index);
       setProjects(updatedProjects);
     } catch (error) {
       console.error("Error deleting project:", error);
@@ -124,10 +168,10 @@ const MyComponent = () => {
   };
 
   const handleTmxUploadChange = async (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
     const formData = new FormData();
-    formData.append("tmxUpload", file);
+    files.forEach((file) => formData.append("tmxUpload", file));
     try {
       const response = await axios.post(
         `http://localhost:8000/api/projects/${projects[index]._id}/upload-tmx`,
@@ -138,128 +182,168 @@ const MyComponent = () => {
       updatedProjects[index].tmxUpload = response?.data?.files;
       setProjects(updatedProjects);
     } catch (error) {
-      console.error("Error uploading TMX file:", error);
+      console.error("Error uploading TMX files:", error);
     }
   };
 
+  const toggleDrawer = (isOpen) => () => {
+    setIsDrawerOpen(isOpen);
+  };
   return (
     <>
       <div style={{ margin: "2rem" }}>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Enter Project Name..."
-            variant="outlined"
-            value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
-          />
-          <Button
-            type="submit"
-            style={{ fontSize: "2.4rem", margin: "0.2rem" }}
+        <Box>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", justifyContent: "end" }}
           >
-            <FaRegSave />
-          </Button>
-        </form>
+            <TextField
+              label="Enter Project Name..."
+              variant="outlined"
+              value={projectName}
+              onChange={(e) => setProjectName(e.target.value)}
+            />
+            <Button
+              type="button"
+              style={{ fontSize: "2.5rem", color: "black" }}
+              onClick={toggleDrawer(true)}
+            >
+              <GoPlus />
+            </Button>
+          </form>
+        </Box>
       </div>
+      <Drawer
+        anchor="right"
+        open={isDrawerOpen}
+        onClose={toggleDrawer(false)}
+        PaperProps={{ style: { width: "40%" } }}
+      >
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1 }}>
+              Add New Project
+            </Typography>
+            <MUIButton edge="end" color="inherit" onClick={toggleDrawer(false)}>
+              <CloseIcon />
+            </MUIButton>
+          </Toolbar>
+        </AppBar>
+        <div
+          style={{
+            margin: "70px 22px 0px 20px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
+            Client Name<span style={{ color: "red" }}>*</span>
+          </span>
+          <span>
+            <TextField
+              name="fullName"
+              variant="standard"
+              placeholder="Full Name"
+              onChange={(e) => setClientName(e.target.value)}
+              sx={{ width: "350px" }}
+            />
+          </span>
+        </div>
+        <div
+          style={{
+            margin: "70px 22px 0px 20px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
+            Source Language<span style={{ color: "red" }}>*</span>
+          </span>
+          <span>
+            <select
+              value={sourceLanguage}
+              onChange={(e) => setSourceLanguage(e.target.value)}
+              style={{ width: "200px" }}
+            >
+              <option value="" disabled>
+                Select Language
+              </option>
+              {language.map((lang) => (
+                <option key={lang._id} value={lang.languageName}>
+                  {lang.languageName}
+                </option>
+              ))}
+            </select>
+          </span>
+        </div>
+        <div
+          style={{
+            margin: "70px 22px 0px 20px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
+            target Language<span style={{ color: "red" }}>*</span>
+          </span>
+          <span>
+            <select
+              value={targetLanguage}
+              onChange={(e) => {
+                const updatedLanguages = [...targetLanguage]; // Create a copy of the targetLanguage array
+                updatedLanguages[0] = e.target.value; // Update the language at the specified index
+                setTargetLanguage(updatedLanguages); // Set the updated array to state
+              }}
+              // onChange={(e) => setTargetLanguage(e.target.value)}
+              style={{ width: "200px" }}
+            >
+              <option value="" disabled>
+                Select Language
+              </option>
+              {language.map((lang) => (
+                <option key={lang._id} value={lang.languageName}>
+                  {lang.languageName}
+                </option>
+              ))}
+            </select>
+          </span>
+        </div>
+        <Button onClick={handleCreateProject}>Save</Button>
+      </Drawer>
       <div>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                  }}
-                >
-                  S.NO.
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    width: "20%",
-                  }}
-                >
-                  Project Name
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    width: "20%",
-                  }}
-                >
-                  Status
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    width: "20%",
-                  }}
-                >
-                  Action
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    width: "20%",
-                  }}
-                >
-                  Source
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    width: "20%",
-                  }}
-                >
-                  TMX
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    width: "20%",
-                  }}
-                >
-                  Actions
-                </TableCell>
+                {["Project Name", "Status", "Source", "TMX", "Actions"].map(
+                  (header, index) => (
+                    <TableCell
+                      key={index}
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "1rem",
+                        width: "20%",
+                      }}
+                    >
+                      {header}
+                    </TableCell>
+                  )
+                )}
               </TableRow>
             </TableHead>
-            <TableBody style={{}}>
+            <TableBody>
               {projects?.map((project, index) => (
                 <TableRow key={index}>
-                  <TableCell style={{ fontSize: "1.2rem" }}>
-                    [{index + 1}]
-                  </TableCell>
                   <TableCell style={{ fontSize: "1.2rem" }}>
                     {project.projectName}
                   </TableCell>
                   <TableCell style={{ fontSize: "1.2rem" }}>
                     {project.status}
                   </TableCell>
-                  <TableCell style={{ fontSize: "1.2rem" }}>
-                    <Select
-                      value={project.status}
-                      style={{ width: "45%" }}
-                      onChange={(e) =>
-                        handleStatusChange(index, e.target.value)
-                      }
-                    >
-                      <MenuItem value="Created">Created</MenuItem>
-                      <MenuItem value="Pending">Pending</MenuItem>
-                      <MenuItem value="Completed">Completed</MenuItem>
-                    </Select>
-                    <Button
-                      onClick={() => handleDelete(index)}
-                      style={{ fontSize: "2rem" }}
-                    >
-                      <MdDelete />
-                    </Button>
-                  </TableCell>
+
                   <TableCell>
                     <Box display="flex" alignItems="center">
                       <input
@@ -276,18 +360,19 @@ const MyComponent = () => {
                       </label>
                       <Typography variant="body1">
                         {project.sourceUpload
-                          ? project.sourceUpload.length + " "+ "Files"
+                          ? `${project.sourceUpload.length} Files`
                           : "No file chosen"}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    <Box display="flex" alignItems="center" paddingRight="5rem">
+                    <Box display="flex" alignItems="center">
                       <input
                         id={`tmx-file-input-${index}`}
                         type="file"
                         accept=".tmx"
                         onChange={(e) => handleTmxUploadChange(e, index)}
+                        multiple
                         style={{ display: "none" }}
                       />
                       <label htmlFor={`tmx-file-input-${index}`}>
@@ -297,39 +382,45 @@ const MyComponent = () => {
                       </label>
                       <Typography variant="body1">
                         {project.tmxUpload
-                          ? project.tmxUpload.length + " "+ "Files"
+                          ? `${project.tmxUpload.length} Files`
                           : "No file chosen"}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-      <Box display="flex" alignItems="center" paddingRight="5rem" className="icon-container">
-        <MdOutlinePeople className="icon" />
-      </Box>
-    </TableCell>
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      paddingRight="5rem"
+                      className="icon-container"
+                    >
+                      <MdOutlinePeople className="icon" />
+                    </Box>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </div>
-      <Snackbar
+      {/* <Snackbar
         open={openSnackbar}
-        autoHideDuration={1500}
+        autoHideDuration={6000}
         onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         TransitionComponent={Slide}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <MuiAlert
+          onClose={handleCloseSnackbar}
+          severity="error"
           elevation={6}
           variant="filled"
-          severity="error"
-          onClose={handleCloseSnackbar}
         >
           {errorMessage}
         </MuiAlert>
-      </Snackbar>
+      </Snackbar> */}
     </>
   );
 };
+
 export default MyComponent;

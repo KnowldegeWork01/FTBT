@@ -3,9 +3,9 @@ const router = express.Router();
 const Project = require("../models/Project.js");
 const User = require("../models/Schema.js");
 
-router.post("/projects", async (req, res) => {
+router.post("/createProject", async (req, res) => {
   try {
-    const { projectName, email, tmxUpload, sourceUpload } = req.body;
+    const { projectName, email, tmxUpload, sourceUpload,sourceLanguage,targetLanguage } = req.body;
     if (!email) {
       return res.status(400).json({
         error: "Email not found in localStorage",
@@ -22,14 +22,16 @@ router.post("/projects", async (req, res) => {
     const newProject = new Project({
       projectName,
       userId: user._id,
-      status: "Created",
+      status: "init",
       sourceUpload:[],
       tmxUpload:[],
-      email,
+      sourceLanguage,
+      targetLanguage
     });
     const savedProject = await newProject.save();
     res.status(201).json(savedProject);
   } catch (error) {
+    console.log(error);
     res
       .status(500)
       .json({ error: "Error Creating Project", details: error.message });

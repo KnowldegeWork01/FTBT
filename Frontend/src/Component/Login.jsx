@@ -41,6 +41,7 @@ const Login = () => {
       const decodedToken = jwt_decode(token);
       const department = decodedToken.department;
       localStorage.setItem("department", department);
+      
       switch (department) {
         case "FT":
           navigate("/FT");

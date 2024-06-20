@@ -69,7 +69,7 @@ router.post("/authenticate", async (req, res) => {
       { userId: user._id, department: user.department },
       process.env.JWT_SECRET
     );
-    return res.status(200).json({ token, email: user.email });
+    return res.status(200).json({ token, email: user.email, _id : user._id, department : user.department });
   } catch (error) {
     console.log("Error authenticating user:", error);
     return res.status(500).json({ message: "Internal Server Error" });
