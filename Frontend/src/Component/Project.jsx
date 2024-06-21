@@ -575,62 +575,6 @@ const MyComponent = () => {
   const [targetLanguage, setTargetLanguage] = useState([]);
   const [clientName, setClientName] = useState("");
   const [sourceFileLength, setSourceFileLength] = useState(0);
-  const [isDrawerOpenTasks, setIsDrawerOpenTasks] = useState(false);
-  const [assignTargetLanguage, setassignTargetLanguage] = useState("");
-  const [serviceType, setServiceType] = useState('');
-  const [assignTasks, setAssignTasks] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
-  const [formattedDateTime, setFormattedDateTime] = useState(null);
-  const [projectData, setProjectData] = useState(null);
- 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    formatDateTime(date, selectedTime);
-  };
- 
-const AssignTasksApi = async () =>{
-  try {
-    const tasksToUpdate = [
-      {
-        assignTargetLanguage,
-     serviceType,
-     assignTo: assignTasks,
-     date: formattedDateTime
-      },
-    ]
-    const response = await axios.put(`http://localhost:8000/api/projects/${projectData.id}/tasksUpdate`, {
-    tasks: tasksToUpdate
-    });
-    if (response.status === 200) {
-      setIsDrawerOpenTasks(false); // Close the drawer
-      fetchProjects(); // Fetch updated projects list
-    }
-    console.log("response",response);
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-  }
-}
-useEffect(()=>{
-  console.log("projectData",projectData);
-},[projectData])
-  const handleTimeChange = (time) => {
-    setSelectedTime(time);
-    formatDateTime(selectedDate, time);
-  };
- 
-  const formatDateTime = (date, time) => {
-    if (date && time) {
-      const formattedDate = dayjs(date).format('YYYY-MM-DD');
-      const formattedTime = dayjs(time).format('HH:mm:ss A');
-      const dateTimeString = `${formattedDate} ${formattedTime}`;
-      setFormattedDateTime(dateTimeString);
-    }
-  };
- 
-  const handleServiceTypeChange = (e) => {
-    setServiceType(e.target.value);
-  };
   useEffect(() => {
     fetchProjects();
     fetchLanguage();
@@ -642,16 +586,7 @@ useEffect(()=>{
       setSourceLanguage("")
     }
   }, [isDrawerOpen]);
-  useEffect(() => {
-    if(isDrawerOpenTasks == true){
-      setAssignTasks("")
-      setSelectedDate(null)
-      setSelectedTime(null)
-      setServiceType("")
-      setassignTargetLanguage("")
-    }
-  }, [isDrawerOpenTasks]);
- 
+
   const fetchProjects = async () => {
     try {
       const email = localStorage.getItem("email");
@@ -712,8 +647,8 @@ useEffect(()=>{
   //   setOpenSnackbar(false);
   // };
 useEffect(()=>{
-console.log("AssignTasks",assignTasks);
-},[assignTasks])
+console.log("projects",projects);
+},[projects])
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (projectName === "") {
@@ -752,7 +687,7 @@ console.log("AssignTasks",assignTasks);
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
-     
+      
         return `${day}${month}${year}`;
       };
       const response = await axios.post(
@@ -773,7 +708,7 @@ console.log("AssignTasks",assignTasks);
       console.error("Error creating project:", error);
     }
   };
- 
+
   const handleDelete = async (index) => {
     try {
       await axios.delete(
@@ -823,9 +758,6 @@ console.log("AssignTasks",assignTasks);
   },[])
   const toggleDrawer = (isOpen) => () => {
     setIsDrawerOpen(isOpen);
-  };
-  const toggleDrawerAssignTasks = (isOpen) => () => {
-    setIsDrawerOpenTasks(isOpen);
   };
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
@@ -933,7 +865,7 @@ console.log("AssignTasks",assignTasks);
           </span>
           <span>
           <select
-      value={projectData?.tasks.assignTargetLanguage}
+      value=""
       onChange={handleLanguageChange}
       style={{ width: "200px" }}
     >
@@ -955,289 +887,11 @@ console.log("AssignTasks",assignTasks);
             <li key={index} style={{marginLeft:"20px"}}>{lang}</li>
           ))}
         </ul>
-     
+      
     </div> : null}
     <span style={{display:"flex",justifyContent:"center",position:"fixed",top:"35rem",right:"19rem"}}>
         <Button onClick={handleCreateProject} >Save</Button>
         </span>
-      </Drawer>
-      <Drawer
-        anchor='right'
-        open={isDrawerOpenTasks}
-        onClose={toggleDrawerAssignTasks(false)}
-        PaperProps={{ style: { width: "40%" }}}
-      >
-        <div style={{  overflowX: "auto" }}>
-        <AppBar position='static'>
-          <Toolbar>
-            <Typography variant='h6' style={{ flexGrow: 1 }}>
-              Assign Tasks
-            </Typography>
-            <MUIButton edge='end' color='inherit' onClick={toggleDrawerAssignTasks(false)}>
-              <CloseIcon />
-            </MUIButton>
-          </Toolbar>
-        </AppBar>
-        <div style={{ display: 'flex', flexDirection: 'column', overflowY: 'scroll' }}>
-        {projectData?.tasks && projectData.tasks.map((task, index) => (
-  <Card key={index} sx={{ maxWidth: 600, minWidth: 600, marginBottom: 2 }}>
-    <CardContent>
-      <div
-        style={{
-          margin: "70px 22px 0px 20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-          Source Language<span style={{ color: "red" }}>*</span>
-        </span>
-        <span>
-          <TextField
-            name='sourceLanguage'
-            variant='standard'
-            value={projects?.map((project) => (project.sourceLanguage))}
-            sx={{ width: "255px" }}
-          />
-        </span>
-      </div>
-      <div
-        style={{
-          margin: "70px 22px 0px 20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-          Target Language<span style={{ color: "red" }}>*</span>
-        </span>
-        <span>
-          <select
-            value={task.assignTargetLanguage || null}
-            style={{ width: "255px" }}
-          >
-            <option value='' disabled>
-              Select Language
-            </option>
-            {language.map((lang) => (
-              <option key={lang._id} value={lang.languageName}>
-                {lang.languageName}
-              </option>
-            ))}
-          </select>
-        </span>
-      </div>
-      <div
-        style={{
-          margin: "70px 22px 0px 20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-          Service Type<span style={{ color: "red" }}>*</span>
-        </span>
-        <span>
-          <select
-            value={task.serviceType || serviceType}
-            onChange={(e) => handleServiceTypeChange(e, index)}
-            style={{ width: "255px" }}
-          >
-            <option value='' disabled>
-              Service type
-            </option>
-            <option value='FT'>FT</option>
-            <option value='BT'>BT</option>
-            <option value='QC'>QC</option>
-          </select>
-        </span>
-      </div>
-      <div
-        style={{
-          margin: "70px 22px 0px 20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-          Assign To<span style={{ color: "red" }}>*</span>
-        </span>
-        <span>
-          <TextField
-            name='assignTo'
-            variant='standard'
-            value={task.assignTo || ''}
-            disabled
-            sx={{ width: "255px" }}
-          />
-        </span>
-      </div>
-      <div
-        style={{
-          margin: "70px 22px 0px 20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-          TAT<span style={{ color: "red" }}>*</span>
-        </span>
-        <div>
-          {task.date }
-        </div>
-      </div>
-    </CardContent>
-  </Card>
-))}
- 
-       <Card sx={{ maxWidth: 600, minWidth:600 }}>
-        <CardContent>
-        <div
-          style={{
-            margin: "70px 22px 0px 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-            Source Language<span style={{ color: "red" }}>*</span>
-          </span>
-          <span>
-            <TextField
-              name='fullName'
-              variant='standard'
-              value={projects?.map((project) => (project.sourceLanguage))}
-              sx={{ width: "255px" }}
-            />
-          </span>
-        </div>
-        <div
-          style={{
-            margin: "70px 22px 0px 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-            Target Language<span style={{ color: "red" }}>*</span>
-          </span>
-          <span>
-            <select
-              value={assignTargetLanguage}
-              onChange={(e) => setassignTargetLanguage(e.target.value)}
-              style={{ width: "255px" }}
-            >
-              <option value='' disabled>
-                Select Language
-              </option>
-              {language.map((lang) => (
-                <option key={lang._id} value={lang.languageName}>
-                  {lang.languageName}
-                </option>
-              ))}
-            </select>
-          </span>
-        </div>
-        <div
-          style={{
-            margin: "70px 22px 0px 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-            Servise Type<span style={{ color: "red" }}>*</span>
-          </span>
-          <span>
-          <select
-      value={serviceType}
-      onChange={handleServiceTypeChange}
-      style={{ width: "255px" }}
-    >
-      <option value='' disabled>
-        Service type
-      </option>
-      <option value='FT'>
-        FT
-      </option>
-      <option value='BT'>
-        BT
-      </option>
-      <option value='QC'>
-        QC
-      </option>
-    </select>
-          </span>
-        </div>
-        <div
-          style={{
-            margin: "70px 22px 0px 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-            Assign To<span style={{ color: "red" }}>*</span>
-          </span>
-          <span>
-            <TextField
-              name='fullName'
-              variant='standard'
-              onChange={(e) => setAssignTasks(e.target.value)}
-              sx={{ width: "255px" }}
-            />
-          </span>
-        </div>
-        <div
-          style={{
-            margin: "70px 22px 0px 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <span style={{ fontSize: "15px", fontWeight: "bold" }}>
-            TAT<span style={{ color: "red" }}>*</span>
-          </span>
-          <div>
-      <div>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label="Select Date"
-            value={selectedDate}
-            onChange={handleDateChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
-        </div>
-        <div style={{marginTop:"10px"}}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <TimePicker
-            label="Select Time"
-            value={selectedTime}
-            onChange={handleTimeChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
-      </div>
-    </div>
-    </div>
-    <div style={{display:"flex",justifyContent:"center",alignItems:"center", marginTop:"20px"}}>
-    <Button onClick={AssignTasksApi}>Assign</Button>
-    </div>
-  </CardContent>
-        </Card>
-    </div>
-    </div>
       </Drawer>
       <div>
         <TableContainer component={Paper}>
@@ -1302,10 +956,33 @@ console.log("AssignTasks",assignTasks);
                       </Typography>
                     </Box>
                   </TableCell>
+                 
+                  {/* <TableCell>
+                    <Box display="flex" alignItems="center">
+                      <input
+                        id={`tmx-file-input-${index}`}
+                        type="file"
+                        accept=".tmx"
+                        onChange={(e) => handleTmxUploadChange(e, index)}
+                        multiple
+                        style={{ display: "none" }}
+                      />
+                      <label htmlFor={`tmx-file-input-${index}`}>
+                        <IconButton component="span">
+                          <CloudUploadIcon />
+                        </IconButton>
+                      </label>
+                      <Typography variant="body1">
+                        {project.tmxUpload
+                          ? `${project.tmxUpload.length} Files`
+                          : "No file chosen"}
+                      </Typography>
+                    </Box>
+                  </TableCell> */}
                    <TableCell style={{ fontSize: "1rem" }}>
                     {project?.sourceLanguage}
                   </TableCell>
-                   <TableCell style={{ fontSize: "1rem" }}>        
+                   <TableCell style={{ fontSize: "1rem" }}>         
                    <ul>
       {project.targetLanguage.map((language, index) => (
         <li key={index}>{language}</li>
@@ -1320,7 +997,7 @@ console.log("AssignTasks",assignTasks);
                       paddingRight='5rem'
                       className='icon-container'
                     >
-                      <MdOutlinePeople className="icon" onClick={() => handleIconClick(project)} />
+                      <MdOutlinePeople className='icon' />
                       <Button
                         onClick={() => handleDelete(index)}
                         style={{ fontSize: "2rem" }}
