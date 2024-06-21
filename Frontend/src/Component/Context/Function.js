@@ -25,9 +25,9 @@ export const FunctionProvider = ({ children }) => {
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("savedData", savedData);
-  }, [savedData]);
+  // useEffect(() => {
+  //   console.log("savedData", savedData);
+  // }, [savedData]);
 
   //URL blockage
   useEffect(() => {

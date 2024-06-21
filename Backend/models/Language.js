@@ -1,5 +1,3 @@
-
-
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 let LanguageSchema = mongoose.Schema({

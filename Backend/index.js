@@ -11,7 +11,7 @@ const chatRoute = require("./Routes/Chat");
 const Projects = require("./Routes/Projects");
 const login = require("./Routes/login");
 const fileUpload = require("./Routes/file_Upload");
-const Language = require("./models/Language");
+const language = require("./Routes/Language");
 const server = http.createServer(app);
 const path = require("path");
 
@@ -55,20 +55,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/chat", chatRoute);
 app.use("/api", login);
 app.use("/api", Projects);
-app.use("/api",fileUpload)
-
-app.get('/language', async (req, res) => {
-  try {
-    const languages = await Language.find({});
-    res.json(languages);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: 'Error fetching languages', error });
-  }
-});
+app.use("/api", fileUpload);
+app.use("/api", language);
 
 // Serve static files from the 'uploads' directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Set the io object on the app
 app.set("io", io);
