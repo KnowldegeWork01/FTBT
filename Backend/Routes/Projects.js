@@ -5,36 +5,60 @@ const User = require("../models/Schema.js");
 
 router.post("/createProject", async (req, res) => {
   try {
-    const { projectName, email, tmxUpload, sourceUpload,sourceLanguage,targetLanguage } = req.body;
+    const { projectName, email, tmxUpload, sourceUpload, sourceLanguage, targetLanguage } = req.body;
+    
     if (!email) {
       return res.status(400).json({
-        error: "Email not found in localStorage",
+        error: "Email is required",
         details: "User email is required to create a project",
       });
     }
+    
+    if (!projectName) {
+      return res.status(400).json({
+        error: "Project name is required"
+      });
+    }
+    
+    if (!sourceLanguage) {
+      return res.status(400).json({
+        error: "Source language is required"
+      });
+    }
+    
+    if (!targetLanguage || targetLanguage.length === 0) {
+      return res.status(400).json({
+        error: "At least one target language is required"
+      });
+    }
+    
     const user = await User.findOne({ email });
+    
     if (!user) {
       return res.status(404).json({
         error: "User not found",
         details: `User with email ${email} not found`,
       });
     }
+    
     const newProject = new Project({
       projectName,
       userId: user._id,
       status: "init",
-      sourceUpload:[],
-      tmxUpload:[],
+      sourceUpload: sourceUpload || [], // Ensure it's an array
+      tmxUpload: tmxUpload || [], // Ensure it's an array
       sourceLanguage,
       targetLanguage
     });
+    
     const savedProject = await newProject.save();
     res.status(201).json(savedProject);
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .json({ error: "Error Creating Project", details: error.message });
+    res.status(500).json({
+      error: "Error creating project",
+      details: error.message
+    });
   }
 });
 
