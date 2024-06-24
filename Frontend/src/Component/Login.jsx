@@ -232,8 +232,8 @@ const Login = () => {
       </div>
       <Snackbar
         open={openSnackbar}
-        autoHideDuration={2000}
         onClose={handleCloseSnackbar}
+        autoHideDuration={2000}
         TransitionComponent={Slide}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >

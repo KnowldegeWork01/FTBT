@@ -66,7 +66,7 @@ router.post("/createProject", async (req, res) => {
     });
     
     const savedProject = await newProject.save();
-    res.status(201).json(savedProject);
+    res.status(200).json(savedProject);
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -162,6 +162,19 @@ router.put("/projects/:id/tasksUpdate", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.post("/projects/:department", async (req, res) => {
+  const department = req.params.department;
+  try {
+    const users = await User.find({ department: department });
+    if (!users) {
+      return res.status(404).json({ error: 'Users not found' });
+    }
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ error: "Error finding users", details: error.message });
   }
 });
 
