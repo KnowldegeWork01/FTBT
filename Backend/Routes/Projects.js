@@ -5,27 +5,13 @@ const User = require("../models/Schema.js");
 
 router.post("/createProject", async (req, res) => {
   try {
-<<<<<<< HEAD
-    const {
-      projectName,
-      email,
-      tmxUpload,
-      sourceUpload,
-      sourceLanguage,
-      targetLanguage,
-    } = req.body;
-
-=======
     const { projectName, email, tmxUpload, sourceUpload, sourceLanguage, targetLanguage } = req.body;
-    
->>>>>>> 30898898f10b5c91656a0f4e3a621f6263561064
     if (!email) {
       return res.status(400).json({
         error: "Email is required",
         details: "User email is required to create a project",
       });
     }
-<<<<<<< HEAD
     if (!projectName) {
       return res.status(400).json({
         error: "Project name is required",
@@ -41,8 +27,6 @@ router.post("/createProject", async (req, res) => {
         error: "At least one target language is required",
       });
     }
-=======
-    
     if (!projectName) {
       return res.status(400).json({
         error: "Project name is required"
@@ -60,10 +44,7 @@ router.post("/createProject", async (req, res) => {
         error: "At least one target language is required"
       });
     }
-    
->>>>>>> 30898898f10b5c91656a0f4e3a621f6263561064
     const user = await User.findOne({ email });
-    
     if (!user) {
       return res.status(404).json({
         error: "User not found",
@@ -75,13 +56,10 @@ router.post("/createProject", async (req, res) => {
       projectName,
       userId: user._id,
       status: "init",
-<<<<<<< HEAD
       sourceUpload: sourceUpload || [],
       tmxUpload: tmxUpload || [],
-=======
-      sourceUpload: sourceUpload || [], // Ensure it's an array
-      tmxUpload: tmxUpload || [], // Ensure it's an array
->>>>>>> 30898898f10b5c91656a0f4e3a621f6263561064
+      sourceUpload: sourceUpload || [], 
+      tmxUpload: tmxUpload || [], 
       sourceLanguage,
       targetLanguage,
       email,
@@ -93,11 +71,7 @@ router.post("/createProject", async (req, res) => {
     console.log(error);
     res.status(500).json({
       error: "Error creating project",
-<<<<<<< HEAD
       details: error.message,
-=======
-      details: error.message
->>>>>>> 30898898f10b5c91656a0f4e3a621f6263561064
     });
   }
 });
